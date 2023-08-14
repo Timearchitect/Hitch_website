@@ -1,4 +1,5 @@
 :root {
+    --transparent_white: rgb(255,255,255,0.5);
     --themeColor: rgb(0,128, 96);
     --white: #ffffff;
   }
@@ -7,4 +8,16 @@
 body{
     background:var( --themeColor);
     color: var(--white);
+}
+main{
+  padding:2rem;
+}
+a{
+  text-decoration: none;
+  color:var(--transparent_white);
+}
+
+a:hover{
+  color:var(--white);
+
 }
