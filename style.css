@@ -21,3 +21,8 @@ a:hover{
   color:var(--white);
 
 }
+img{
+filter: brightness(0) invert();
+width: 30%;
+padding: 1rem;
+}
