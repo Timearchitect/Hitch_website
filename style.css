@@ -1,0 +1,10 @@
+:root {
+    --themeColor: rgb(0,128, 96);
+    --white: #ffffff;
+  }
+
+
+body{
+    background:var( --themeColor);
+    color: var(--white);
+}
