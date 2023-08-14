@@ -1,28 +1,26 @@
 :root {
-    --transparent_white: rgb(255,255,255,0.5);
-    --themeColor: rgb(0,128, 96);
+    --transparent_white: rgb(255, 255, 255, 0.5);
+    --themeColor: rgb(0, 128, 96);
     --white: #ffffff;
-  }
+}
 
-
-body{
-    background:var( --themeColor);
+body {
+    background: var(--themeColor);
     color: var(--white);
 }
-main{
-  padding:2rem;
+main {
+    padding: 2rem;
 }
-a{
-  text-decoration: none;
-  color:var(--transparent_white);
+a {
+    text-decoration: none;
+    color: var(--transparent_white);
 }
 
-a:hover{
-  color:var(--white);
-
+a:hover {
+    color: var(--white);
 }
-img{
-filter: brightness(0) invert();
-width: 30%;
-padding: 1rem;
+img {
+    filter: brightness(0) invert(1);
+    width: 30%;
+    padding: 1rem;
 }
