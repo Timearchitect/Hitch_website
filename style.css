@@ -11,12 +11,12 @@
     --white: #ffffff;
 }
 p {
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
 }
 h1,
 h2,
 h3 {
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
 }
 body {
     background: var(--themeColor);
