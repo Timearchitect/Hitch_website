@@ -38,7 +38,7 @@ function writeToDb(userId, firstname, surname, email) {
 
 async function getFormData() {
 
-    const response = await 
+    const response = await fetch();
 }
 
 
