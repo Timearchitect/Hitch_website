@@ -1,5 +1,5 @@
 import {initializeApp} from 'firebase/app';
-import {getDatabase} from 'firebase/database';
+import {getDatabase, ref, set} from 'firebase/database';
 import {getAnalytics} from 'firebase/analytics';
 
 const firebaseConfig = {
@@ -14,6 +14,49 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const database = getDatabase(app);
+const db = getDatabase(app);
 
 
+const name = document.getElementById("first-name-text")
+const surname = document.getElementById("surnam-text")
+const email = document.getElementById("email-text")
+const signUpBtn = document.getElementById("signup-button")
+
+function writeToDb(userId, firstname, surname, email) {
+    set(ref(db, 'users/' + userId), {
+        firstname: firstname,
+        surname: surname,
+        email: email,
+    }, (error) => {
+        if(error) {
+            console.log('Data could not be saved ' + error + '.')
+        }else {
+            console.log('Data has been saved.')
+        }
+    });
+}
+
+async function getFormData() {
+
+    const response = await 
+}
+
+
+
+
+/*
+Database structure:
+    "users": {
+        "id": {
+            firstname: ,
+            surname: ,
+            email: ,
+        }
+    }
+
+*/
+
+
+signUpBtn.addEventListener("click", async () => {
+
+})
