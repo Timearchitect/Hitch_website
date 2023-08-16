@@ -44,3 +44,6 @@ img {
     border: dotted var(--transparent_white) 5px;
     border-spacing: 5px 12px;
 }
+hr {
+    color: var(--white);
+}
