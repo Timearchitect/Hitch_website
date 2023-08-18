@@ -3,7 +3,6 @@ import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.2.0
 import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
 
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyDjWjuCwnIyNFkH1K5Kfy1DAbn_jkyXssw",
     authDomain: "hitch-e4a25.firebaseapp.com",
@@ -23,10 +22,10 @@ const db = getDatabase(app);
 
 
 
-let name = document.getElementById("first-name-text")
-let surname = document.getElementById("surnam-text")
-let email = document.getElementById("email-text")
-let form = document.getElementById("form-handler")
+let name = window.document.getElementById("first-name-text")
+let surname = window.document.getElementById("surnam-text")
+let email = window.document.getElementById("email-text")
+let form = window.document.getElementById("form-handler")
 
 
 async function writeToDb(userId, firstname, surname, email) {
@@ -54,21 +53,24 @@ Database structure:
     }
 
 */
-form.addEventListener("submit", e =>{
-    e.preventDefault();
-    let uid = 0
-    
-    try{
-        if(name == "" || surname == "" || email == ""){
-            Window.alert("Please enter first name, surname and email to proceed")
-        } else {
-            uid +=1
-            writeToDb(uid, name.innerText, surname.innerText, email.innerText)
-        }
-        logEvent(analyze, "sign_up")
-    }catch (error) {
-        console.error(error)
-    }
 
+document.addEventListener("DOMContentLoaded", function (e) {
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        let uid = 0
+
+        try {
+            if (name == "" || surname == "" || email == "") {
+                alert("Please enter first name, surname and email to proceed")
+            } else {
+                uid += 1
+                writeToDb(uid, name.innerText, surname.innerText, email.innerText)
+            }
+            logEvent(analyze, "sign_up")
+        } catch (error) {
+            console.error(error)
+        }
+
+    })
 });
 
