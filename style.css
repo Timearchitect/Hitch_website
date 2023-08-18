@@ -21,6 +21,7 @@ h3 {
 body {
     background: var(--themeColor);
     color: var(--white);
+    margin: 0;
 }
 main {
     padding: 1rem;

@@ -2,6 +2,7 @@ input[type="text"],
 input[type="email"] {
     border-radius: 10px !important;
     margin-left: 0.8rem;
+    padding: 0.2rem 0.5rem;
 }
 input[type="submit"] {
     border-radius: 10px !important;
