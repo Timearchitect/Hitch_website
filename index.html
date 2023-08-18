@@ -1,92 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hitch app</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="userAgentOverride.css" />
+        <script type="module" src="script.js"></script>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hitch app</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="userAgentOverride.css" />
-    <script type="module" src="script.js" defer></script>
-    
-    <link rel="icon" type="image/x-icon" href="res/favicon.png" />
-</head>
+        <link rel="icon" type="image/x-icon" href="res/favicon.png" />
+    </head>
 
-<body>
-    <div class="landing">
-        <div class="home-wrap">
-            <header class="v-header container">
-                <a href id="playbtn"><img src="./res/pngwing.com.png" alt="Playbutton" width="100"></a>
-                <div class="fullscreen-video-wrap">
-                    <video src="videos/test.mp4" autoplay="" loop="" muted></video>
-                </div>
-            </header>
+    <body>
+        <div class="landing">
+            <div class="home-wrap">
+                
+                <header class="v-header container">
+                    <a  id="playbtn" href="#"><img src="./res/pngwing.com.png" alt="Playbutton" width="100" /></a>
+                    <div class="fullscreen-video-wrap">
+                        <video src="videos/test.mp4" autoplay="" loop="" muted></video>
+                    </div>
+                </header>
+            </div>
         </div>
-    </div>
 
-    <main>
-        <!--navbar-->
-        <nav>
-            <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
-            <ul class="nav-items">
-                <li><a href="index.html">Hem</a></li>
-                <li><a href="about-us.html">Om oss</a></li>
-                <li><a href="privacyPolicy.html">Integritetspolicy</a></li>
-                <li><a href="contact-us.html">Kontakta Oss</a></li>
-            </ul>
-        </nav>
-        <a class="main-logo" href="index.html"><img src="res\Logo.png" alt="[logo here!!!]" /></a>
-        <br />
-        <hr />
-        <h3>Beta test signup🗒️</h3>
-        <form action=""  class="beta-signup">
-            <div class="beta-signup">
-                <label for="firstname">Enter your first name: </label>
-                <input type="text" name="firstname" id="first-name-text" required />
-            </div>
-            <div class="beta-signup">
-                <label for="surname">Enter your surname: </label>
-                <input type="text" name="surename" id="surname-text" required />
-            </div>
-            <div class="beta-signup">
-                <label for="email-input"> Enter your email: </label>
-                <input type="email" name="email-input" id="email-text" placeholder="somebody@hitchapp.se" required />
-            </div>
-            <div class="beta-signup">
-                <input type="submit" value="Sign up" id="signup-button" />
-            </div>
-            <div>
-                <input name="accept terms" type="checkbox" />
-                <label for="accept terms">Accept the terms & services</label>
-            </div>
-        </form>
-
-        <em><b><a href="privacyPolicy.html">Privacy Policy & Terms of Service</a></b></em>
+        <main>
+            <!--navbar-->
+            <nav>
+                <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
+                <ul class="nav-items">
+                    <li><a href="index.html">Hem</a></li>
+                    <li><a href="about-us.html">Om oss</a></li>
+                    <li><a href="privacyPolicy.html">Integritetspolicy</a></li>
+                    <li><a href="contact-us.html">Kontakta Oss</a></li>
+                </ul>
+            </nav>
+            <a class="main-logo" href="index.html"><img src="res\Logo.png" alt="[logo here!!!]" /></a>
             <br />
- 
+            <hr />
+            <h3>Beta test signup🗒️</h3>
+            <form action="" method="post" class="beta-signup">
+                <div class="beta-signup">
+                    <label for="firstname">Enter your first name: </label>
+                    <input type="text" name="firstname" id="first-name-text" required />
+                </div>
+                <div class="beta-signup">
+                    <label for="surname">Enter your surname: </label>
+                    <input type="text" name="surename" id="surname-text" required />
+                </div>
+                <div class="beta-signup">
+                    <label for="email-input"> Enter your email: </label>
+                    <input type="email" name="email-input" id="email-text" placeholder="somebody@hitchapp.se" required />
+                </div>
+                <div class="beta-signup">
+                    <input type="submit" value="Sign up" id="signup-button" />
+                </div>
+                <div>
+                    <input name="accept terms" type="checkbox" />
+                    <label for="accept terms">Accept the terms & services</label>
+                </div>
+            </form>
+
+            <em
+                ><b><a href="privacyPolicy.html">Privacy Policy & Terms of Service</a></b></em
+            >
+            <br />
+
             <footer>
                 <hr />
                 <br />
                 <ul>
-
-                <li>
-                    <a href=""><img src="./img/intagramwhite.png" alt="IG" width="20"></a>
+                    <li>
+                        <a href=""><img src="./img/intagramwhite.png" alt="IG" width="20" /></a>
                     </li>
 
                     <li id="facebook">
-                        <a href="..."><img id="fblogo" src="./img/fbwhite.png" alt="FB" width="28"></a>
+                        <a href="..."><img id="fblogo" src="./img/fbwhite.png" alt="FB" width="28" /></a>
                     </li>
 
                     <li id="Copyright">
-                        <p>Copyright © 2023 | Jim Lewis Skoglund </p>
+                        <p>Copyright © 2023 | Jim Lewis Skoglund</p>
                     </li>
 
                     <li id="playbtn">
-                        <a href=""><img src="./res/google-play-store-logo-png-25.png" alt="Playbutton" width="28"></a>
-
+                        <a href=""><img src="./res/google-play-store-logo-png-25.png" alt="Playbutton" width="28" /></a>
                     </li>
                 </ul>
             </footer>
-    </main>
-</body>
+        </main>
+    </body>
 </html>
