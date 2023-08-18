@@ -24,6 +24,8 @@ body {
     margin: 0;
 }
 main {
+    background-color: var(--themeColor);
+
     padding: 1rem;
 }
 a {
@@ -36,19 +38,15 @@ a:hover {
 }
 
 .main-logo {
+    z-index:-1;
+    position: fixed;
+    top: 23%;
+    left: 10%;
     filter: brightness(0) invert(1);
     width: 30%;
     min-width: 150px;
     padding: 1rem 0rem;
 }
-
-#fblogo{
-    filter: brightness(200);
-}
-
-
-
-
 
 #changes {
     padding: 0.8rem 2rem;
@@ -63,6 +61,7 @@ form {
     margin: 2rem 0rem;
     border-radius: 25px;
     border: solid;
+
 }
 form input{
     margin-top: 1rem;
@@ -85,6 +84,35 @@ nav li{
     margin-block-end: 0.5em;
     filter: brightness(0) invert(1);
 }
+/* Video bg*/
+.v-header{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    color:#fff;
+  }
+  
+  .container{
+    max-width:960px;
+    padding-left:1rem;
+    padding-right:1rem;
+    margin:auto;
+    text-align:center;
+  }
+  video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background: url('') no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+  }
 
 #Copyright{
  margin-top: -15px;
