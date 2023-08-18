@@ -85,3 +85,15 @@ nav li{
     margin-block-end: 0.5em;
     filter: brightness(0) invert(1);
 }
+
+#Copyright{
+ margin-top: -15px;
+}
+
+#facebook{
+    margin-top: -4px;
+}
+
+li{
+    padding-left: 10px;
+}
