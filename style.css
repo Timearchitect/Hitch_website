@@ -97,3 +97,7 @@ nav li{
 li{
     padding-left: 10px;
 }
+
+#playbtn{
+    filter: brightness(0) invert(1);
+}
