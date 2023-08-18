@@ -33,12 +33,20 @@ a {
 a:hover {
     color: var(--white);
 }
-img {
+#logo {
     filter: brightness(0) invert(1);
     width: 30%;
     min-width: 150px;
     padding: 1rem 0rem;
 }
+
+#fblogo{
+    filter: brightness(200);
+}
+
+
+
+
 
 #changes {
     padding: 0.8rem 2rem;
@@ -57,3 +65,4 @@ form {
 form input{
     margin-top: 1rem;
 }
+
