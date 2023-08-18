@@ -60,7 +60,7 @@ form.addEventListener("submit", e =>{
     
     try{
         if(name == "" || surname == "" || email == ""){
-            alert("Please enter first name, surname and email to proceed")
+            Window.alert("Please enter first name, surname and email to proceed")
         } else {
             uid +=1
             writeToDb(uid, name.innerText, surname.innerText, email.innerText)
