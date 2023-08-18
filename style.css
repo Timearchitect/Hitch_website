@@ -148,4 +148,10 @@ li {
 
 #playbtn {
     filter: brightness(0) invert(1);
+    padding-right: 10px;
+    margin-top: 280px;
+    padding-left: 2rem;
+    position: fixed;
+    z-index: -1;
+    
 }
