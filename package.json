@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "analytics": "^0.8.9",
+    "firebase": "^10.2.0",
+    "firebaseui": "^6.1.0"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@babel/core": "^7.22.10"
+  }
+}

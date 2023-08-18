@@ -1,7 +1,15 @@
+import { initializeApp } from 'firebase/app'
+import { getDatabase, ref, set } from 'firebase/database'
+import { getAnalytics, logEvent } from 'firebase/analytics'
 
-import {initializeApp} from 'firebase/app';
-import {getDatabase, ref, set} from 'firebase/database';
-import {getAnalytics} from 'firebase/analytics';
+/*
+var initializeApp = require('firebase/app')
+var getDatabase = require('firebase/database')
+var ref = require('firebase/database')
+var set = require('firebase/database')
+var getAnalytics = require('firebase/analytics')
+var logEvent = require('firebase/analytics')
+*/
 
 
 const firebaseConfig = {
@@ -17,35 +25,30 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+analytics.isSupported()
+
 const db = getDatabase(app);
 
 
-const name = document.getElementById("first-name-text")
-const surname = document.getElementById("surnam-text")
-const email = document.getElementById("email-text")
-const signUpBtn = document.getElementById("signup-button")
+let name = document.getElementById("first-name-text")
+let surname = document.getElementById("surnam-text")
+let email = document.getElementById("email-text")
+let form = document.getElementById("form-handler")
 
-function writeToDb(userId, firstname, surname, email) {
-    set(ref(db, 'users/' + userId), {
+
+async function writeToDb(userId, firstname, surname, email) {
+    await set(ref(db, 'users/' + userId), {
         firstname: firstname,
         surname: surname,
         email: email,
     }, (error) => {
-        if(error) {
-            console.log('Data could not be saved ' + error + '.')
-        }else {
-            console.log('Data has been saved.')
+        if (error) {
+            console.error('Data could not be saved ' + error + '.')
+        } else {
+            console.error('Data has been saved.')
         }
     });
 }
-
-async function getFormData() {
-
-    const response = await fetch();
-}
-
-
-
 
 /*
 Database structure:
@@ -58,9 +61,21 @@ Database structure:
     }
 
 */
+form.addEventListener("submit", e =>{
+    e.preventDefault();
+    let uid = 0
+    
+    try{
+        if(name == "" || surname == "" || email == ""){
+            alert("Please enter first name, surname and email to proceed")
+        } else {
+            uid +=1
+            writeToDb(uid, name.innerText, surname.innerText, email.innerText)
+        }
+        logEvent(analytics, "sign_up")
+    }catch (error) {
+        console.error(error)
+    }
 
-
-signUpBtn.addEventListener("click", async () => {
-
-})
+});
 
