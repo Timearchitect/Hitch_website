@@ -1,15 +1,7 @@
-import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, set } from 'firebase/database'
-import { getAnalytics, logEvent } from 'firebase/analytics'
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
+import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
 
-/*
-var initializeApp = require('firebase/app')
-var getDatabase = require('firebase/database')
-var ref = require('firebase/database')
-var set = require('firebase/database')
-var getAnalytics = require('firebase/analytics')
-var logEvent = require('firebase/analytics')
-*/
 
 
 const firebaseConfig = {
@@ -24,8 +16,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-analytics.isSupported()
+const analyze = getAnalytics(app);
+analyze.isSupported()
 
 const db = getDatabase(app);
 
@@ -72,7 +64,7 @@ form.addEventListener("submit", e =>{
             uid +=1
             writeToDb(uid, name.innerText, surname.innerText, email.innerText)
         }
-        logEvent(analytics, "sign_up")
+        logEvent(analyze, "sign_up")
     }catch (error) {
         console.error(error)
     }
