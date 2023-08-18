@@ -48,14 +48,6 @@ a:hover {
     padding: 1rem 0rem;
 }
 
-#fblogo{
-    filter: brightness(200);
-}
-
-
-
-
-
 #changes {
     padding: 0.8rem 2rem;
     border: dotted var(--transparent_white) 5px;
