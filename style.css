@@ -10,24 +10,29 @@
     --themeColor: rgb(0, 128, 96);
     --white: #ffffff;
 }
+
 p {
     letter-spacing: 0.02em;
 }
+
 h1,
 h2,
 h3 {
     letter-spacing: 0.05em;
 }
+
 body {
     background: var(--themeColor);
     color: var(--white);
     margin: 0;
 }
+
 main {
     background-color: var(--themeColor);
 
     padding: 1rem;
 }
+
 a {
     text-decoration: none;
     color: var(--transparent_white);
@@ -38,7 +43,7 @@ a:hover {
 }
 
 .main-logo {
-    z-index:-1;
+    z-index: -1;
     position: fixed;
     top: 23%;
     left: 10%;
@@ -53,9 +58,11 @@ a:hover {
     border: dotted var(--transparent_white) 5px;
     border-spacing: 5px 12px;
 }
+
 hr {
     color: var(--white);
 }
+
 form {
     padding: 2rem;
     margin: 2rem 0rem;
@@ -63,43 +70,56 @@ form {
     border: solid;
 
 }
-form input{
+
+form input {
     margin-top: 1rem;
 }
 
 /* Navbar Style*/
-nav{
+nav {
     display: flex;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--themeColor);
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--transparent_white);
 }
-ul{
+
+ul {
     display: flex;
     list-style-type: none;
 }
-nav li{
+
+nav li {
     margin-left: 1rem;
 }
-.navbar-logo{
+
+.navbar-logo {
     max-width: 60px;
     margin-block-start: 0.5em;
     margin-block-end: 0.5em;
     filter: brightness(0) invert(1);
 }
+
 /* Video bg*/
-.v-header{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    color:#fff;
-  }
-  
-  .container{
-    max-width:960px;
-    padding-left:1rem;
-    padding-right:1rem;
-    margin:auto;
-    text-align:center;
-  }
-  video { 
+.v-header {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.container {
+    max-width: 960px;
+    /* padding-left: 1rem;
+    padding-right: 1rem; */
+    margin: auto;
+    text-align: center;
+}
+
+video {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -112,21 +132,21 @@ nav li{
     background: url('') no-repeat;
     background-size: cover;
     transition: 1s opacity;
-  }
-
-#Copyright{
- margin-top: -15px;
 }
 
-#facebook{
+#Copyright {
+    margin-top: -15px;
+}
+
+#facebook {
     margin-top: -4px;
 }
 
-li{
+li {
     padding-left: 10px;
 }
 
-#playbtn{
+#playbtn {
     filter: brightness(0) invert(1);
     padding-right: 10px;
     margin-top: 280px;
