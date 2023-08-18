@@ -17,9 +17,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analyze = getAnalytics(app);
-analyze.isSupported()
+
 
 const db = getDatabase(app);
+
 
 
 let name = document.getElementById("first-name-text")
