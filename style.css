@@ -23,7 +23,7 @@ body {
     color: var(--white);
 }
 main {
-    padding: 2rem;
+    padding: 1rem;
 }
 a {
     text-decoration: none;
@@ -33,7 +33,8 @@ a {
 a:hover {
     color: var(--white);
 }
-img {
+
+.main-logo {
     filter: brightness(0) invert(1);
     width: 30%;
     min-width: 150px;
@@ -56,4 +57,22 @@ form {
 }
 form input{
     margin-top: 1rem;
+}
+
+/* Navbar Style*/
+nav{
+    display: flex;
+}
+ul{
+    display: flex;
+    list-style-type: none;
+}
+nav li{
+    margin-left: 1rem;
+}
+.navbar-logo{
+    max-width: 60px;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    filter: brightness(0) invert(1);
 }
