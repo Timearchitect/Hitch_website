@@ -21,9 +21,10 @@ h3 {
 body {
     background: var(--themeColor);
     color: var(--white);
+    margin: 0;
 }
 main {
-    padding: 2rem;
+    padding: 1rem;
 }
 a {
     text-decoration: none;
@@ -33,7 +34,8 @@ a {
 a:hover {
     color: var(--white);
 }
-img {
+
+.main-logo {
     filter: brightness(0) invert(1);
     width: 30%;
     min-width: 150px;
@@ -57,3 +59,4 @@ form {
 form input{
     margin-top: 1rem;
 }
+
