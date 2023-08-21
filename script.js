@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
+import { getDatabase, ref, set,push } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
 import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
 
 
@@ -35,7 +35,7 @@ function onFormSubmit(e) {
 }
 async function writeToDb(id, name, surname, email) {
 
-    await set(ref(db, 'users/'+ id), {
+    await push(ref(db, 'users/'), {
         firstname: name,
         surname: surname,
         email: email
