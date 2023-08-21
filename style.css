@@ -9,6 +9,7 @@
     --transparent_white: rgb(255, 255, 255, 0.5);
     --themeColor: rgb(0, 128, 96);
     --white: #ffffff;
+    --themeGradient:  linear-gradient(0deg, rgba(222,234,234,1) 0%, rgba(142,164,142,1) 100%);
 }
 
 p {
@@ -42,7 +43,7 @@ a:hover {
     color: var(--white);
 }
 
-.main-logo {
+.main-logo{
     z-index: -1;
     position: fixed;
     top: 23%;
@@ -51,6 +52,14 @@ a:hover {
     width: 30%;
     min-width: 150px;
     padding: 1rem 0rem;
+}
+#main-logo {
+    z-index:-5;
+    margin-top: 4rem;
+    filter: brightness(0) invert(1);
+    width: 20%;
+    min-width: 150px;
+    padding: 1rem 1rem;
 }
 
 #changes {
@@ -75,18 +84,30 @@ form input {
     margin-top: 1rem;
 }
 
+
+input:disabled{
+    background-color: grey !important;
+    border-color: transparent !important;
+    color: darkgrey !important;
+
+}
 /* Navbar Style*/
 nav {
     display: flex;
     width: 100%;
     position: fixed;
-    top: 0;
+
+    z-index: 1;
+     top: 0;
     left: 0;
     background-color: var(--themeColor);
     padding: 0.5rem;
     border-bottom: 1px solid var(--transparent_white);
 }
+footer{
+    border-top: 1px solid var(--transparent_white);
 
+}
 ul {
     display: flex;
     list-style-type: none;
@@ -96,6 +117,15 @@ nav li {
     margin-left: 1rem;
 }
 
+section{
+    margin-top: 4rem;
+    border-radius: 1rem;
+    min-height: 200px;
+    padding:1rem;
+    color:black;
+    background: var(--themeGradient);
+    box-shadow: inset 2px 2px 2px var(--themeColor);
+}
 .navbar-logo {
     max-width: 60px;
     margin-block-start: 0.5em;
