@@ -20,9 +20,9 @@ const db = getDatabase(app);
 
 
 
-let name = document.getElementById("first-name-text")
-let surname = document.getElementById("surnam-text")
-let email = document.getElementById("email-text")
+let name = document.querySelector("first-name-text")
+let surname = document.querySelector("surnam-text")
+let email = document.querySelector("email-text")
 let form;
 
 async function writeToDb(userId, firstname, surname, email) {
