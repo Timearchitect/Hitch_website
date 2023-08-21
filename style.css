@@ -75,6 +75,13 @@ form input {
     margin-top: 1rem;
 }
 
+
+input:disabled{
+    background-color: grey !important;
+    border-color: transparent !important;
+    color: darkgrey !important;
+
+}
 /* Navbar Style*/
 nav {
     display: flex;
