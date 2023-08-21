@@ -9,6 +9,7 @@
     --transparent_white: rgb(255, 255, 255, 0.5);
     --themeColor: rgb(0, 128, 96);
     --white: #ffffff;
+    --themeGradient:  linear-gradient(0deg, rgba(222,234,234,1) 0%, rgba(142,164,142,1) 100%);
 }
 
 p {
@@ -111,6 +112,15 @@ nav li {
     margin-left: 1rem;
 }
 
+section{
+    margin-top: 4rem;
+    border-radius: 1rem;
+    min-height: 200px;
+    padding:1rem;
+    color:black;
+    background: var(--themeGradient);
+    box-shadow: inset 2px 2px 2px var(--themeColor);
+}
 .navbar-logo {
     max-width: 60px;
     margin-block-start: 0.5em;
