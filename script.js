@@ -16,16 +16,14 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analyze = getAnalytics(app);
-
-
 const db = getDatabase(app);
 
 
 
-let name = window.document.getElementById("first-name-text")
-let surname = window.document.getElementById("surnam-text")
-let email = window.document.getElementById("email-text")
-let form ;
+let name = document.getElementById("first-name-text")
+let surname = document.getElementById("surnam-text")
+let email = document.getElementById("email-text")
+let form;
 
 async function writeToDb(userId, firstname, surname, email) {
     await set(ref(db, 'users/' + userId), {
@@ -53,8 +51,8 @@ Database structure:
 
 */
 
-document.addEventListener("DOMContentLoaded", function (e) {
-    form= window.document.getElementById("form-handler")
+document.addEventListener("DOMContentLoaded", function () {
+    form= document.getElementById("form-handler")
     form.addEventListener("submit", e => {
         e.preventDefault();
         let uid = 0
@@ -71,6 +69,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
             console.error(error)
         }
 
+    }).then(() => {
+        form.reset()
     })
 });
 
