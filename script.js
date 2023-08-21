@@ -25,13 +25,13 @@ document.getElementById('form-handler').addEventListener("submit", onFormSubmit)
 function onFormSubmit(e) {
     e.preventDefault()
 
-    let name = document.querySelector('#firstname').value()
-    let surname = document.querySelector('#surname').value()
-    let email = document.querySelector('#email').value()
+    let name = document.querySelector('#firstname').value
+    let surname = document.querySelector('#surname').value
+    let email = document.querySelector('#email').value
     let id = 1;
     writeToDb(id, name, surname, email)
     id++
-    logEvent(analyze, form)
+    //logEvent(analyze, form)
 }
 async function writeToDb(id, name, surname, email) {
 
