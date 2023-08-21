@@ -17,21 +17,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analyze = getAnalytics(app);
 const db = getDatabase(app);
-console.log(db);
 
 
-document.getElementById('form-handler').addEventListener("submit", onFormSubmit)
 
+const form = document.getElementById('form-handler').addEventListener("submit", onFormSubmit)
+console.log(form)
 function onFormSubmit(e) {
     e.preventDefault()
 
-    let name = document.querySelector('#firstname').value()
+    let name = document.querySelector(firstname).value()
     let surname = document.querySelector('#surname').value()
     let email = document.querySelector('#email').value()
     let id = 1;
     writeToDb(id, name, surname, email)
     id++
-    logEvent(analyze, form)
+    
 }
 async function writeToDb(id, name, surname, email) {
 
