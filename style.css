@@ -42,7 +42,7 @@ a:hover {
     color: var(--white);
 }
 
-.main-logo {
+.main-logo{
     z-index: -1;
     position: fixed;
     top: 23%;
@@ -51,6 +51,14 @@ a:hover {
     width: 30%;
     min-width: 150px;
     padding: 1rem 0rem;
+}
+#main-logo {
+    z-index:-5;
+    margin-top: 4rem;
+    filter: brightness(0) invert(1);
+    width: 20%;
+    min-width: 150px;
+    padding: 1rem 1rem;
 }
 
 #changes {
