@@ -17,60 +17,69 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analyze = getAnalytics(app);
 const db = getDatabase(app);
+console.log(db);
 
-
-
-let name = document.getElementById("first-name-text")
-let surname = document.getElementById("surnam-text")
-let email = document.getElementById("email-text")
-let form;
-
-async function writeToDb(userId, firstname, surname, email) {
-    await set(ref(db, 'users/' + userId), {
-        firstname: firstname,
-        surname: surname,
-        email: email,
-    }, (error) => {
-        if (error) {
-            console.error('Data could not be saved ' + error + '.')
-        } else {
-            console.error('Data has been saved.')
-        }
-    });
-}
-
-/*
-Database structure:
-    "users": {
-        "id": {
-            firstname: ,
-            surname: ,
-            email: ,
-        }
+await set(ref(db, 'users/'), {
+    test: "xdvsdffvvsdvds!!!!",
+}, (error) => {
+    if (error) {
+        console.error('Data could not be saved ' + error + '.')
+    } else {
+        console.error('Data has been saved.')
     }
-
-*/
-
-document.addEventListener("DOMContentLoaded", function () {
-    form= document.getElementById("form-handler")
-    form.addEventListener("submit", e => {
-        e.preventDefault();
-        let uid = 0
-
-        try {
-            if (name == "" || surname == "" || email == "") {
-                alert("Please enter first name, surname and email to proceed")
-            } else {
-                uid += 1
-                writeToDb(uid, name.innerText, surname.innerText, email.innerText)
-            }
-            logEvent(analyze, "sign_up")
-        } catch (error) {
-            console.error(error)
-        }
-
-    }).then(() => {
-        form.reset()
-    })
 });
+
+// let name = document.getElementById("first-name-text")
+// let surname = document.getElementById("surnam-text")
+// let email = document.getElementById("email-text")
+// let form;
+
+// async function writeToDb(userId, firstname, surname, email) {
+//     await set(ref(db, 'users/' + userId), {
+//         firstname: firstname,
+//         surname: surname,
+//         email: email,
+//     }, (error) => {
+//         if (error) {
+//             console.error('Data could not be saved ' + error + '.')
+//         } else {
+//             console.error('Data has been saved.')
+//         }
+//     });
+// }
+
+// /*
+// Database structure:
+//     "users": {
+//         "id": {
+//             firstname: ,
+//             surname: ,
+//             email: ,
+//         }
+//     }
+
+// */
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     form= document.getElementById("form-handler")
+//     form.addEventListener("submit", e => {
+//         e.preventDefault();
+//         let uid = 0
+
+//         try {
+//             if (name == "" || surname == "" || email == "") {
+//                 alert("Please enter first name, surname and email to proceed")
+//             } else {
+//                 uid += 1
+//                 writeToDb(uid, name.innerText, surname.innerText, email.innerText)
+//             }
+//             logEvent(analyze, "sign_up")
+//         } catch (error) {
+//             console.error(error)
+//         }
+
+//     }).then(() => {
+//         form.reset()
+//     })
+// });
 
