@@ -19,34 +19,35 @@ const analyze = getAnalytics(app);
 const db = getDatabase(app);
 console.log(db);
 
-await set(ref(db, 'users/'), {
-    test: "xdvsdffvvsdvds!!!!",
-}, (error) => {
-    if (error) {
-        console.error('Data could not be saved ' + error + '.')
-    } else {
-        console.error('Data has been saved.')
-    }
-});
 
-// let name = document.getElementById("first-name-text")
-// let surname = document.getElementById("surnam-text")
-// let email = document.getElementById("email-text")
-// let form;
+document.getElementById('form-handler').addEventListener("submit", onFormSubmit)
 
-// async function writeToDb(userId, firstname, surname, email) {
-//     await set(ref(db, 'users/' + userId), {
-//         firstname: firstname,
-//         surname: surname,
-//         email: email,
-//     }, (error) => {
-//         if (error) {
-//             console.error('Data could not be saved ' + error + '.')
-//         } else {
-//             console.error('Data has been saved.')
-//         }
-//     });
-// }
+function onFormSubmit(e) {
+    e.preventDefault()
+
+    let name = document.querySelector('#firstname').value()
+    let surname = document.querySelector('#surname').value()
+    let email = document.querySelector('#email').value()
+    let id = 1;
+    writeToDb(id, name, surname, email)
+    id++
+    logEvent(analyze, form)
+}
+async function writeToDb(id, name, surname, email) {
+
+    await set(ref(db, 'users/'+ id), {
+        firstname: name,
+        surname: surname,
+        email: email
+    }).then(() => {
+        document.getElementById('form-handler').reset()
+    }).catch((error) => {
+        alert(error)
+        console.error(error)
+    });
+
+}
+
 
 // /*
 // Database structure:
@@ -60,26 +61,5 @@ await set(ref(db, 'users/'), {
 
 // */
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     form= document.getElementById("form-handler")
-//     form.addEventListener("submit", e => {
-//         e.preventDefault();
-//         let uid = 0
 
-//         try {
-//             if (name == "" || surname == "" || email == "") {
-//                 alert("Please enter first name, surname and email to proceed")
-//             } else {
-//                 uid += 1
-//                 writeToDb(uid, name.innerText, surname.innerText, email.innerText)
-//             }
-//             logEvent(analyze, "sign_up")
-//         } catch (error) {
-//             console.error(error)
-//         }
-
-//     }).then(() => {
-//         form.reset()
-//     })
-// });
 
