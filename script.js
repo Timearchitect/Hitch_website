@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
+import { getDatabase, ref, set,push } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
 import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
 
 
@@ -25,17 +25,17 @@ console.log(form)
 function onFormSubmit(e) {
     e.preventDefault()
 
-    let name = document.querySelector(firstname).value()
-    let surname = document.querySelector('#surname').value()
-    let email = document.querySelector('#email').value()
-    let id = 1;
+    let name = document.querySelector('#firstname').value
+    let surname = document.querySelector('#surname').value
+    let email = document.querySelector('#email').value
+    
     writeToDb(id, name, surname, email)
-    id++
+    
     
 }
-async function writeToDb(id, name, surname, email) {
+async function writeToDb(name, surname, email) {
 
-    await set(ref(db, 'users/'+ id), {
+    await push(ref(db, 'users/'), {
         firstname: name,
         surname: surname,
         email: email
