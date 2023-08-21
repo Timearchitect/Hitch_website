@@ -96,13 +96,18 @@ nav {
     display: flex;
     width: 100%;
     position: fixed;
-    top: 0;
+
+    z-index: 1;
+     top: 0;
     left: 0;
     background-color: var(--themeColor);
     padding: 0.5rem;
     border-bottom: 1px solid var(--transparent_white);
 }
+footer{
+    border-top: 1px solid var(--transparent_white);
 
+}
 ul {
     display: flex;
     list-style-type: none;
