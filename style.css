@@ -110,6 +110,7 @@ nav {
     background-color: var(--themeColor);
     padding: 0.5rem;
     border-bottom: 1px solid var(--transparent_white);
+    transition-duration: 1s;
 }
 
 .hamburger {
@@ -147,6 +148,11 @@ footer ul {
 
 nav li {
     margin-left: 1rem;
+}
+.frosted {
+    background-color: transparent;
+    transition-duration: 1s;
+    border-color: transparent;
 }
 
 section {
@@ -237,7 +243,7 @@ main {
 @media (max-width: 640px) {
     .hamburger {
         display: block;
-        align-self:center;
+        align-self: center;
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -266,7 +272,7 @@ main {
         padding-inline-start: 0;
     }
 
-    .navbar li{
+    .navbar li {
         margin-top: 1rem;
     }
 
@@ -277,4 +283,4 @@ main {
     .nav-menu.active {
         left: 0;
     }
-    }
+}
