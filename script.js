@@ -3,6 +3,8 @@ import { getDatabase, ref, set,push } from "https://www.gstatic.com/firebasejs/1
 import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
 
 
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyDjWjuCwnIyNFkH1K5Kfy1DAbn_jkyXssw",
     authDomain: "hitch-e4a25.firebaseapp.com",
