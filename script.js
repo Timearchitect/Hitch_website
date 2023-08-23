@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
-import { getDatabase, ref, set,push } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
+import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
 import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
 
 
@@ -30,10 +30,10 @@ function onFormSubmit(e) {
     let name = document.querySelector('#firstname').value
     let surname = document.querySelector('#surname').value
     let email = document.querySelector('#email').value
-    
+
     writeToDb(id, name, surname, email)
-    
-    
+
+
 }
 async function writeToDb(name, surname, email) {
 
@@ -63,5 +63,18 @@ async function writeToDb(name, surname, email) {
 
 // */
 
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+})
+
+document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}))
 
 
