@@ -41,16 +41,24 @@ a {
 a:hover {
     color: var(--white);
 }
+#logo-parent {
+    z-index: -1;
+    position: fixed;
+    width: 70%;
+}
 
 .main-logo {
     z-index: -1;
     position: fixed;
-    top: 23%;
-    left: 10%;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     filter: brightness(0) invert(1) drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
-    width: 30%;
-    min-width: 150px;
+    width: 30vw;
     padding: 1rem 0rem;
+}
+.main-logo img {
+    width: 100%;
 }
 #main-logo {
     z-index: -5;
@@ -104,9 +112,8 @@ footer {
     z-index: 2;
     background-color: var(--themeColor);
 }
-footer ul{
+footer ul {
     background-color: var(--themeColor);
-
 }
 ul {
     display: flex;
@@ -187,4 +194,17 @@ li {
     padding-left: 2rem;
     position: fixed;
     z-index: -1;
+}
+
+.center,
+main,
+footer,
+header {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+nav,
+main {
+    padding-left: 15%;
+    padding-right: 15%;
 }
