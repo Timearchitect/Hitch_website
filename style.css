@@ -115,7 +115,7 @@ footer {
 footer ul {
     background-color: var(--themeColor);
 }
-nav ul {
+nav ul , footer ul {
     display: flex;
     margin-bottom: 0px;
     padding-bottom: 1rem;
