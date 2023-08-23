@@ -45,6 +45,7 @@ input[type="checkbox"]:checked {
  */
 
 .checkbox {
+    top:0.5rem;
     display: inline-flex;
     cursor: pointer;
     position: relative;
@@ -66,7 +67,7 @@ input[type="checkbox"]:checked {
     border: 2px solid #ffffff;
     border-radius: 4px;
     outline: none;
-    transition-duration: 0.3s;
+    transition-duration: 0.2s;
     background-color: #ffffff;
     cursor: pointer;
   }
