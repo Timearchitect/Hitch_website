@@ -17,7 +17,7 @@
         <div class="landing">
             <div class="home-wrap">
                 <header class="v-header container">
-                    <a id="playbtn" href="#"><img src="./res/pngwing.com.png" alt="Playbutton" width="100" /></a>
+                    <a id="playbtn" href="#"><img src="./res/pngwing.com.png" alt="Playbutton" width="140" /></a>
                     <div class="fullscreen-video-wrap">
                         <video src="videos/test.mp4" autoplay="" loop="" muted></video>
                     </div>
@@ -67,6 +67,15 @@
                 ><b><a href="privacyPolicy.html">Privacy Policy & Terms of Service</a></b></em
             >
             <br />
+            <div>
+                <p>Gmail API Quickstart</p>
+
+                <!--Add buttons to initiate auth sequence and sign out-->
+                <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+                <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+
+                <pre id="content" style="white-space: pre-wrap"></pre>
+            </div>
         </main>
         <footer>
             <br />
@@ -89,13 +98,6 @@
             </ul>
         </footer>
     </body>
-    <p>Gmail API Quickstart</p>
-
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
-
-    <pre id="content" style="white-space: pre-wrap"></pre>
 
     <script type="text/javascript">
         /* exported gapiLoaded */

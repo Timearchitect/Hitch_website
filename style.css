@@ -47,14 +47,14 @@ a:hover {
     position: fixed;
     top: 23%;
     left: 10%;
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1) drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
     width: 30%;
     min-width: 150px;
     padding: 1rem 0rem;
 }
 #main-logo {
     z-index: -5;
-    margin-top: 4rem;
+    margin-top: 4rem auto;
     filter: brightness(0) invert(1);
     width: 20%;
     min-width: 150px;
