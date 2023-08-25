@@ -31,7 +31,7 @@ function onFormSubmit(e) {
     let surname = document.querySelector('#surname').value
     let email = document.querySelector('#email').value
 
-    writeToDb(id, name, surname, email)
+    writeToDb( name, surname, email)
 
 
 }
