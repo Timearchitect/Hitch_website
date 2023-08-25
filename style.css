@@ -26,7 +26,22 @@ body {
     background: var(--themeColor);
     color: var(--white);
     margin: 0;
-}
+    background-size: cover;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .containera {
+    width: 50rem;
+    height: 30rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .15);
+    
+    backdrop-filter: blur(10px);
+  }
 
 main {
     background-color: var(--themeColor);
@@ -284,3 +299,4 @@ main {
         left: 0;
     }
 }
+
