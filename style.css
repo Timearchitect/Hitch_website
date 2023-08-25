@@ -28,9 +28,10 @@ body {
     margin: 0;
     background-size: cover;
     display: grid;
-  /*    align-items: center;
+    /*    align-items: center;
    justify-content: center;
- */    height: 100vh;
+ */
+    height: 100vh;
 }
 
 .containera {
@@ -125,6 +126,8 @@ nav {
     background-color: var(--themeColor);
     padding: 0.5rem;
     border-bottom: 1px solid var(--transparent_white);
+    transition-duration: 1s;
+    transition-property: "background";
 }
 
 .hamburger {
@@ -164,9 +167,20 @@ nav li {
     margin-left: 1rem;
 }
 .frosted {
-    background-color: transparent;
+    /*     background-color: transparent;
+ */
     transition-duration: 1s;
-    border-color: transparent;
+    border-color: var(--transparent_white);
+    border-width: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+.frosted .navbar-logo {
+    filter: brightness(0) invert(1) drop-shadow(2px 2px 1px black);
+    transition-duration: 1s;
+}
+.frosted ul li a{
+    filter:  drop-shadow(2px 2px 2px rgb(0, 0, 0));
+
 }
 section {
     margin-top: 4rem;
@@ -244,14 +258,13 @@ main,
 nav,
 footer,
 header {
-    
-     padding-left: 10%;
-     padding-right: 10%; 
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 main {
     padding-left: 15%;
-    padding-right: 15%; 
+    padding-right: 15%;
 }
 
 @media (max-width: 640px) {
@@ -306,5 +319,8 @@ main {
 
     .nav-menu.active {
         left: 0;
+    }
+    .main-logo {
+        width: 65vw;
     }
 }
