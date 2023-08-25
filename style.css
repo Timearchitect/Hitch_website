@@ -28,20 +28,20 @@ body {
     margin: 0;
     background-size: cover;
     display: grid;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .containera {
+  /*    align-items: center;
+   justify-content: center;
+ */    height: 100vh;
+}
+
+.containera {
     width: 90rem;
     height: 45rem;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, .15);
-    
+    background-color: rgba(255, 255, 255, 0.15);
+
     backdrop-filter: blur(10px);
-  }
+}
 
 main {
     background-color: var(--themeColor);
@@ -244,13 +244,14 @@ main,
 nav,
 footer,
 header {
-    padding-left: 10%;
-    padding-right: 10%;
+    
+     padding-left: 10%;
+     padding-right: 10%; 
 }
 
 main {
     padding-left: 15%;
-    padding-right: 15%;
+    padding-right: 15%; 
 }
 
 @media (max-width: 640px) {
@@ -307,4 +308,3 @@ main {
         left: 0;
     }
 }
-
