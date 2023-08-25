@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
+import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
 import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
+
 
 
 
@@ -17,58 +18,63 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analyze = getAnalytics(app);
-
-
 const db = getDatabase(app);
 
 
 
-let name = document.getElementById("first-name-text")
-let surname = document.getElementById("surnam-text")
-let email = document.getElementById("email-text")
-let form = document.getElementById("form-handler")
+const form = document.getElementById('form-handler').addEventListener("submit", onFormSubmit)
+console.log(form)
+function onFormSubmit(e) {
+    e.preventDefault()
+
+    let name = document.querySelector('#firstname').value
+    let surname = document.querySelector('#surname').value
+    let email = document.querySelector('#email').value
+
+    writeToDb(id, name, surname, email)
 
 
-async function writeToDb(userId, firstname, surname, email) {
-    await set(ref(db, 'users/' + userId), {
-        firstname: firstname,
+}
+async function writeToDb(name, surname, email) {
+
+    await push(ref(db, 'users/'), {
+        firstname: name,
         surname: surname,
-        email: email,
-    }, (error) => {
-        if (error) {
-            console.error('Data could not be saved ' + error + '.')
-        } else {
-            console.error('Data has been saved.')
-        }
+        email: email
+    }).then(() => {
+        document.getElementById('form-handler').reset()
+    }).catch((error) => {
+        alert(error)
+        console.error(error)
     });
+
 }
 
-/*
-Database structure:
-    "users": {
-        "id": {
-            firstname: ,
-            surname: ,
-            email: ,
-        }
-    }
 
-*/
-form.addEventListener("submit", e =>{
-    e.preventDefault();
-    let uid = 0
-    
-    try{
-        if(name == "" || surname == "" || email == ""){
-            Window.alert("Please enter first name, surname and email to proceed")
-        } else {
-            uid +=1
-            writeToDb(uid, name.innerText, surname.innerText, email.innerText)
-        }
-        logEvent(analyze, "sign_up")
-    }catch (error) {
-        console.error(error)
-    }
+// /*
+// Database structure:
+//     "users": {
+//         "id": {
+//             firstname: ,
+//             surname: ,
+//             email: ,
+//         }
+//     }
 
-});
+// */
+
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+})
+
+document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}))
+
 

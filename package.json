@@ -2,9 +2,9 @@
   "type": "module",
   "dependencies": {
     "analytics": "^0.8.9",
+
     "firebase": "^10.2.0",
-    "firebaseui": "^6.1.0",
-    "node": "^20.5.0"
+    "firebaseui": "^6.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.10",
@@ -21,7 +21,7 @@
       "no-undef": 2
     },
     "parserOptions": {
-      "sourceType": "module"
+      "sourceType": "script"
     }
   }
 }

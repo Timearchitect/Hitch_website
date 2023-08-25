@@ -9,6 +9,7 @@
     --transparent_white: rgb(255, 255, 255, 0.5);
     --themeColor: rgb(0, 128, 96);
     --white: #ffffff;
+    --themeGradient: linear-gradient(0deg, rgba(222, 234, 234, 1) 0%, rgba(142, 164, 142, 1) 100%);
 }
 
 p {
@@ -29,7 +30,6 @@ body {
 
 main {
     background-color: var(--themeColor);
-
     padding: 1rem;
 }
 
@@ -42,15 +42,34 @@ a:hover {
     color: var(--white);
 }
 
+#logo-parent {
+    z-index: -1;
+    position: fixed;
+    width: 70%;
+}
+
 .main-logo {
     z-index: -1;
     position: fixed;
-    top: 23%;
-    left: 10%;
-    filter: brightness(0) invert(1);
-    width: 30%;
-    min-width: 150px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: brightness(0) invert(1) drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
+    width: 30vw;
     padding: 1rem 0rem;
+}
+
+.main-logo img {
+    width: 100%;
+}
+
+#main-logo {
+    z-index: -5;
+    margin-top: 4rem auto;
+    filter: brightness(0) invert(1);
+    width: 20%;
+    min-width: 150px;
+    padding: 1rem 1rem;
 }
 
 #changes {
@@ -68,11 +87,16 @@ form {
     margin: 2rem 0rem;
     border-radius: 25px;
     border: solid;
-
 }
 
 form input {
     margin-top: 1rem;
+}
+
+input:disabled {
+    background-color: grey !important;
+    border-color: transparent !important;
+    color: darkgrey !important;
 }
 
 /* Navbar Style*/
@@ -80,26 +104,73 @@ nav {
     display: flex;
     width: 100%;
     position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
     background-color: var(--themeColor);
     padding: 0.5rem;
     border-bottom: 1px solid var(--transparent_white);
+    transition-duration: 1s;
 }
 
-ul {
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+footer {
+    border-top: 1px solid var(--transparent_white);
+    z-index: 2;
+    background-color: var(--themeColor);
+}
+
+footer ul {
+    background-color: var(--themeColor);
+}
+
+nav ul,
+footer ul {
     display: flex;
+    margin-bottom: 0px;
+    padding-bottom: 1rem;
     list-style-type: none;
 }
 
 nav li {
     margin-left: 1rem;
 }
+.frosted {
+    background-color: transparent;
+    transition-duration: 1s;
+    border-color: transparent;
+}
+
+section {
+    margin-top: 4rem;
+    border-radius: 1rem;
+    min-height: 200px;
+    padding: 1rem;
+    color: black;
+    background: var(--themeGradient);
+    box-shadow: inset 2px 2px 2px var(--themeColor);
+}
 
 .navbar-logo {
     max-width: 60px;
     margin-block-start: 0.5em;
     margin-block-end: 0.5em;
+    margin-top: 0.7rem;
+    margin-left: 2.7rem;
     filter: brightness(0) invert(1);
 }
 
@@ -129,7 +200,7 @@ video {
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
-    background: url('') no-repeat;
+    background: url("") no-repeat;
     background-size: cover;
     transition: 1s opacity;
 }
@@ -153,5 +224,63 @@ li {
     padding-left: 2rem;
     position: fixed;
     z-index: -1;
-    
+}
+
+.center,
+main,
+nav,
+footer,
+header {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+main {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+@media (max-width: 640px) {
+    .hamburger {
+        display: block;
+        align-self: center;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -120%;
+        top: 65px;
+        margin: 0;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--themeColor);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding-inline-start: 0;
+    }
+
+    .navbar li {
+        margin-top: 1rem;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
 }

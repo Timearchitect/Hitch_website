@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="userAgentOverride.css" />
         <script type="module" src="script.js"></script>
+        <script type="module" src="termsCheckBox.js"></script>
+        <script type="module" src="message.js"></script>
 
         <link rel="icon" type="image/x-icon" href="res/favicon.png" />
     </head>
@@ -15,7 +17,7 @@
         <div class="landing">
             <div class="home-wrap">
                 <header class="v-header container">
-                    <a href id="playbtn"><img src="./res/pngwing.com.png" alt="Playbutton" width="100" /></a>
+                    <a id="playbtn" href="#"><img src="./res/pngwing.com.png" alt="Playbutton" width="140" /></a>
                     <div class="fullscreen-video-wrap">
                         <video src="videos/test.mp4" autoplay="" loop="" muted></video>
                     </div>
@@ -25,38 +27,50 @@
 
         <main>
             <!--navbar-->
-            <nav>
+            <nav class="navbar">
                 <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
-                <ul class="nav-items">
-                    <li><a href="index.html">Hem</a></li>
-                    <li><a href="about-us.html">Om oss</a></li>
-                    <li><a href="privacyPolicy.html">Integritetspolicy</a></li>
-                    <li><a href="contact-us.html">Kontakta Oss</a></li>
+                <ul class="nav-menu">
+                    <li nav-item><a href="index.html">Hem</a></li>
+                    <li nav-item><a href="about-us.html">Om oss</a></li>
+                    <li nav-item><a href="privacyPolicy.html">Integritetspolicy</a></li>
+                    <li nav-item><a href="contact-us.html">Kontakta Oss</a></li>
                 </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </nav>
-            <a class="main-logo" href="index.html"><img src="res\Logo.png" alt="[logo here!!!]" /></a>
+            <div id="logo-parent"><a class="main-logo" href="index.html"><img src="res\Logo.png" alt="[logo here!!!]" /></a></div>
             <br />
+
             <hr />
-            <h3>Beta test signup🗒️</h3>
-            <form action="" method="post" class="beta-signup">
+            <h3>🗒️ Beta test signup</h3>
+            <form id="form-handler" action="" method="post" class="beta-signup">
                 <div class="beta-signup">
                     <label for="firstname">Enter your first name: </label>
-                    <input type="text" name="firstname" id="first-name-text" required />
+                    <input type="text" name="firstname" id="firstname" required />
                 </div>
                 <div class="beta-signup">
                     <label for="surname">Enter your surname: </label>
-                    <input type="text" name="surename" id="surname-text" required />
+                    <input type="text" name="surname" id="surname" required />
                 </div>
                 <div class="beta-signup">
                     <label for="email-input"> Enter your email: </label>
-                    <input type="email" name="email-input" id="email-text" placeholder="somebody@hitchapp.se" required />
+                    <input type="email" name="email" id="email" placeholder="somebody@hitchapp.se" required />
                 </div>
                 <div class="beta-signup">
-                    <input type="submit" value="Sign up" id="signup-button" />
+                    <input type="submit" value="Sign up" id="signup-button" disabled />
                 </div>
                 <div>
-                    <input name="accept terms" type="checkbox" />
-                    <label for="accept terms">Accept the terms & services</label>
+                    <!-- <input  name="accept terms" type="checkbox" /> -->
+                    <label for="accept terms">Accept the <a id="inlineLink" href="privacyPolicy.html">Terms & Services</a></label>
+                    <label class="checkbox">
+                        <input id="termsCheckbox" type="checkbox" />
+                        <span></span>
+                    </label>
+                    
+                
                 </div>
             </form>
 
@@ -64,28 +78,165 @@
                 ><b><a href="privacyPolicy.html">Privacy Policy & Terms of Service</a></b></em
             >
             <br />
+            <div>
+                <p>Gmail API Quickstart</p>
 
-            <footer>
-                <hr />
-                <br />
-                <ul>
-                    <li>
-                        <a href=""><img src="./img/intagramwhite.png" alt="IG" width="20" /></a>
-                    </li>
+                <!--Add buttons to initiate auth sequence and sign out-->
+                <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+                <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
-                    <li id="facebook">
-                        <a href="..."><img id="fblogo" src="./img/fbwhite.png" alt="FB" width="28" /></a>
-                    </li>
-
-                    <li id="Copyright">
-                        <p>Copyright © 2023 | Jim Lewis Skoglund</p>
-                    </li>
-
-                    <li id="playbtn">
-                        <a href=""><img src="./res/google-play-store-logo-png-25.png" alt="Playbutton" width="28" /></a>
-                    </li>
-                </ul>
-            </footer>
+                <pre id="content" style="white-space: pre-wrap"></pre>
+            </div>
         </main>
+        <footer>
+            <br />
+            <ul>
+                <li>
+                    <a href=""><img src="./img/intagramwhite.png" alt="IG" width="20" /></a>
+                </li>
+
+                <li id="facebook">
+                    <a href="..."><img id="fblogo" src="./img/fbwhite.png" alt="FB" width="28" /></a>
+                </li>
+
+                <li id="Copyright">
+                    <p>Copyright © 2023 | Jim Lewis Skoglund</p>
+                </li>
+
+                <li id="playbtn">
+                    <a href=""><img src="./res/google-play-store-logo-png-25.png" alt="Playbutton" width="28" /></a>
+                </li>
+            </ul>
+        </footer>
     </body>
+
+    <script type="text/javascript">
+        /* exported gapiLoaded */
+        /* exported gisLoaded */
+        /* exported handleAuthClick */
+        /* exported handleSignoutClick */
+
+        // TODO(developer): Set to client ID and API key from the Developer Console
+        const CLIENT_ID = " 248317208047-1b5u8bprlh55v177075qkvlmto4tge5a.apps.googleusercontent.com";
+        const API_KEY = "AIzaSyDs06zTRfZBCAwuMcKQIJMWWa7yNgSL9-Q";
+
+        // Discovery doc URL for APIs used by the quickstart
+        const DISCOVERY_DOC = "https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest";
+
+        // Authorization scopes required by the API; multiple scopes can be
+        // included, separated by spaces.
+        const SCOPES = "https://www.googleapis.com/auth/gmail.readonly";
+
+        let tokenClient;
+        let gapiInited = false;
+        let gisInited = false;
+
+        document.getElementById("authorize_button").style.visibility = "hidden";
+        document.getElementById("signout_button").style.visibility = "hidden";
+
+        /**
+         * Callback after api.js is loaded.
+         */
+        function gapiLoaded() {
+            gapi.load("client", initializeGapiClient);
+        }
+
+        /**
+         * Callback after the API client is loaded. Loads the
+         * discovery doc to initialize the API.
+         */
+        async function initializeGapiClient() {
+            await gapi.client.init({
+                apiKey: API_KEY,
+                discoveryDocs: [DISCOVERY_DOC],
+            });
+            gapiInited = true;
+            maybeEnableButtons();
+        }
+
+        /**
+         * Callback after Google Identity Services are loaded.
+         */
+        function gisLoaded() {
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                callback: "", // defined later
+            });
+            gisInited = true;
+            maybeEnableButtons();
+        }
+
+        /**
+         * Enables user interaction after all libraries are loaded.
+         */
+        function maybeEnableButtons() {
+            if (gapiInited && gisInited) {
+                document.getElementById("authorize_button").style.visibility = "visible";
+            }
+        }
+
+        /**
+         *  Sign in the user upon button click.
+         */
+        function handleAuthClick() {
+            tokenClient.callback = async (resp) => {
+                if (resp.error !== undefined) {
+                    throw resp;
+                }
+                document.getElementById("signout_button").style.visibility = "visible";
+                document.getElementById("authorize_button").innerText = "Refresh";
+                await listLabels();
+            };
+
+            if (gapi.client.getToken() === null) {
+                // Prompt the user to select a Google Account and ask for consent to share their data
+                // when establishing a new session.
+                tokenClient.requestAccessToken({ prompt: "consent" });
+            } else {
+                // Skip display of account chooser and consent dialog for an existing session.
+                tokenClient.requestAccessToken({ prompt: "" });
+            }
+        }
+
+        /**
+         *  Sign out the user upon button click.
+         */
+        function handleSignoutClick() {
+            const token = gapi.client.getToken();
+            if (token !== null) {
+                google.accounts.oauth2.revoke(token.access_token);
+                gapi.client.setToken("");
+                document.getElementById("content").innerText = "";
+                document.getElementById("authorize_button").innerText = "Authorize";
+                document.getElementById("signout_button").style.visibility = "hidden";
+            }
+        }
+
+        /**
+         * Print all Labels in the authorized user's inbox. If no labels
+         * are found an appropriate message is printed.
+         */
+        async function listLabels() {
+            let response;
+            try {
+                response = await gapi.client.gmail.users.labels.list({
+                    userId: "me",
+                });
+            } catch (err) {
+                document.getElementById("content").innerText = err.message;
+                return;
+            }
+            const labels = response.result.labels;
+            if (!labels || labels.length == 0) {
+                document.getElementById("content").innerText = "No labels found.";
+                return;
+            }
+            // Flatten to string to display
+            const output = labels.reduce((str, label) => `${str}${label.name}\n`, "Labels:\n");
+            document.getElementById("content").innerText = output;
+        }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 </html>
