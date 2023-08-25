@@ -148,7 +148,11 @@ footer ul {
 nav li {
     margin-left: 1rem;
 }
-
+.frosted {
+    background-color: transparent;
+    transition-duration: 1s;
+    border-color: transparent;
+}
 section {
     margin-top: 4rem;
     border-radius: 1rem;
@@ -237,15 +241,16 @@ main {
 @media (max-width: 640px) {
     .hamburger {
         display: block;
-        align-self:center;
+        align-self: center;
         margin-right: 8rem;
     }
 
-    .navbar{
+    .navbar {
         justify-content: space-between;
+        transition-duration: 1s;
     }
 
-    .navbar-logo{
+    .navbar-logo {
         margin-left: 0rem;
     }
 
@@ -275,7 +280,7 @@ main {
         padding-inline-start: 0;
     }
 
-    .navbar li{
+    .navbar li {
         margin-top: 1rem;
     }
 
@@ -286,4 +291,4 @@ main {
     .nav-menu.active {
         left: 0;
     }
-    }
+}
