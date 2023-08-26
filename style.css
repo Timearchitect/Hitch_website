@@ -323,3 +323,14 @@ main {
         width: 65vw;
     }
 }
+
+.photo-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .photo-container img {
+    flex: 1;
+    max-width: 190px; /* Set the maximum width of the images */
+    height: auto;
+  }
