@@ -330,7 +330,22 @@ main {
   }
   
   .photo-container img {
+    display: flex;
+    justify-content: space-between;
     flex: 1;
-    max-width: 190px; /* Set the maximum width of the images */
+    max-width: 190px; 
     height: auto;
   }
+
+  #frame {
+    flex: 1;
+    max-width: 17%; 
+    text-align: center;
+  }
+  
+  #frame img {
+    max-width: 100%;
+    height: auto;
+  }
+
+
