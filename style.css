@@ -21,6 +21,9 @@ h2,
 h3 {
     letter-spacing: 0.05em;
 }
+h4 {
+
+}
 
 body {
     background: var(--themeColor);
@@ -340,8 +343,8 @@ main {
 .photo-container {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
-
 .photo-container img {
     display: flex;
     justify-content: space-between;
@@ -351,12 +354,20 @@ main {
 }
 
 #frame {
-    flex: 1;
-    max-width: 17%;
-    text-align: center;
+    position: relative; /* This allows us to position children relative to this container */
+    width: 30%; /* You can adjust this based on your layout needs */
+    margin: 10px; /* Add some space around each frame */
 }
 
 #frame img {
-    max-width: 100%;
-    height: auto;
+    width: 100%; /* Scale the image to fit the container */
+    display: block; /* Removes any default spacing below the image */
 }
+
+h4 {  
+    font-size: 1.5em; /* Increase the font size, adjust as needed */
+    z-index: 1; /* Ensure the h4 stays on top */
+    color: white; /* Make the text white, adjust based on your design */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add shadow for readability */
+}
+
