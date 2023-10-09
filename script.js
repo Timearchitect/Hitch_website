@@ -6,7 +6,7 @@ import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.2.
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDjWjuCwnIyNFkH1K5Kfy1DAbn_jkyXssw",
+    apiKey: "pla",
     authDomain: "hitch-e4a25.firebaseapp.com",
     databaseURL: "https://hitch-e4a25-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "hitch-e4a25",
