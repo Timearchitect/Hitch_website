@@ -1,12 +1,13 @@
+// Your main script
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
 import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
 import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
+import { getApiSecret } from "./googlecouldsm.js"; // Import the function to fetch the API key
 
 
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyDjWjuCwnIyNFkH1K5Kfy1DAbn_jkyXssw",
+firebaseConfig = {
+    apiKey: "placeholder",
     authDomain: "hitch-e4a25.firebaseapp.com",
     databaseURL: "https://hitch-e4a25-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "hitch-e4a25",
@@ -16,10 +17,23 @@ const firebaseConfig = {
     measurementId: "G-6Z28FCR9Y1",
 };
 
-const app = initializeApp(firebaseConfig);
-const analyze = getAnalytics(app);
-const db = getDatabase(app);
+async function initializeFirebase() {
+  const apiKey = await getApiSecret(); // Fetch the API key from the secret manager
+  if (!apiKey) {
+    console.error('Failed to fetch API key.');
+    return;
+  }
 
+  firebaseConfig.apiKey = apiKey; // Update the apiKey property in firebaseConfig
+
+  const app = initializeApp(firebaseConfig);
+  const analyze = getAnalytics(app);
+  const db = getDatabase(app);
+
+  // The rest of your script...
+}
+
+initializeFirebase(); // Call the initialization function
 
 
 const form = document.getElementById('form-handler').addEventListener("submit", onFormSubmit)
