@@ -7,7 +7,7 @@ import { getApiSecret } from "./googlecouldsm.js"; // Import the function to fet
 
 
 firebaseConfig = {
-    apiKey: "AIzaSyDjWjuCwnIyNFkH1K5Kfy1DAbn_jkyXssw",
+    apiKey: "placeholder",
     authDomain: "hitch-e4a25.firebaseapp.com",
     databaseURL: "https://hitch-e4a25-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "hitch-e4a25",
@@ -18,19 +18,19 @@ firebaseConfig = {
 };
 
 async function initializeFirebase() {
-//   const apiKey = await getApiSecret(); // Fetch the API key from the secret manager
-//   if (!apiKey) {
-//     console.error('Failed to fetch API key.');
-//     return;
-//   }
+    const apiKey = await getApiSecret(); // Fetch the API key from the secret manager
+    if (!apiKey) {
+        console.error('Failed to fetch API key.');
+        return;
+    }
 
-//   firebaseConfig.apiKey = apiKey; // Update the apiKey property in firebaseConfig
+    firebaseConfig.apiKey = apiKey; // Update the apiKey property in firebaseConfig
 
-  const app = initializeApp(firebaseConfig);
-  const analyze = getAnalytics(app);
-  const db = getDatabase(app);
+    const app = initializeApp(firebaseConfig);
+    const analyze = getAnalytics(app);
+    const db = getDatabase(app);
 
-  // The rest of your script...
+    // The rest of your script...
 }
 
 initializeFirebase(); // Call the initialization function
@@ -45,7 +45,7 @@ function onFormSubmit(e) {
     let surname = document.querySelector('#surname').value
     let email = document.querySelector('#email').value
 
-    writeToDb( name, surname, email)
+    writeToDb(name, surname, email)
 
 
 }
