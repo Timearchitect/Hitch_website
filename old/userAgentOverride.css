@@ -21,8 +21,6 @@ input[type="submit"]:hover {
 }
 
 
-label {}
-
 input[type="checkbox"]:checked {
     appearance: initial;
     -webkit-appearance: initial;
