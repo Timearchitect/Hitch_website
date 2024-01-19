@@ -11,3 +11,7 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
    hamburger.classList.remove("active");
    navMenu.classList.remove("active");
 }))
+
+fetch('footer.html')
+   .then(response => response.text())
+   .then(data => document.getElementById('footer').innerHTML = data);
