@@ -255,7 +255,6 @@ li {
 #playBtn {
     filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.529));
     margin-top: 280px;
-    margin-left: 1rem;
     position: absolute;
     z-index: 2;
 }
