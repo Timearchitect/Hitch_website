@@ -253,20 +253,17 @@ li {
 }
 
 #playBtn {
-    filter: brightness(0) invert(1);
-    padding-right: 10px;
+    filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.529));
     margin-top: 280px;
-    padding-left: 1rem;
+    margin-left: 1rem;
     position: absolute;
     z-index: 2;
 }
 
 #appStoreBtn {
-    filter: brightness(0) invert(1);
-    padding-right: 50px;
+    filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.566));
     margin-top: 280px;
-    margin-right: 1rem;
-    padding-left: 12rem;
+    margin-left: 12rem;
     position: absolute;
     z-index: 1;
 }
