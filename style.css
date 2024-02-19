@@ -21,9 +21,7 @@ h2,
 h3 {
     letter-spacing: 0.05em;
 }
-h4 {
 
-}
 
 body {
     background: var(--themeColor);
@@ -254,11 +252,21 @@ li {
     padding-left: 10px;
 }
 
-#playbtn {
+#playBtn {
     filter: brightness(0) invert(1);
     padding-right: 10px;
     margin-top: 280px;
-    padding-left: 2rem;
+    padding-left: 1rem;
+    position: absolute;
+    z-index: 2;
+}
+
+#appStoreBtn {
+    filter: brightness(0) invert(1);
+    padding-right: 50px;
+    margin-top: 280px;
+    margin-right: 1rem;
+    padding-left: 12rem;
     position: absolute;
     z-index: 1;
 }
@@ -277,11 +285,11 @@ main {
     padding-right: 15%;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 700px) {
     .hamburger {
         display: block;
         align-self: center;
-        margin-right: 8rem;
+        margin-right: 6rem;
     }
 
     .navbar {
@@ -294,7 +302,7 @@ main {
     }
 
     .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
+        opacity: 1;
     }
 
     .hamburger.active .bar:nth-child(1) {
@@ -339,7 +347,7 @@ main {
         flex-direction: column;
     }
 
-    #frame{
+    #frame {
         min-width: 100%;
     }
 }
@@ -349,6 +357,7 @@ main {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 .photo-container img {
     display: flex;
     justify-content: space-between;
@@ -358,20 +367,28 @@ main {
 }
 
 #frame {
-    position: relative; /* This allows us to position children relative to this container */
-    width: 30%; /* You can adjust this based on your layout needs */
-    margin: 10px; /* Add some space around each frame */
+    position: relative;
+    /* This allows us to position children relative to this container */
+    width: 30%;
+    /* You can adjust this based on your layout needs */
+    margin: 10px;
+    /* Add some space around each frame */
 }
 
 #frame img {
-    width: 100%; /* Scale the image to fit the container */
-    display: block; /* Removes any default spacing below the image */
+    width: 100%;
+    /* Scale the image to fit the container */
+    display: block;
+    /* Removes any default spacing below the image */
 }
 
-h4 {  
-    font-size: 1.5em; /* Increase the font size, adjust as needed */
-    z-index: 1; /* Ensure the h4 stays on top */
-    color: white; /* Make the text white, adjust based on your design */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add shadow for readability */
+h4 {
+    font-size: 1.5em;
+    /* Increase the font size, adjust as needed */
+    z-index: 1;
+    /* Ensure the h4 stays on top */
+    color: white;
+    /* Make the text white, adjust based on your design */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    /* Add shadow for readability */
 }
-

@@ -12,6 +12,6 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
    navMenu.classList.remove("active");
 }))
 
-fetch('footer.html')
-   .then(response => response.text())
-   .then(data => document.getElementById('footer').innerHTML = data);
+// fetch('footer.html')
+//    .then(response => response.text())
+//    .then(data => document.getElementById('footer').innerHTML = data);
