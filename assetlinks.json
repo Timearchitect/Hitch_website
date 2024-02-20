@@ -1,0 +1,16 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "hitch_app.se",
+            "sha256_cert_fingerprints": [
+                "53:85:5d:88:31:c1:b4:7c:0f:01:b9:bb:91:e5:34:ca:99:66:59:ae:61:6a:f9:cb:9a:d3:06:5e:fc:1e:20:42",
+                "5d:f8:07:fb:75:2e:37:d0:1e:08:eb:0f:ee:8e:43:67:99:a8:5e:38:e0:12:df:cf:37:23:fb:48:78:59:aa:b0",
+                "5b:5a:ca:3a:dc:f5:d3:ca:25:8b:ea:60:46:2e:0b:59:b0:26:94:fc:55:02:c3:00:c4:61:c7:f3:67:40:38:6f"
+            ]
+        }
+    }
+]
