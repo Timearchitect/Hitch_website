@@ -257,13 +257,14 @@ li {
     filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.529));
     margin-top: 280px;
     position: absolute;
+    right: 53%;
     z-index: 2;
 }
 
 #appStoreBtn {
     filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.566));
     margin-top: 280px;
-    margin-left: 12rem;
+    left: 53%;
     position: absolute;
     z-index: 1;
 }
@@ -322,6 +323,7 @@ main {
         text-align: center;
         transition: 0.3s;
         padding-inline-start: 0;
+
     }
 
     .navbar li {
