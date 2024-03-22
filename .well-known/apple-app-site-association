@@ -4,7 +4,8 @@
         "details": [
             {
                 "appIDs": [
-                    "TeamID.BundleID"
+                    "QHQZ4G2YF7.com.hitchApp.se",
+                    "QHQZ4G2YF7.com.hitchAppBeta.se"
                 ],
                 "components": [
                     {
@@ -12,7 +13,7 @@
                         "comment": "Matches URL with a path /login"
                     },
                     {
-                        "/": "/product/*",
+                        "/": "/trip/*",
                         "comment": "Matches any URL with a path that starts with /product/."
                     },
                     {
@@ -22,6 +23,12 @@
                     }
                 ]
             }
+        ]
+    },
+    "webcredentials": {
+        "apps": [
+            "QHQZ4G2YF7.com.hitchApp.se",
+            "QHQZ4G2YF7.com.hitchAppBeta.se"
         ]
     }
 }
