@@ -6,7 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="hamburger.js" defer></script>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script>
+        window.onload = function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            var tripParam = urlParams.get('unilink'); // Assuming the parameter is directly after "trip"
+            if (tripParam) {
+                var unilink = 'https://hitchapp.se/trip/' + tripParam; // Construct the URL with "/trip/" added
+                var linkElement = document.createElement('a');
+                linkElement.href = unilink;
+                linkElement.textContent = unilink;
+                document.getElementById('unilink').appendChild(linkElement);
+            }
+        };
+    </script>
+
     <title>Hitch App - Trip</title>
 </head>
 
@@ -34,6 +47,10 @@
             <p>För att använda vår app och hitta spännande resor, ladda ner Hitch App från Google Play Store.</p>
             <p>Med Hitch App kan du enkelt hitta samåkningsmöjligheter och resa smidigt till din destination.</p>
             <p>Ladda ner appen idag och upptäck ett nytt sätt att resa!</p>
+            <!-- <p>Om du redan har Hitch App installerad, klicka på länken nedan för att öppna appen.</p>
+            <p id="unilink"></p> -->
+
+
             <div>
                 <a href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share">
                     <img src="./res/google-play-store-logo-png-25.png" alt="Google Play Store" width="200" />
