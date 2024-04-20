@@ -5,15 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="hamburger.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
+    <link rel="stylesheet" href="style.css" />    
     <script>
         window.onload = function () {
-            fetch('public/CHANGELOG.md')
+            fetch('./public/changelog.md')
                 .then(response => response.text())
-                .then(text => {
-                    const markdown = marked(text);
-                    document.getElementById('changelog').innerHTML = markdown;
+                .then(data => {
+                    var md = window.markdownit();
+                    var result = md.render(data);
+                    document.getElementById('markdown-content').innerHTML = result;
                 });
             };
     </script>
@@ -44,6 +45,7 @@
         <section id="changelog">
             <h1>Welcome to Hitch App Changelog!</h1>
             <p>Here you can find the latest updates and improvements we've made to Hitch App.</p>
+            <div id="markdown-content"></div> <!-- new div for markdown content -->
         </section>
 
     </main>
