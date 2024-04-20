@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="hamburger.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         window.onload = function () {
-            fetch('public/changelog.md')
+            fetch('public/CHANGELOG.md')
                 .then(response => response.text())
-                .then(data => {
-                    var changelogElement = document.createElement('pre');
-                    changelogElement.textContent = data;
-                    document.getElementById('changelog').appendChild(changelogElement);
+                .then(text => {
+                    const markdown = marked(text);
+                    document.getElementById('changelog').innerHTML = markdown;
                 });
-        };
+            };
     </script>
 
 
