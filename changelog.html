@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="hamburger.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+        window.onload = function () {
+            fetch('public/changelog.md')
+                .then(response => response.text())
+                .then(data => {
+                    var changelogElement = document.createElement('pre');
+                    changelogElement.textContent = data;
+                    document.getElementById('changelog').appendChild(changelogElement);
+                });
+        };
+    </script>
+
+
+    <title>Hitch App - Changelog</title>
+</head>
+
+<body>
+    <main>
+        <!--navbar-->
+        <nav class="navbar">
+            <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
+            <ul class="nav-menu">
+                <li nav-item><a href="index.html">Hem</a></li>
+                <li nav-item><a href="about-us.html">Om oss</a></li>
+                <li nav-item><a href="privacyPolicy.html">Integritetspolicy</a></li>
+                <li nav-item><a href="contact-us.html">Kontakta Oss</a></li>
+                <li nav-item><a href="changelog.html">ChangeLog</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+
+        <section id="changelog">
+            <h1>Welcome to Hitch App Changelog!</h1>
+            <p>Here you can find the latest updates and improvements we've made to Hitch App.</p>
+        </section>
+
+    </main>
+    <footer>
+        <br />
+        <ul>
+            <li>
+                <a href=""><img src="./img/intagramwhite.png" alt="IG" width="20" /></a>
+            </li>
+
+            <li id="facebook">
+                <a href="..."><img id="fblogo" src="./img/fbwhite.png" alt="FB" width="28" /></a>
+            </li>
+
+            <li id="Copyright">
+                <p>Copyright © 2024 | Jim Lewis Skoglund</p>
+            </li>
+
+            <li id="smallplaybtn">
+                <a href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share"><img
+                        src="./res/google-play-store-logo-png-25.png" alt="Playbutton" width="28" /></a>
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>
