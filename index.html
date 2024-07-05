@@ -12,7 +12,7 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="userAgentOverride.css" />
+    <!-- <link rel="stylesheet" href="userAgentOverride.css" /> -->
     <script src="hamburger.js" defer></script>
     <!-- <script type="module" src="script.js"></script>
     <script type="module" src="termsCheckBox.js"></script> -->
@@ -23,6 +23,9 @@
     <div class="landing">
         <div class="home-wrap">
             <header class="v-header container">
+
+                <img src="./res/Release-star.png" alt="New Image" width="160" style="position: absolute; bottom: 10px; right: 10px; z-index: 0;" />
+
                 <a id="playBtn" href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share">
                     <img src="./res/Google-Play.png" alt="Playbutton" width="160" /></a>
 
@@ -77,7 +80,7 @@
 
         <div class="photo-container">
             <div id="frame">
-                <h4>Smidigt Sök</h4> <img src="./img/frame_1.png" alt="frame3">
+                <h4>Smidigt Sök</h4> <img src="./img/Frame_1a.png" alt="frame3">
             </div>
             <div id="frame">
                 <h4>GPS med Livedata</h4> <img src="./img/frame_2.png" alt="frame2">
@@ -154,6 +157,29 @@
             </li>
         </ul>
     </footer>
+
+    <div id="cookie-banner" style="display: none;">
+        <div style="background-color: #416454; padding: 10px; text-align: center; border-top: 1px solid #000000;">
+            <p>
+                We do not use cookies to track users. For more details, please review our 
+                <a href="/privacypolicy.html">Privacy Policy</a>.
+            </p>
+            <button onclick="acceptCookies()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
+        });
+
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 
 </body>
 

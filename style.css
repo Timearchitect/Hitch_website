@@ -255,7 +255,8 @@ li {
 
 #playBtn {
     filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.529));
-    margin-top: 280px;
+    top: 60%;
+    /* margin-top: 280px; */
     position: absolute;
     right: 53%;
     z-index: 2;
@@ -263,7 +264,8 @@ li {
 
 #appStoreBtn {
     filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.566));
-    margin-top: 280px;
+    top: 60%;
+    /* margin-top: 280px; */
     left: 53%;
     position: absolute;
     z-index: 1;
@@ -340,6 +342,7 @@ main {
 
     .main-logo {
         width: 65vw;
+        position: fixed;
     }
 
     .photo-container {
@@ -390,4 +393,16 @@ h4 {
     /* Make the text white, adjust based on your design */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     /* Add shadow for readability */
+}
+
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #416454;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #000000;
+    z-index: 1000;
 }
