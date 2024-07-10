@@ -406,3 +406,11 @@ h4 {
     border-top: 1px solid #000000;
     z-index: 1000;
 }
+
+.icons-container {
+    display: flex;
+    justify-content: space-around; /* This will create equal space between the icons */
+    align-items: center; /* This will vertically center the icons if they have different heights */
+    text-align: center; /* Center the content */
+    padding: 0 20px; /* Add padding on the sides to ensure the icons don't touch the edges */
+}

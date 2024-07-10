@@ -4,8 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hitch App - Trip</title>
+    <meta property="og:title" content="Hitch app" />
+    <meta property="og:description" content="Hitcha dit du ska!" />
+    <meta property="og:image" content="https://hitchapp.se/res/Logo.png" />
+    <meta property="og:url" content="https://hitchapp.se" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
     <script src="hamburger.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="res/favicon.png" />
     <script>
         window.onload = function () {
             var urlParams = new URLSearchParams(window.location.search);
@@ -18,9 +26,7 @@
                 document.getElementById('unilink').appendChild(linkElement);
             }
         };
-    </script>
-
-    <title>Hitch App - Trip</title>
+    </script>    
 </head>
 
 <body>
@@ -44,16 +50,18 @@
 
         <section id="trip">
             <h1>Välkommen till Hitch App!</h1>
-            <p>För att använda vår app och hitta spännande resor, ladda ner Hitch App från Google Play Store.</p>
+            <p>För att använda vår app och hitta spännande resor, ladda ner Hitch App från Google Play Store (Android) eller i App Store (IOS) via ikonerna nedan.</p>
             <p>Med Hitch App kan du enkelt hitta samåkningsmöjligheter och resa smidigt till din destination.</p>
             <p>Ladda ner appen idag och upptäck ett nytt sätt att resa!</p>
             <!-- <p>Om du redan har Hitch App installerad, klicka på länken nedan för att öppna appen.</p>
             <p id="unilink"></p> -->
 
-
-            <div>
+            <div class="icons-container">
                 <a href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share">
                     <img src="./res/google-play-store-logo-png-25.png" alt="Google Play Store" width="200" />
+                </a>
+                <a href="https://apps.apple.com/app/hitch-transport-hitch-hike/id6499305150">
+                    <img src="./res/app-store-icon4.png" alt="App Store" width="200" />
                 </a>
             </div>
         </section>
