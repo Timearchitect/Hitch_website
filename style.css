@@ -68,7 +68,7 @@ a:hover {
 .main-logo {
     z-index: -1;
     position: fixed;
-    top: 45%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     filter: brightness(0) invert(1) drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
@@ -409,8 +409,12 @@ h4 {
 
 .icons-container {
     display: flex;
-    justify-content: space-around; /* This will create equal space between the icons */
-    align-items: center; /* This will vertically center the icons if they have different heights */
-    text-align: center; /* Center the content */
-    padding: 0 20px; /* Add padding on the sides to ensure the icons don't touch the edges */
+    justify-content: space-around;
+    /* This will create equal space between the icons */
+    align-items: center;
+    /* This will vertically center the icons if they have different heights */
+    text-align: center;
+    /* Center the content */
+    padding: 0 20px;
+    /* Add padding on the sides to ensure the icons don't touch the edges */
 }
