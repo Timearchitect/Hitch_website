@@ -14,6 +14,7 @@
     <script src="hamburger.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/x-icon" href="res/favicon.png" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
         window.onload = function () {
             var urlParams = new URLSearchParams(window.location.search);
@@ -23,10 +24,28 @@
                 var linkElement = document.createElement('a');
                 linkElement.href = unilink;
                 linkElement.textContent = unilink;
+                linkElement.style.color = 'green'; // Set link color to green
+                linkElement.style.textDecoration = 'underline'; // Underline the link
                 document.getElementById('unilink').appendChild(linkElement);
+
+                // Create a copy button
+                var copyButton = document.createElement('i');
+                copyButton.className = 'material-icons';
+                copyButton.textContent = 'content_copy';
+                copyButton.style.cursor = 'pointer';
+                copyButton.style.marginLeft = '10px'; // Add some space between link and button
+                copyButton.onclick = function () {
+                    navigator.clipboard.writeText(unilink).then(function () {
+                        alert('Länken har kopierats till urklipp!');
+                    }, function () {
+                        alert('Kopiering misslyckades. Försök igen.');
+                    });
+                };
+                document.getElementById('unilink').appendChild(copyButton);
             }
         };
     </script>
+
 </head>
 
 <body>
@@ -51,22 +70,22 @@
 
         <section id="trip">
             <h1>Välkommen till Hitch App!</h1>
-            <p>För att använda vår app och hitta spännande resor, ladda ner Hitch App från Google Play Store (Android)
-                eller i App Store (IOS) via ikonerna nedan.</p>
-            <p>Med Hitch App kan du enkelt hitta samåkningsmöjligheter och resa smidigt till din destination.</p>
-            <p>Ladda ner appen idag och upptäck ett nytt sätt att resa!</p>
-            <p>Om du redan har Hitch App installerad, klicka på länken nedan för att öppna appen.</p>
-            <!-- <p id="unilink"></p>
-            <p class="disclaimer">Observera: Om du använder Facebooks webbläsare och länkarna inte fungerar, kan du
-                behöva ändra inställningarna i Facebook-appen för att öppna länkar i en extern webbläsare eller kopiera
-                och klistra in länken direkt i din webbläsares adressfält.</p> -->
+            <p>Du har klickat på en länk för att se en resa i Hitch App. För att få tillgång till detaljerna för denna resa behöver du först ladda ner vår app.</p>
+           
+            <p>När appen är installerad, kan du klicka på länken igen för att komma direkt till resan du är intresserad av.</p>
+            <!-- <p>Om du redan har Hitch App installerad, klicka på ikonerna nedan för att öppna appen.</p> -->
+            <p id="unilink" style="margin-top: 20px;">
+            <p id="facebook-disclaimer" class="disclaimer" style="display: none;">
+                <img src="./img/Facebook_logo_PNG12.png" alt="Facebook Logo" class="facebook-logo">
+                <em>Observera: Länkar fungerar inte alltid i Facebooks webbläsare...<span style="font-size: 1.2em;">&#128580;</span> . För att säkerställa att länkarna fungerar korrekt, ändra inställningarna i Facebook-appen för att öppna länkar i en extern webbläsare eller kopiera och klistra in länken direkt i din webbläsares adressfält.</em>
+            </p>
 
             <div class="icons-container">
                 <a href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share">
-                    <img src="./res/google-play-store-logo-png-25.png" alt="Google Play Store" width="200" />
+                    <img src="./img/googleplay.svg" width="200" alt="Google Play Store">
                 </a>
                 <a href="https://apps.apple.com/app/hitch-transport-hitch-hike/id6499305150">
-                    <img src="./res/app-store-icon4.png" alt="App Store" width="200" />
+                    <img src="./img/appstore.svg" width="200" alt="App Store">
                 </a>
             </div>
         </section>
@@ -93,6 +112,16 @@
             </li>
         </ul>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var isFacebookBrowser = userAgent.indexOf("FBAN") > -1 || userAgent.indexOf("FBAV") > -1;
+        
+            if (isFacebookBrowser) {
+                document.getElementById("facebook-disclaimer").style.display = "block";
+            }
+        });
+    </script>
 </body>
 
 </html>

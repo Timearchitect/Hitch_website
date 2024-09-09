@@ -223,27 +223,36 @@
             <br />
         </div>
     </main>
-    <footer>
-        <br />
-        <ul>
-            <li>
-                <a href=""><img src="./img/intagramwhite.png" alt="IG" width="20" /></a>
-            </li>
+    <div id="footer-placeholder"></div>
+    <script>
+        // Function to load the footer
+        function loadFooter() {
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        }
 
-            <li id="facebook">
-                <a href="..."><img id="fblogo" src="./img/fbwhite.png" alt="FB" width="28" /></a>
-            </li>
+        // Function to handle cookie banner
+        function handleCookieBanner() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
+        }
 
-            <li id="Copyright">
-                <p>Copyright © 2024 | Jim Lewis Skoglund</p>
-            </li>
+        // Function to accept cookies
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
 
-            <li id="smallplaybtn">
-                <a href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share"><img
-                        src="./res/google-play-store-logo-png-25.png" alt="Playbutton" width="28" /></a>
-            </li>
-        </ul>
-    </footer>
+        // Load the footer and handle cookie banner when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFooter();
+            handleCookieBanner();
+        });
+    </script>
 </body>
 
 </html>

@@ -24,7 +24,7 @@
         <div class="home-wrap">
             <header class="v-header container">
 
-                <img src="./res/Release-star.png" alt="New Image" width="160" style="position: absolute; bottom: 10px; right: 10px; z-index: 0;" />
+                <img src="./res/Release-circle.png" alt="New Image" width="160" style="position: absolute; bottom: 10px; right: 10px; z-index: 0;" />
 
                 <a id="playBtn" href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share">
                     <img src="./res/Google-Play.png" alt="Playbutton" width="160" /></a>
@@ -41,6 +41,11 @@
             </header>
         </div>
     </div>
+    <!-- <div id="new-app-banner">
+        <h2>🚀 Ny App Sommarem 2024! 🚀</h2>
+        <p>Ladda ner och testa!</p>
+    </div>
+     -->
 
     <main>
         <!--navbar-->
@@ -50,7 +55,7 @@
                 <li nav-item><a href="index.html">Hem</a></li>
                 <li nav-item><a href="about-us.html">Om oss</a></li>
                 <li nav-item><a href="privacypolicy.html">Integritetspolicy</a></li>
-                <li nav-item><a href="https://hitch-e4a25.firebaseapp.com/">Web-App (Sök)</a></li>
+                <li nav-item><a href="https://hitch-e4a25.firebaseapp.com/">Simpel app (Sök)</a></li>
                 <li nav-item><a href="contact-us.html">Kontakta Oss</a></li>
                 <!-- <li nav-item><a href="trip-page.html">Resa</a></li> -->
             </ul>
@@ -74,7 +79,7 @@
         <p>Applikationen är gratis att använda, tanken är att det ska tillkomma en "bokningsavgift" för att täcka de
             kostnader att driva tjänsten.</p>
         <p>Vill du hjälpa till i detta skapande? <a
-                href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share" target="_blank"
+                href="https://www.hitchapp.se:40888/dlhitch2" target="_blank"
                 rel="noopener noreferrer">Ladda ner appen här</a> och kom med feedback.</p>
         <p>Sedan Hitcha dit du ska! </p>
 
@@ -98,49 +103,35 @@
         </ul>  
       
     </main>
-    <footer>
-        <br />
-        <ul>
-            <li>
-                <a href=""><img src="./img/intagramwhite.png" alt="IG" width="20" /></a>
-            </li>
-
-            <li id="facebook">
-                <a href="..."><img id="fblogo" src="./img/fbwhite.png" alt="FB" width="28" /></a>
-            </li>
-
-            <li id="Copyright">
-                <p>Copyright © 2024 | Jim Lewis Skoglund</p>
-            </li>
-
-            <li id="smallplaybtn">
-                <a href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share"><img
-                        src="./res/google-play-store-logo-png-25.png" alt="Playbutton" width="28" /></a>
-            </li>
-        </ul>
-    </footer>
-
-    <div id="cookie-banner" style="display: none;">
-        <div style="background-color: #416454; padding: 10px; text-align: center; border-top: 1px solid #000000;">
-            <p>
-                We do not use cookies to track users. For more details, please review our 
-                <a href="/privacypolicy.html">Privacy Policy</a>.
-            </p>
-            <button onclick="acceptCookies()">OK</button>
-        </div>
-    </div>
-
+    <div id="footer-placeholder"></div>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        // Function to load the footer
+        function loadFooter() {
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        }
+
+        // Function to handle cookie banner
+        function handleCookieBanner() {
             if (!localStorage.getItem('cookiesAccepted')) {
                 document.getElementById('cookie-banner').style.display = 'block';
             }
-        });
+        }
 
+        // Function to accept cookies
         function acceptCookies() {
             localStorage.setItem('cookiesAccepted', 'true');
             document.getElementById('cookie-banner').style.display = 'none';
         }
+
+        // Load the footer and handle cookie banner when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFooter();
+            handleCookieBanner();
+        });
     </script>
 
 </body>
