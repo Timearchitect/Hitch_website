@@ -91,35 +91,45 @@
         </section>
 
     </main>
-    <footer>
-        <br />
-        <ul>
-            <li>
-                <a href=""><img src="./img/intagramwhite.png" alt="IG" width="20" /></a>
-            </li>
-
-            <li id="facebook">
-                <a href="..."><img id="fblogo" src="./img/fbwhite.png" alt="FB" width="28" /></a>
-            </li>
-
-            <li id="Copyright">
-                <p>Copyright © 2024 | Jim Lewis Skoglund</p>
-            </li>
-
-            <li id="smallplaybtn">
-                <a href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share"><img
-                        src="./res/google-play-store-logo-png-25.png" alt="Playbutton" width="28" /></a>
-            </li>
-        </ul>
-    </footer>
+    <div id="footer-placeholder"></div>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        // Function to load the footer
+        function loadFooter() {
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        }
+    
+        // Function to handle cookie banner
+        function handleCookieBanner() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
+        }
+    
+        // Function to accept cookies
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    
+        // Function to handle Facebook browser disclaimer
+        function handleFacebookDisclaimer() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             var isFacebookBrowser = userAgent.indexOf("FBAN") > -1 || userAgent.indexOf("FBAV") > -1;
-        
+    
             if (isFacebookBrowser) {
                 document.getElementById("facebook-disclaimer").style.display = "block";
             }
+        }
+    
+        // Load the footer, handle cookie banner, and Facebook disclaimer when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFooter();
+            handleCookieBanner();
+            handleFacebookDisclaimer();
         });
     </script>
 </body>

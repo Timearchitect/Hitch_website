@@ -14,6 +14,75 @@
     <link rel="stylesheet" href="style.css" />
     <!-- <link rel="stylesheet" href="userAgentOverride.css" /> -->
     <script src="hamburger.js" defer></script>
+    <script>
+        // Function to load the footer
+        function loadFooter() {
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        }
+
+        // Function to handle cookie banner
+        function handleCookieBanner() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').classList.remove('hidden');
+            }
+        }
+
+        // Function to accept cookies
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            var cookieBanner = document.getElementById('cookie-banner');
+            cookieBanner.classList.add('hidden');
+            console.log("Cookies accepted and banner hidden"); // Debugging line
+        }
+
+
+                // Function to handle download button based on user agent
+        // Function to handle download button based on user agent
+       // Function to handle download button based on user agent
+        // Function to show/hide download buttons based on user agent
+        // Function to show/hide download buttons based on user agent
+        function handleDownloadButton() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var downloadButton = document.getElementById('download-button');
+            var downloadIcon = document.getElementById('download-icon');
+            // var downloadText = document.getElementById('download-text');
+
+            console.log("User Agent: ", userAgent); // Debugging line
+
+            if (/android/i.test(userAgent)) {
+                downloadButton.href = 'https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share';
+                downloadIcon.src = './res/google-play-icon.svg';
+                downloadIcon.alt = 'Google Play Store';
+                // downloadText.textContent = 'Ladda ner för Android';
+                console.log("Android detected"); // Debugging line
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                downloadButton.href = 'https://apps.apple.com/app/hitch-transport-hitch-hike/id6499305150';
+                downloadIcon.src = './res/app-store-icon.svg';
+                downloadIcon.alt = 'App Store';
+                // downloadText.textContent = 'Ladda ner för iOS';
+                console.log("iOS detected"); // Debugging line
+            } else {
+                // Hide the button if the platform is neither Android nor iOS
+                downloadButton.href = 'https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share';
+                downloadIcon.src = './res/google-play-icon.svg';
+                downloadIcon.alt = 'Google Play Store';
+                downloadText.textContent = 'Ladda ner för Android';
+                console.log("Neither Android nor iOS detected"); // Debugging line
+            }
+        }
+
+        // Load the footer, handle cookie banner, and handle download buttons when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+              handleDownloadButton();
+            loadFooter();
+            handleCookieBanner();
+          
+        });
+    </script>
     <!-- <script type="module" src="script.js"></script>
     <script type="module" src="termsCheckBox.js"></script> -->
     <link rel="icon" type="image/x-icon" href="res/favicon.png" />
@@ -24,7 +93,9 @@
         <div class="home-wrap">
             <header class="v-header container">
 
-                <img src="./res/Release-circle.png" alt="New Image" width="160" style="position: absolute; bottom: 10px; right: 10px; z-index: 0;" />
+              
+
+                <!-- <img src="./res/Release-circle.png" alt="New Image" width="160" style="position: absolute; bottom: 10px; right: 10px; z-index: 0;" /> -->
 
                 <a id="playBtn" href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share">
                     <img src="./res/Google-Play.png" alt="Playbutton" width="160" /></a>
@@ -38,6 +109,21 @@
                 <div class="fullscreen-video-wrap">
                     <video src="videos/test4.mp4" autoplay="" loop="" muted></video>
                 </div>
+                <div class="curved-background">
+                    <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Curve path -->
+                      <path id="curve" fill="#02DDA6" fill-opacity="0.5" 
+                            d="M0,256L48,234.7C96,213,192,171,288,144C384,117,480,107,576,138.7C672,171,768,245,864,266.7C960,288,1056,256,1152,213.3C1248,171,1344,117,1392,90.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                      </path>
+                      <!-- Text on the curve -->
+                      <!-- <text width="100%">
+                        <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle" class="curve-text">
+                          Follow the Curve with This Text
+                        </textPath>
+                      </text> -->
+                    </svg>
+                  </div>
+                
             </header>
         </div>
     </div>
@@ -55,7 +141,7 @@
                 <li nav-item><a href="index.html">Hem</a></li>
                 <li nav-item><a href="about-us.html">Om oss</a></li>
                 <li nav-item><a href="privacypolicy.html">Integritetspolicy</a></li>
-                <li nav-item><a href="https://hitch-e4a25.firebaseapp.com/">Simpel app (Sök)</a></li>
+                <!-- <li nav-item><a href="https://hitch-e4a25.firebaseapp.com/">Simpel app (Sök)</a></li> -->
                 <li nav-item><a href="contact-us.html">Kontakta Oss</a></li>
                 <!-- <li nav-item><a href="trip-page.html">Resa</a></li> -->
             </ul>
@@ -68,23 +154,43 @@
         <div id="logo-parent"><a class="main-logo" href="index.html"><img src="res\Logo2.png"
                     alt="[logo here!!!]" /></a>
         </div>
-        <br />
+        <div id="content-container">
+            
+        <div id="info-text">
+            <div id="frame2"></div>
+            <img src="./img/Sweden_map.png" alt="frame" class="responsive-image">
+            <h4>Dela resan, dela kostnaden – med Hitchapp</h4>
+           <h3> <p>Hitchapp är verktyget som förenar förare med passagerare för en smidigare och mer kostnadseffektiv resa. 
+                Som förare kan du fylla dina tomma säten och dela på kostnaderna, medan passagerare enkelt hittar skjuts till sitt mål. 
+                Dessutom kan du också transportera en vara åt någon på vägen.</p>
+            <p>Tillsammans gör vi det lättare att resa genom Sverige, från norr till söder.</p>
+            <p>Ladda ner Hitchapp idag och börja samåka!</p>
+            </h3>
+            
+            <!-- <p>Applikationen är gratis att använda, tanken är att det ska tillkomma en "bokningsavgift" för att täcka de
+                kostnader att driva tjänsten.</p>
+            <p>Vill du hjälpa till i detta skapande? <a href="https://www.hitchapp.se:40888/dlhitch2" target="_blank"
+                    rel="noopener noreferrer">Ladda ner appen här</a> och kom med feedback.</p>
+            <p>Sedan Hitcha dit du ska! </p> -->
+            <!-- <h4>Ladda ner Hitchapp idag och börja samåka!</h4> -->
+       
+            <div id="download-button-container">
+                <a id="download-button" href="#" class="download-button">
+                    <img id="download-icon" src="" alt="Download Icon" class="icon" />
+                    <span class="button-text">Ladda ner</span>
+                </a>
+            </div>
+        
+        </div>
+        </div>
 
-        <h4>Hitch app</h4>
-
-        <p>Hitchapp är en vision om att använda den grymma teknik som finns idag för att göra en app där privata
-            personer kan sälja sina platser eller tjänster när de ändå ska någonstans.</p>
-        <p>Det mest uppenbara handlar om samåkning och det är där det läggs mest krut. Hängivna programmerare håller på
-            med detta projekt för att fullfölja visionen.</p>
-        <p>Applikationen är gratis att använda, tanken är att det ska tillkomma en "bokningsavgift" för att täcka de
-            kostnader att driva tjänsten.</p>
-        <p>Vill du hjälpa till i detta skapande? <a
-                href="https://www.hitchapp.se:40888/dlhitch2" target="_blank"
-                rel="noopener noreferrer">Ladda ner appen här</a> och kom med feedback.</p>
-        <p>Sedan Hitcha dit du ska! </p>
+        
+      
+    </div>
 
 
         <div class="photo-container">
+            
             <div id="frame">
                 <h4>Smidigt Sök</h4> <img src="./img/Frame_1a.png" alt="frame3">
             </div>
@@ -104,35 +210,18 @@
       
     </main>
     <div id="footer-placeholder"></div>
-    <script>
-        // Function to load the footer
-        function loadFooter() {
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                });
-        }
+    <div id="cookie-banner" style="display: none;">
+        <div style="background-color: #416454; padding: 10px; text-align: center; border-top: 1px solid #000000;">
+            <p>
+                We do not use cookies to track users. For more details, please review our 
+                <a href="/privacypolicy.html">Privacy Policy</a>.
+            </p>
+            <button onclick="acceptCookies()">OK</button>
+        </div>
+    </div>
 
-        // Function to handle cookie banner
-        function handleCookieBanner() {
-            if (!localStorage.getItem('cookiesAccepted')) {
-                document.getElementById('cookie-banner').style.display = 'block';
-            }
-        }
+    
 
-        // Function to accept cookies
-        function acceptCookies() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            document.getElementById('cookie-banner').style.display = 'none';
-        }
-
-        // Load the footer and handle cookie banner when the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            loadFooter();
-            handleCookieBanner();
-        });
-    </script>
 
 </body>
 
