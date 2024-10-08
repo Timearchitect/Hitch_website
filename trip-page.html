@@ -18,7 +18,7 @@
     <script>
         window.onload = function () {
             var urlParams = new URLSearchParams(window.location.search);
-            var tripParam = urlParams.get('unilink'); // Assuming the parameter is directly after "trip"
+            var tripParam = urlParams.get('tripId'); // Assuming the parameter is directly after "trip"
             if (tripParam) {
                 var unilink = 'https://hitchapp.se/trip/' + tripParam; // Construct the URL with "/trip/" added
                 var linkElement = document.createElement('a');
