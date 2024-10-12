@@ -1,3 +1,5 @@
+//Command node createQR.cjs
+
 const QRCode = require('qrcode');
 
 // Data to be encoded
