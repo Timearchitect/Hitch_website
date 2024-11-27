@@ -1,14 +1,23 @@
 @font-face {
     font-family: "Urbanist";
     src: url("res/Urbanist-VariableFont_wght.ttf");
+    
+}
+
+@font-face {
+    font-family: "Jockey One";
+    src: url("res/JockeyOne-Regular.ttf");
 }
 
 :root {
-    font-family: "Arial";
+    font-family: "Urbanist";
+    font-weight: 300;
     font-kerning: auto;
-    --transparent_white: rgb(255, 255, 255, 0.5);
+    --hiddenwhite: rgba(255, 255, 255, 0.779);
+    --transparent_white: rgba(255, 255, 255, 0.514);
     --themeColor: rgb(0, 128, 96);
     --white: #ffffff;
+    --sectionColor: rgb(179, 201, 195);
     --themeGradient: linear-gradient(0deg, rgba(222, 234, 234, 1) 0%, rgba(142, 164, 142, 1) 100%);
 }
 
@@ -19,23 +28,56 @@ p {
 h1{
     letter-spacing: 0.05em;
     font-size: 50;
-    font-family: "Arial";
+    font-family: "Urbanist";
+    font-weight: 500;
 }
 
 h2,
 h3 {
     letter-spacing: 0.05em;
     font-size: 30;
+    font-weight: 300;
    
-    font-family: "Arial";
+    font-family: "Urbanist";
 
+}
+strong {
+    letter-spacing: 0.07em;
+    font-weight: 570; /* Custom font weight */
+    font-family: "Urbanist"; /* Ensure it uses the Urbanist font */
+}
+
+h4 {
+    font-weight: 500;
+    font-family: "Urbanist";
+    font-size: 1.5em;
+    /* Increase the font size, adjust as needed */
+    z-index: 1;
+    /* Ensure the h4 stays on top */
+    color: white;
+    /* Make the text white, adjust based on your design */
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); */
+    /* Add shadow for readability */
+}
+
+h5 {
+    font-weight: 500;
+    font-family: "Jockey One";
+    font-size: 100;    /* Increase the font size, adjust as needed */
+
+    /* Ensure the h4 stays on top */
+    color: black;
+    /* Make the text white, adjust based on your design */
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); */
+    /* Add shadow for readability */
 }
 
 
-/* Ensuring the content scrolls under the curve */
+
 body {
+    height: 100%;
     background: var(--themeColor);
-    color: var(--white);
+    /* color: var(--white); */
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -57,6 +99,7 @@ body {
 .containera {
     /*     width: 90rem;
     height: 45rem; */
+    margin-top: 5rem;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.15);
@@ -65,17 +108,21 @@ body {
 }
 
 main {
+    flex: 1;
     background-color: var(--themeColor);
     padding: 1rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    
 }
 
 a {
     text-decoration: none;
-    color: var(--transparent_white);
+    color: var(--hiddenwhite);
 }
 
 a:hover {
     color: var(--white);
+    font-weight: 500;
 }
 
 #logo-parent {
@@ -90,7 +137,8 @@ a:hover {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    filter: brightness(0) invert(1) drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
+    /* filter: brightness(0) invert(1) drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5)); */
     width: 30vw;
     padding: 1rem 0rem;
 }
@@ -160,6 +208,7 @@ nav {
     top: 0;
     left: 0;
     background-color: var(--themeColor);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
     padding: 0.5rem;
     border-bottom: 1px solid var(--transparent_white);
     transition-duration: 1s;
@@ -185,11 +234,13 @@ footer {
     border-top: 1px solid var(--transparent_white);
     z-index: 2;
     background-color: var(--themeColor);
+    margin-bottom: 0px;
+    padding-bottom: 1rem;
 }
 
-footer ul {
+/* footer ul {
     background-color: var(--themeColor);
-}
+} */
 
 nav ul,
 footer ul {
@@ -227,7 +278,8 @@ section {
     min-height: 200px;
     padding: 1rem;
     color: black;
-    background: var(--themeGradient);
+    /* background-color: var(--white); */
+    background: var(--sectionColor);
     box-shadow: inset 2px 2px 2px var(--themeColor);
 }
 
@@ -327,7 +379,11 @@ main {
     .hamburger {
         display: block;
         align-self: center;
-        margin-right: 6rem;
+        margin-right: 5rem;
+    }
+    .containera {
+        /* width: 100%; */
+        padding: 1rem;
     }
 
     .center,
@@ -368,6 +424,7 @@ main {
         gap: 0;
         flex-direction: column;
         background-color: var(--themeColor);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -403,6 +460,7 @@ main {
         justify-content: center;
         align-items: flex-start;
         text-align: left;
+       
     }
 
     #hitch-text {
@@ -485,7 +543,7 @@ main {
     padding: 10px 20px;
     text-decoration: none;
     font-size: 30px;
-    font-weight: bold;
+    font-weight: 570;
     max-width: 200px;
     width: 100%; /* Ensures the button spans up to its max width */
     border: none;
@@ -519,7 +577,7 @@ main {
     /* Add some space around each frame */
 }
 
-  #content-container {
+#content-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -527,13 +585,15 @@ main {
             text-align: center;
             gap: 20px; /* Adjust the gap as needed */
             padding: 20px; /* Optional: Add padding around the container */
+  
         }
 
-        #content-container img {
+#content-container img {
         
             height: auto;
             flex: 1 1 300px; /* Allow the image to grow and shrink */
-        }
+       
+}
 
 #info-text {
     max-width: 600px;
@@ -560,16 +620,7 @@ max-height: 80vh;
     /* Removes any default spacing below the image */
 }
 
-h4 {
-    font-size: 1.5em;
-    /* Increase the font size, adjust as needed */
-    z-index: 1;
-    /* Ensure the h4 stays on top */
-    color: white;
-    /* Make the text white, adjust based on your design */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-    /* Add shadow for readability */
-}
+
 
 #cookie-banner {
     position: fixed;
@@ -627,3 +678,87 @@ h4 {
         opacity: 1; /* Fully visible */
     }
 }
+
+.modal {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--white);
+    color: var(--themeColor);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    font-family: "Urbanist", sans-serif;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    z-index: 1000;
+}
+
+.modal h3 {
+    font-family: "Urbanist", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.modal p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+}
+
+.modal input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--themeColor);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.primary-button,
+.secondary-button {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Urbanist", sans-serif;
+}
+
+.primary-button {
+    background-color: var(--themeColor);
+    color: var(--white);
+}
+
+.primary-button:hover {
+    background-color: rgb(0, 100, 80); /* Slightly darker theme color */
+}
+
+.secondary-button {
+    background-color: var(--transparent_white);
+    color: black;
+}
+
+.secondary-button:hover {
+    background-color: var(--sectionColor);
+}
+
