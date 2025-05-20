@@ -66,7 +66,7 @@
                 $ogUrl = "https://hitchapp.se/trip/$tripId";  // The URL of the trip page
                 $androidUrl = "https://hitchapp.se:40888/dlhitch3";  // The URL to download the Android app
                 $iosUrl = "https://hitchapp.se:40888/dlhitch3";  // The URL to download the iOS app
-                $tripMessage = "Denna resa finns i Hitch-app!<br><br>För att se alla detaljer och boka en plats, ladda ner Hitch nu.";
+                // $tripMessage = "Denna resa finns i Hitch-app!<br><br>För att se alla detaljer och boka en plats, ladda ner Hitch nu.";
             } else {
                 // Set default OG image if required data is not available
                 $ogImage = $defaultImage;
@@ -131,7 +131,7 @@
 
             <div id="smsModal" class="modal">
                 <h3>Öppna resan i Hitch-appen</h3>
-                <p>Ange ditt svenska telefonnummer så skickar vi en länk till din telefon (t.ex. +46701234567):</p>
+                <p>Ange ditt svenska telefonnummer så skickar vi en länk till din telefon via SMS (t.ex. +46701234567):</p>
                 <input type="text" id="phoneNumberInput" value="+467" placeholder="+467XXXXXXXX" pattern="\+467\d{8}" title="Please enter a valid Swedish phone number starting with +467" />
                 <div class="button-container">
                     <button id="sendLinkButton" class="primary-button">Skicka länk</button>
@@ -407,7 +407,7 @@ function sendSms(phoneNumber) {
         function handleDownloadButton() {
             var androidButton = document.getElementById('android-button');
             var iosButton = document.getElementById('ios-button');
-            var toggleButton = document.getElementById('disclaimer-toggle');
+            // var toggleButton = document.getElementById('disclaimer-toggle');
             var desktopButtons = document.getElementById('desktop-buttons');
 
             console.log("User Agent: ", userAgent); // Debugging line
@@ -415,19 +415,19 @@ function sendSms(phoneNumber) {
             if (isAndroid) {
                 androidButton.style.display = 'block';
                 iosButton.style.display = 'none';
-                toggleButton.style.display = 'block';
+                // toggleButton.style.display = 'block';
                 desktopButtons.style.display = 'none';
                 console.log("Android detected"); // Debugging line
             } else if (isIOS && !window.MSStream) {
                 iosButton.style.display = 'block';
                 androidButton.style.display = 'none';
-                toggleButton.style.display = 'block';
+                // toggleButton.style.display = 'block';
                 desktopButtons.style.display = 'none';
                 console.log("iOS detected"); // Debugging line
             } else {
                 androidButton.style.display = 'none';
                 iosButton.style.display = 'none';
-                toggleButton.style.display = 'none';
+                // toggleButton.style.display = 'none';
                 insertDesktopButtons();
                 console.log("Desktop browser detected"); // Debugging line
             }
@@ -447,15 +447,15 @@ function sendSms(phoneNumber) {
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            var tripId = '<?php echo $tripId; ?>';
+            // var tripId = '<?php echo $tripId; ?>';
 
-            if (tripId && (isIOS || isAndroid)) {
-                createUnilink(tripId);
-            }
+            // if (tripId && (isIOS || isAndroid)) {
+            //     createUnilink(tripId);
+            // }
             handleDownloadButton();
             loadFooter();
             handleCookieBanner();
-            handleFacebookDisclaimer();
+            // handleFacebookDisclaimer();
         });
     </script>
 </body>
