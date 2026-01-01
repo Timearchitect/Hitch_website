@@ -99,7 +99,7 @@
                 <li nav-item><a href="index.html">Hem</a></li>
                 <li nav-item><a href="about-us.html">Om oss</a></li>
                 <li nav-item><a href="privacypolicy.html">Integritetspolicy</a></li>
-                <!-- <li nav-item><a href="https://hitch-e4a25.firebaseapp.com/">Web-App (Sök)</a></li> -->
+                <li nav-item><a href="https://hitch-e4a25.web.app/">Web-App</a></li>
                 <li nav-item><a href="contact-us.html">Kontakta oss</a></li>
                 <li nav-item><a href="<?php echo $ogUrl; ?>">Resa</a></li>
             </ul>

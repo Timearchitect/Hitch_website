@@ -8,7 +8,7 @@ import { getApiSecret } from "./googlecouldsm.js"; // Import the function to fet
 
 firebaseConfig = {
     apiKey: "placeholder",
-    authDomain: "hitch-e4a25.firebaseapp.com",
+    authDomain: "hitch-e4a25.web.app",
     databaseURL: "https://hitch-e4a25-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "hitch-e4a25",
     storageBucket: "hitch-e4a25.appspot.com",
