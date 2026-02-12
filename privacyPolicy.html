@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hitch app</title>
-    <script src="hamburger.js" defer></script>
+    <script src="navbar.js" defer></script>
     <link rel="stylesheet" href="style2.css" />
     <script src="script.js" defer></script>
     <link rel="icon" type="image/x-icon" href="res/favicon.png" />
@@ -15,22 +15,8 @@
     <!--navbar-->
 
     <main>
-        <nav class="navbar">
-            <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
-            <ul class="nav-menu">
-                <li nav-item><a href="index.html">Hem</a></li>
-                <li nav-item><a href="about-us.html">Om oss</a></li>
-                <li nav-item><a href="privacypolicy.html">Integritetspolicy</a></li>
-                <li nav-item><a href="https://hitch-e4a25.web.app/">Web-App</a></li>
-                <li nav-item><a href="contact-us.html">Kontakta oss</a></li>
-                <!-- <li nav-item><a href="trip-page.html">Resa</a></li> -->
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <!-- Navbar placeholder -->
+        <div id="navbar-placeholder"></div>
         <br />
         <br />
         <br />
@@ -40,7 +26,7 @@
         <div>
             <br />
             <br />
-            <br />           
+            <br />
 
             <p>Last updated: May 20, 2025, App Version 0.11.3 -</p>
 
@@ -123,13 +109,16 @@
             refuse our cookies, you may not be able to use some portions of this Service.
             <br />
             <br />
-           <!-- underline this part -->
-            <u>Currently, the app nor the website does <b>not</b> collect cookies to track users. But may be doing so in the
-                future.</u> 
+            <!-- underline this part -->
+            <u>Currently, the app nor the website does <b>not</b> collect cookies to track users. But may be doing so in
+                the
+                future.</u>
             <br />
-            <br />                
-            Within the app some cookies are created and saved in the cache memory of your device. This is solely used to facilitate a smoother user experience. For example remember your login credentials the next time you use the app.
-          
+            <br />
+            Within the app some cookies are created and saved in the cache memory of your device. This is solely used to
+            facilitate a smoother user experience. For example remember your login credentials the next time you use the
+            app.
+
 
 
             <h2>Third-party services</h2>
@@ -170,13 +159,13 @@
             <h2>Anonymous data sharing for social benefit</h2>
 
             <p>
-            In some cases, we may share anonymous and aggregated data with public institutions, municipalities,
-            academic researchers, or nonprofit organizations. This data is used solely to support initiatives
-            that promote and improve ridesharing and sustainable transportation in society.
-            <br /><br />
-            The shared data never includes personally identifiable information and is anonymized in such a way
-            that individual users cannot be identified. This enables us to contribute to meaningful social and
-            environmental progress while maintaining your privacy and trust.
+                In some cases, we may share anonymous and aggregated data with public institutions, municipalities,
+                academic researchers, or nonprofit organizations. This data is used solely to support initiatives
+                that promote and improve ridesharing and sustainable transportation in society.
+                <br /><br />
+                The shared data never includes personally identifiable information and is anonymized in such a way
+                that individual users cannot be identified. This enables us to contribute to meaningful social and
+                environmental progress while maintaining your privacy and trust.
             </p>
 
 
@@ -192,7 +181,8 @@
             <h2>Links to Other Sites</h2>
 
             This Service may contain links to other sites. If you click on a third-party link, you will be directed to
-            that site. Note that these external sites are not operated by Hitch. Therefore, I strongly advise you to review
+            that site. Note that these external sites are not operated by Hitch. Therefore, I strongly advise you to
+            review
             the Privacy Policy of these websites. I have no control over and assume no responsibility for the content,
             privacy policies, or practices of any third-party sites or services.
 
@@ -209,13 +199,14 @@
                 <p>
                     We may update our Privacy Policy from time to time. It is advised to review this page periodically
                     for any changes. We will notify you of any updates by posting the new Privacy Policy on this page.
-                    
-                    <h3>Privacy policy change log</h3>
-                    <ul>
-                    <li><b>2025-05-20</b> - Added section on anonymous data sharing for social benefit and a changelog. App version 0.11.3</li>
+
+                <h3>Privacy policy change log</h3>
+                <ul>
+                    <li><b>2025-05-20</b> - Added section on anonymous data sharing for social benefit and a changelog.
+                        App version 0.11.3</li>
                     <li><b>2024-07-05</b> - Policy updated for release 0.9.21.</li>
                     <li><b>2023-08-14</b> - Initial policy published</li>
-                    </ul>
+                </ul>
                 </p>
             </blockquote>
             <br />
@@ -263,7 +254,7 @@
         }
 
         // Load the footer and handle cookie banner when the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             loadFooter();
             handleCookieBanner();
         });

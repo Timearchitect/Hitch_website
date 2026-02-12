@@ -5,10 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hitch App</title>
-     <!-- SEO Meta Description -->
-    <meta name="description" content="Organisera din samåkning enkelt med Hitch App - en smidig, billig och hållbar lösning för delad transport.">
+    <!-- SEO Meta Description -->
+    <meta name="description"
+        content="Organisera din samåkning enkelt med Hitch App - en smidig, billig och hållbar lösning för delad transport.">
     <meta property="og:title" content="Hitch" />
-    <meta property="og:description" content="Hitcha dit du ska!" />
+    <meta property="og:description"
+        content="Organisera din samåkning enkelt med Hitch App - en smidig, billig och hållbar lösning för delad transport." />
     <meta property="og:image" content="https://hitchapp.se/res/oghitch3.png" />
     <meta property="og:url" content="https://hitchapp.se" />
     <meta property="og:type" content="website" />
@@ -16,9 +18,9 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="style2.css" />
     <!-- <link rel="stylesheet" href="userAgentOverride.css" /> -->
-    <script src="hamburger.js" defer></script>
+    <script src="navbar.js" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5298669925004351"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <script>
         // Function to load the footer
         function loadFooter() {
@@ -45,9 +47,9 @@
         }
 
 
-                // Function to handle download button based on user agent
         // Function to handle download button based on user agent
-       // Function to handle download button based on user agent
+        // Function to handle download button based on user agent
+        // Function to handle download button based on user agent
         // Function to show/hide download buttons based on user agent
         // Function to show/hide download buttons based on user agent
         // Function to handle download button based on user agent
@@ -78,11 +80,11 @@
         }
 
         // Function to insert desktop buttons
-// Function to insert desktop buttons
-// Function to insert desktop buttons
-function insertDesktopButtons() {
-    var desktopButtons = document.getElementById('desktop-buttons');
-    desktopButtons.innerHTML = `
+        // Function to insert desktop buttons
+        // Function to insert desktop buttons
+        function insertDesktopButtons() {
+            var desktopButtons = document.getElementById('desktop-buttons');
+            desktopButtons.innerHTML = `
         <a href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share" class="desktop-buttons">
             <img src="./res/googleplay.svg" width="200" alt="Google Play Store" />
         </a>
@@ -90,14 +92,14 @@ function insertDesktopButtons() {
             <img src="./res/appstore.svg" width="200" alt="App Store" />
         </a>
     `;
-}
+        }
 
         // Load the footer, handle cookie banner, and handle download buttons when the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             handleDownloadButton();
             loadFooter();
             handleCookieBanner();
-          
+
         });
     </script>
     <!-- <script type="module" src="script.js"></script>
@@ -110,7 +112,7 @@ function insertDesktopButtons() {
         <div class="home-wrap">
             <header class="v-header container">
 
-              
+
 
                 <!-- <img src="./res/Release-circle.png" alt="New Image" width="160" style="position: absolute; bottom: 10px; right: 10px; z-index: 0;" /> -->
 
@@ -132,17 +134,17 @@ function insertDesktopButtons() {
                        <path id="curve" fill="#02DDA6" fill-opacity="0.5" 
                             d="M0,256L48,234.7C96,213,192,171,288,144C384,117,480,107,576,138.7C672,171,768,245,864,266.7C960,288,1056,256,1152,213.3C1248,171,1344,117,1392,90.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
                       </path> -->
-                      <!-- Text on the curve -->
-                      <!-- <text width="100%">
+                <!-- Text on the curve -->
+                <!-- <text width="100%">
                         <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle" class="curve-text">
                           Follow the Curve with This Text
                         </textPath>
                       </text> -->
-                    </svg>
-                  </div>
-                
-            </header>
+                </svg>
         </div>
+
+        </header>
+    </div>
     </div>
     <!-- <div id="new-app-banner">
         <h2>🚀 Ny App Sommarem 2024! 🚀</h2>
@@ -151,92 +153,94 @@ function insertDesktopButtons() {
      -->
 
     <main>
-        <!--navbar-->
-        <nav class="navbar frosted">
-            <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
-            <ul class="nav-menu">
-                <li nav-item><a href="index.html">Hem</a></li>
-                <li nav-item><a href="about-us.html">Om oss</a></li>
-                <li nav-item><a href="privacypolicy.html">Integritetspolicy</a></li>
-                <li nav-item><a href="https://hitch-e4a25.web.app/">Web-App</a></li>
-                <li nav-item><a href="contact-us.html">Kontakta oss</a></li>
-                <!-- <li nav-item><a href="https://alrik.hitchapp.se/trip/dhgfsdyufnsj">Resa</a></li> -->
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <!-- Navbar placeholder -->
+        <div id="navbar-placeholder" class="frosted"></div>
         <div id="logo-parent"><a class="main-logo" href="index.html"><img src="res\Logo5.png"
                     alt="[logo here!!!]" /></a>
         </div>
-       
+
         <div id="content-container">
             <img src="./img/Sweden_map.png" alt="frame" class="responsive-image">
-        <div id="info-text">
-   
-           
-            <h4>Dela resan, dela kostnaden – med Hitch</h4>
-           <h3> <p>Hitch är verktyget som förenar förare med passagerare för en smidigare och mer kostnadseffektiv resa. 
-                Som förare kan du fylla dina tomma säten och dela på kostnaderna, medan passagerare enkelt hittar prisvärda alternativ till sitt mål. 
-                </p>
-            <p>Tillsammans gör vi det lättare att samåka och transportera varor genom Sverige, från norr till söder.</p>
-            <p>Ladda ner Hitch idag och börja samåka!</p>
-            </h3>
-            
-            <!-- <p>Applikationen är gratis att använda, tanken är att det ska tillkomma en "bokningsavgift" för att täcka de
+            <div id="info-text">
+
+
+                <h4>Dela resan, dela kostnaden – med Hitch</h4>
+                <h3>
+                    <p>Hitch är verktyget som förenar förare med passagerare för en smidigare och mer kostnadseffektiv
+                        resa.
+                        Som förare kan du fylla dina tomma säten och dela på kostnaderna, medan passagerare enkelt
+                        hittar prisvärda alternativ till sitt mål.
+                    </p>
+                    <p>Tillsammans gör vi det lättare att samåka och transportera varor genom Sverige, från norr till
+                        söder.</p>
+                    <p>Ladda ner Hitch idag och börja samåka!</p>
+                </h3>
+
+                <!-- <p>Applikationen är gratis att använda, tanken är att det ska tillkomma en "bokningsavgift" för att täcka de
                 kostnader att driva tjänsten.</p>
             <p>Vill du hjälpa till i detta skapande? <a href="https://www.hitchapp.se:40888/dlhitch2" target="_blank"
                     rel="noopener noreferrer">Ladda ner appen här</a> och kom med feedback.</p>
             <p>Sedan Hitcha dit du ska! </p> -->
-            <!-- <h4>Ladda ner Hitchapp idag och börja samåka!</h4> -->
-       
-            <div id="download-button-container">
-                <a id="android-button" href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share" class="download-button" style="display: none;">
-                    <img src="./res/google-play-icon.svg" alt="Google Play Store" class="icon" />
-                    <span class="button-text">Ladda ner</span>
-                </a>
-                <a id="ios-button" href="https://apps.apple.com/app/hitch-transport-hitch-hike/id6499305150" class="download-button" style="display: none;">
-                    <img src="./res/app-store-icon.svg" alt="App Store" class="icon" />
-                    <span class="button-text">Ladda ner</span>
-                </a>
-                <div id="desktop-buttons"></div>
+                <!-- <h4>Ladda ner Hitchapp idag och börja samåka!</h4> -->
+
+                <div id="download-button-container">
+                    <a id="android-button"
+                        href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share"
+                        class="download-button" style="display: none;">
+                        <img src="./res/google-play-icon.svg" alt="Google Play Store" class="icon" />
+                        <span class="button-text">Ladda ner</span>
+                    </a>
+                    <a id="ios-button" href="https://apps.apple.com/app/hitch-transport-hitch-hike/id6499305150"
+                        class="download-button" style="display: none;">
+                        <img src="./res/app-store-icon.svg" alt="App Store" class="icon" />
+                        <span class="button-text">Ladda ner</span>
+                    </a>
+                    <div id="desktop-buttons"></div>
+                </div>
+
             </div>
-        
-        </div>
         </div>
 
-        
-      
-    </div>
 
-    <div class="photo-container" style="display: flex; align-items: center;">
-        <!-- Text to the left of the image -->
-        <div id="info-text" class="info-text">
-            
-            <h4>Hitch i punktform</h4>
-          <p>Hitch är den smarta lösningen för dig som vill samåka eller skicka gods på ett enkelt, prisvärt och hållbart sätt. Med vår app får du full kontroll över dina resor och transporter. Här är några av fördelarna:</p>
-            <ul>
-                <li><strong>Smidigt sök</strong>: Hitta snabbt och enkelt samåkningar som passar dina behov, oavsett destination.</li><br>
-                <li><strong>Uträkning av kostnader</strong>: Få en tydlig och direkt beräkning av resans kostnad, så att du alltid vet vad du betalar för.</li> <br>
-                <li><strong>Hantering av platser</strong>: Se tillgängliga platser i bilen och boka din resa med bara några klick.</li>     <br>
-                <li><strong>Avtal om upphämtningsplatser</strong>: Kom överens med föraren om bekväma och effektiva upphämtningspunkter.</li> <br>
-                <li><strong>Prisvärt och hållbart</strong>: Spara pengar samtidigt som du minskar din miljöpåverkan genom att samåka.</li> <br>
-                <li><strong>Godstransporter</strong>: Förutom att samåka kan du också skicka gods med privatpersoner på ett smidigt och kostnadseffektivt sätt.</li> <br>
-                <li><strong>Gratis</strong>: Utöver detta är den ideelt driven och helt gratis för dig som användare!</li>
-            </ul>
-            <p>Med Hitch förenklar du både dina resor och transporter – tryggt, flexibelt och hållbart. Upptäck möjligheterna med Hitch idag!</p>
-           
+
         </div>
-    
-        <!-- Image to the right of the text -->
-        <div id="frame" style="flex-shrink: 0;">
-            <img src="./img/Frame_1a.png" alt="frame" style="width: 100%; max-width: 400px;">
+
+        <div class="photo-container" style="display: flex; align-items: center;">
+            <!-- Text to the left of the image -->
+            <div id="info-text" class="info-text">
+
+                <h4>Hitch i punktform</h4>
+                <p>Hitch är den smarta lösningen för dig som vill samåka eller skicka gods på ett enkelt, prisvärt och
+                    hållbart sätt. Med vår app får du full kontroll över dina resor och transporter. Här är några av
+                    fördelarna:</p>
+                <ul>
+                    <li><strong>Smidigt sök</strong>: Hitta snabbt och enkelt samåkningar som passar dina behov, oavsett
+                        destination.</li><br>
+                    <li><strong>Uträkning av kostnader</strong>: Få en tydlig och direkt beräkning av resans kostnad, så
+                        att du alltid vet vad du betalar för.</li> <br>
+                    <li><strong>Hantering av platser</strong>: Se tillgängliga platser i bilen och boka din resa med
+                        bara några klick.</li> <br>
+                    <li><strong>Avtal om upphämtningsplatser</strong>: Kom överens med föraren om bekväma och effektiva
+                        upphämtningspunkter.</li> <br>
+                    <li><strong>Prisvärt och hållbart</strong>: Spara pengar samtidigt som du minskar din miljöpåverkan
+                        genom att samåka.</li> <br>
+                    <li><strong>Godstransporter</strong>: Förutom att samåka kan du också skicka gods med privatpersoner
+                        på ett smidigt och kostnadseffektivt sätt.</li> <br>
+                    <li><strong>Gratis</strong>: Utöver detta är den ideelt driven och helt gratis för dig som
+                        användare!</li>
+                </ul>
+                <p>Med Hitch förenklar du både dina resor och transporter – tryggt, flexibelt och hållbart. Upptäck
+                    möjligheterna med Hitch idag!</p>
+
+            </div>
+
+            <!-- Image to the right of the text -->
+            <div id="frame" style="flex-shrink: 0;">
+                <img src="./img/Frame_1a.png" alt="frame" style="width: 100%; max-width: 400px;">
+            </div>
         </div>
-    </div>
-    
-    
+
+
 
 
         <!-- <div class="photo-container">
@@ -251,26 +255,48 @@ function insertDesktopButtons() {
                 <h4>Kommunikation</h4> <img src="./img/frame_3.png" alt="frame">
             </div>
         </div> -->
+
+        <h4><img src="./res/1024x1024-web.png" alt="Web-App" height="35" style="border-radius: 0.5rem;"> Web-App för
+            direktsökning</h4>
+        <h3>På Hitch web-app kan du söka på resor och också skapa lite söklänkar o diverse annat för Hitch appen.</h3>
+        <ul style="list-style: none; padding: 0;">
+            <li style="display: inline-block; margin: 0.5rem;">
+                <a href="https://hitch-e4a25.web.app/searchRides"
+                    style="background: #2D5A4F; color: white; padding: 0.8rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold; display: inline-block; transition: background 0.3s;"
+                    onmouseover="this.style.background='#1a3d33'" onmouseout="this.style.background='#2D5A4F'">🔍 Sök
+                    resor</a>
+            </li>
+            <li style="display: inline-block; margin: 0.5rem;">
+                <a href="https://hitch-e4a25.web.app/webapp/createSearchLink"
+                    style="background: #2D5A4F; color: white; padding: 0.8rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold; display: inline-block; transition: background 0.3s;"
+                    onmouseover="this.style.background='#1a3d33'" onmouseout="this.style.background='#2D5A4F'">➕ Skapa
+                    söklänk</a>
+            </li>
+        </ul>
+
         <h4><img src="./res/ic_beta.png" alt="Beta" height="40"> Anmälan till beta-test</h4>
-        <h3>Vi uppskattar din hjälp med att utveckla vår app! För att gå med i Beta-programmet, använd följande länkar:</h3>
+        <h3>Vi uppskattar din hjälp med att utveckla vår app! För att gå med i Beta-programmet, använd följande länkar:
+        </h3>
         <ul>
-            <li><a href="https://appdistribution.firebase.dev/i/11c3d5d47acc6f21">Ladda ner för Android via Firebase App Distribution</a></li>
-            <li><a href="https://testflight.apple.com/join/wrB8RKBd" target="_blank" rel="noopener noreferrer">Ladda ner för iPhone via TestFlight</a></li>            
-        </ul>  
-      
+            <li><a href="https://appdistribution.firebase.dev/i/11c3d5d47acc6f21">Ladda ner för Android via Firebase App
+                    Distribution</a></li>
+            <li><a href="https://testflight.apple.com/join/wrB8RKBd" target="_blank" rel="noopener noreferrer">Ladda ner
+                    för iPhone via TestFlight</a></li>
+        </ul>
+
     </main>
     <div id="footer-placeholder"></div>
     <div id="cookie-banner" style="display: none;">
         <div style="background-color: #416454; padding: 10px; text-align: center; border-top: 1px solid #000000;">
             <p>
-                We do not use cookies to track users. For more details, please review our 
+                We do not use cookies to track users. For more details, please review our
                 <a href="/privacypolicy.html">Privacy Policy</a>.
             </p>
             <button onclick="acceptCookies()">OK</button>
         </div>
     </div>
 
-    
+
 
 
 </body>

@@ -14,7 +14,11 @@
                     },
                     {
                         "/": "/trip/*",
-                        "comment": "Matches any URL with a path that starts with /product/."
+                        "comment": "Matches any URL with a path that starts with /trip/."
+                    },
+                    {
+                        "/": "/app/*",
+                        "comment": "Matches any URL with a path that starts with /app/."
                     },
                     {
                         "/": "/secret",

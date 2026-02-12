@@ -13,32 +13,17 @@
     <meta property="og:url" content="https://hitchapp.se/trip/defaultTripId" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script src="hamburger.js" defer></script>
+    <script src="navbar.js" defer></script>
     <link rel="stylesheet" href="style2.css" />
     <link rel="icon" type="image/x-icon" href="res/favicon.png" />
 </head>
 
 <body>
     <main>
-        <!--navbar-->
-        <nav class="navbar">
-            <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
-            <ul class="nav-menu">
-                <li nav-item><a href="index.html">Hem</a></li>
-                <li nav-item><a href="about-us.html">Om oss</a></li>
-                <li nav-item><a href="privacypolicy.html">Integritetspolicy</a></li>
-                <li nav-item><a href="https://hitch-e4a25.web.app/">Web-App</a></li>
-                <li nav-item><a href="contact-us.html">Kontakta oss</a></li>
-                <li nav-item><a href="trip-page.html">Resa</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <!-- Navbar placeholder -->
+        <div id="navbar-placeholder"></div>
         <div class="containera">
-        <!-- <section id="trip"> -->
+            <!-- <section id="trip"> -->
             <!-- <br />
             <br />
             <br /> -->
@@ -51,39 +36,42 @@
             <div id="smsModal" class="modal">
                 <h3>Öppna resan i Hitch-appen</h3>
                 <p>Ange ditt svenska telefonnummer så skickar vi en länk till din telefon (t.ex. +46701234567):</p>
-                <input type="text" id="phoneNumberInput" value="+467" placeholder="+467XXXXXXXX" pattern="\+467\d{8}" title="Please enter a valid Swedish phone number starting with +467" />
+                <input type="text" id="phoneNumberInput" value="+467" placeholder="+467XXXXXXXX" pattern="\+467\d{8}"
+                    title="Please enter a valid Swedish phone number starting with +467" />
                 <div class="button-container">
                     <button id="sendLinkButton" class="primary-button">Skicka länk</button>
                     <button id="cancelButton" class="secondary-button">Avbryt</button>
                 </div>
-                <p id="error-message" style="color: red; display: none;">Vänligen ange ett giltigt svenskt telefonnummer som börjar med +467 och har 8 siffror därefter.</p>
+                <p id="error-message" style="color: red; display: none;">Vänligen ange ett giltigt svenskt telefonnummer
+                    som börjar med +467 och har 8 siffror därefter.</p>
             </div>
-            
+
 
             <div style="display: flex; justify-content: center; margin-top: 20px;">
                 <a onclick="goToTripOrAppstore()">
-                    <img src="res/default_image1.png" 
-                         alt="Trip Image" 
-                         style="
+                    <img src="res/default_image1.png" alt="Trip Image" style="
                             width: 100%; 
                             max-width: 600px; 
                             display: block; 
                             margin: auto; 
                             box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2), 0px 2px 6px rgba(0, 0, 0, 0.1); 
                             border-radius: 10px; 
-                            cursor: pointer;"
-                    />
+                            cursor: pointer;" />
                 </a>
             </div>
 
-            <h4><p style="text-align: center;" >Denna resa finns i Hitch-app! <br>
-                <br>
-                För att se alla detaljer och boka en plats, ladda ner Hitch nu. </p></h4>
+            <h4>
+                <p style="text-align: center;">Denna resa finns i Hitch-app! <br>
+                    <br>
+                    För att se alla detaljer och boka en plats, ladda ner Hitch nu.
+                </p>
+            </h4>
 
             <div id="download-button-container"></div>
 
             <div class="icons-container">
-                <a id="android-button" href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share">
+                <a id="android-button"
+                    href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share">
                     <img src="./res/googleplay.svg" width="200" alt="Google Play Store">
                 </a>
                 <a id="ios-button" href="https://apps.apple.com/app/hitch-transport-hitch-hike/id6499305150">
@@ -95,14 +83,19 @@
 
             <p id="facebook-disclaimer" class="disclaimer" style="display: none; color: black">
                 <img src="./img/Facebook_logo_PNG12.png" alt="Facebook Logo" class="facebook-logo">
-                <em>Observera: Länkar fungerar inte alltid som förväntat i Facebooks och Instagrams webbläsare... 
-                Om du redan har installerat appen, försök att markera länken nedan genom att trycka och hålla nere, och öppna Hitch via markeringsmenyn. 
-                Om inget fungerar, öppna appen manuellt och sök efter resan. </em>  
-                <p id="unilink" style="margin-top: 20px; word-wrap: break-word; white-space: normal; display: none; color: greenyellow;"></p>
+                <em>Observera: Länkar fungerar inte alltid som förväntat i Facebooks och Instagrams webbläsare...
+                    Om du redan har installerat appen, försök att markera länken nedan genom att trycka och hålla nere,
+                    och öppna Hitch via markeringsmenyn.
+                    Om inget fungerar, öppna appen manuellt och sök efter resan. </em>
+            <p id="unilink"
+                style="margin-top: 20px; word-wrap: break-word; white-space: normal; display: none; color: greenyellow;">
+            </p>
             </p>
 
             <div style="display: flex; justify-content: center; margin-top: 20px;">
-                <button id="disclaimer-toggle" style=" background-color: transparent; color: black; border: none; padding: 0; cursor: pointer; font-size: 1em; text-decoration: underline;" onClick="toggleDisclaimer()">
+                <button id="disclaimer-toggle"
+                    style=" background-color: transparent; color: black; border: none; padding: 0; cursor: pointer; font-size: 1em; text-decoration: underline;"
+                    onClick="toggleDisclaimer()">
                     ... Appen är nedladdad ...
                 </button>
             </div>
@@ -114,7 +107,7 @@
     <div id="cookie-banner" style="display: none;">
         <div style="background-color: #416454; padding: 10px; text-align: center; border-top: 1px solid #000000;">
             <p>
-                We do not use cookies to track users. For more details, please review our 
+                We do not use cookies to track users. For more details, please review our
                 <a href="/privacypolicy.html">Privacy Policy</a>.
             </p>
             <button onclick="acceptCookies()">OK</button>
@@ -123,7 +116,7 @@
 
     <script>
 
-function goToTripOrAppstore() {
+        function goToTripOrAppstore() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
             const tripId = "<?php echo $tripId; ?>";
 
@@ -155,64 +148,64 @@ function goToTripOrAppstore() {
                 // Desktop fallback alertdialoge that descibbes tht hitch is in your appstore on your mobilephone
                 openSmsModal();
                 // alert("Hitch finns i din app-butik på din mobiltelefon!");
-              
+
             }
         }
 
         // Open the modal
-function openSmsModal() {
-    const modal = document.getElementById('smsModal');
-    modal.style.display = 'block';
+        function openSmsModal() {
+            const modal = document.getElementById('smsModal');
+            modal.style.display = 'block';
 
-    // Handle sending the phone number
-    document.getElementById('sendLinkButton').onclick = function () {
-        let phoneNumber = document.getElementById('phoneNumberInput').value.replace(/\s+/g, '');
-        const errorMessage = document.getElementById('error-message');
-        const phonePattern = /^\+467\d{8}$/;
+            // Handle sending the phone number
+            document.getElementById('sendLinkButton').onclick = function () {
+                let phoneNumber = document.getElementById('phoneNumberInput').value.replace(/\s+/g, '');
+                const errorMessage = document.getElementById('error-message');
+                const phonePattern = /^\+467\d{8}$/;
 
-        if (phonePattern.test(phoneNumber)) {
-            sendSms(phoneNumber); // Use sendSms function
-            modal.style.display = 'none'; // Close modal
-            errorMessage.style.display = 'none'; // Hide error message
-        } else {
-            errorMessage.style.display = 'block'; // Show error message
+                if (phonePattern.test(phoneNumber)) {
+                    sendSms(phoneNumber); // Use sendSms function
+                    modal.style.display = 'none'; // Close modal
+                    errorMessage.style.display = 'none'; // Hide error message
+                } else {
+                    errorMessage.style.display = 'block'; // Show error message
+                }
+            };
+
+            // Handle cancel
+            document.getElementById('cancelButton').onclick = function () {
+                modal.style.display = 'none';
+                document.getElementById('error-message').style.display = 'none'; // Hide error message
+            };
         }
-    };
 
-    // Handle cancel
-    document.getElementById('cancelButton').onclick = function () {
-        modal.style.display = 'none';
-        document.getElementById('error-message').style.display = 'none'; // Hide error message
-    };
-}
+        function sendSms(phoneNumber) {
+            var tripId = "<?php echo $tripId; ?>"; // Replace with actual trip ID from server-side
+            var smsApiUrl = "https://hitchapp.se:40890/send-sms";
 
-function sendSms(phoneNumber) {
-    var tripId = "gfhsghfsbsfghfgh";
-    var smsApiUrl = "https://hitchapp.se:40890/send-sms";
-
-    fetch(smsApiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            phoneNumber: phoneNumber,
-            tripId: tripId,
-        }),
-    })
-    .then(response => response.json()) // Ensure the server always returns JSON
-    .then(data => {
-        if (data.success) {
-            alert("Länken har skickats till ditt telefonnummer!"); // Success
-        } else {
-            alert(data.message || "Misslyckades att skicka länken. Försök igen."); // Use server-provided message
+            fetch(smsApiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    phoneNumber: phoneNumber,
+                    tripId: tripId,
+                }),
+            })
+                .then(response => response.json()) // Ensure the server always returns JSON
+                .then(data => {
+                    if (data.success) {
+                        alert("Länken har skickats till ditt telefonnummer!"); // Success
+                    } else {
+                        alert(data.message || "Misslyckades att skicka länken. Försök igen."); // Use server-provided message
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Ett fel inträffade. Försök igen."); // General error message
+                });
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert("Ett fel inträffade. Försök igen."); // General error message
-    });
-}
         function toggleDisclaimer() {
             var disclaimer = document.getElementById('facebook-disclaimer');
             var unilink = document.getElementById('unilink');
@@ -233,33 +226,33 @@ function sendSms(phoneNumber) {
             document.getElementById('cookie-banner').style.display = 'none';
         }
         function createUnilink(tripId) {
-        var unilink = 'https://hitchapp.se/trip/' + tripId;
+            var unilink = 'https://hitchapp.se/trip/' + tripId;
 
-        var linkElement = document.createElement('a');
-        linkElement.textContent = unilink;
+            var linkElement = document.createElement('a');
+            linkElement.textContent = unilink;
 
-        if (isIOS) {
-            linkElement.href = unilink;
+            if (isIOS) {
+                linkElement.href = unilink;
+            }
+            linkElement.style.color = 'purple';
+            linkElement.style.textDecoration = 'underline';
+            linkElement.style.cursor = 'pointer';
+
+            linkElement.addEventListener('click', function (e) {
+                e.preventDefault();
+                var range = document.createRange();
+                range.selectNodeContents(linkElement);
+                var selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+            });
+
+            document.getElementById('unilink').appendChild(linkElement);
         }
-        linkElement.style.color = 'purple';
-        linkElement.style.textDecoration = 'underline';
-        linkElement.style.cursor = 'pointer';
 
-        linkElement.addEventListener('click', function (e) {
-            e.preventDefault();
-            var range = document.createRange();
-            range.selectNodeContents(linkElement);
-            var selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-        });
-
-        document.getElementById('unilink').appendChild(linkElement);
-    }
-
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Example actions on load
-        createUnilink('defaultTripId');
+            createUnilink('defaultTripId');
 
         });
     </script>

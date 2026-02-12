@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Urbanist";
     src: url("res/Urbanist-VariableFont_wght.ttf");
-    
+
 }
 
 @font-face {
@@ -19,13 +19,15 @@
     --white: #ffffff;
     --sectionColor: rgb(179, 201, 195);
     --themeGradient: linear-gradient(0deg, rgba(222, 234, 234, 1) 0%, rgba(142, 164, 142, 1) 100%);
+    --black: #000000;
+    --purple: #782f75;
 }
 
 p {
     letter-spacing: 0.02em;
 }
 
-h1{
+h1 {
     letter-spacing: 0.05em;
     font-size: 50;
     font-family: "Urbanist";
@@ -37,14 +39,17 @@ h3 {
     letter-spacing: 0.05em;
     font-size: 30;
     font-weight: 300;
-   
+
     font-family: "Urbanist";
 
 }
+
 strong {
     letter-spacing: 0.07em;
-    font-weight: 570; /* Custom font weight */
-    font-family: "Urbanist"; /* Ensure it uses the Urbanist font */
+    font-weight: 570;
+    /* Custom font weight */
+    font-family: "Urbanist";
+    /* Ensure it uses the Urbanist font */
 }
 
 h4 {
@@ -63,7 +68,8 @@ h4 {
 h5 {
     font-weight: 500;
     font-family: "Jockey One";
-    font-size: 100;    /* Increase the font size, adjust as needed */
+    font-size: 100;
+    /* Increase the font size, adjust as needed */
 
     /* Ensure the h4 stays on top */
     color: black;
@@ -87,13 +93,19 @@ body {
 /* Text on the curve */
 .wave-text {
     position: absolute;
-    bottom: 0; /* Adjust this to position the text higher or lower relative to the viewport height */
-    left: 30%; /* Center horizontally */
+    bottom: 0;
+    /* Adjust this to position the text higher or lower relative to the viewport height */
+    left: 30%;
+    /* Center horizontally */
     transform: translateX(-50%);
-    text-align: center; /* Center the text */
-    font-size: 2vw; /* Adjust the font size relative to the viewport width */
-    padding: 0 2vw; /* Add padding to ensure the text doesn't touch the edges */
-    width: 90vw; /* Ensure the text container scales with the viewport width */
+    text-align: center;
+    /* Center the text */
+    font-size: 2vw;
+    /* Adjust the font size relative to the viewport width */
+    padding: 0 2vw;
+    /* Add padding to ensure the text doesn't touch the edges */
+    width: 90vw;
+    /* Ensure the text container scales with the viewport width */
 }
 
 .containera {
@@ -112,7 +124,7 @@ main {
     background-color: var(--themeColor);
     padding: 1rem;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-    
+
 }
 
 a {
@@ -150,10 +162,14 @@ a:hover {
 
 /* Text on the Curve */
 .curve-text {
-    font-size: 1.5rem; /* Adjust font size as needed */
-    fill: white; /* Text color */
-    font-weight: bold; /* Make text bold */
-    letter-spacing: 0.05em; /* Adjust spacing */
+    font-size: 1.5rem;
+    /* Adjust font size as needed */
+    fill: white;
+    /* Text color */
+    font-weight: bold;
+    /* Make text bold */
+    letter-spacing: 0.05em;
+    /* Adjust spacing */
 }
 
 
@@ -364,16 +380,15 @@ footer,
 header {
     padding-left: 10%;
     padding-right: 10%;
-    
+
 }
 
 main {
     padding-left: 15%;
     padding-right: 15%;
 }
-@media (min-width: 1500px){
 
-}
+@media (min-width: 1500px) {}
 
 @media (max-width: 700px) {
     .hamburger {
@@ -381,6 +396,7 @@ main {
         align-self: center;
         margin-right: 5rem;
     }
+
     .containera {
         /* width: 100%; */
         padding: 1rem;
@@ -460,7 +476,7 @@ main {
         justify-content: center;
         align-items: flex-start;
         text-align: left;
-       
+
     }
 
     #hitch-text {
@@ -469,27 +485,36 @@ main {
         margin-right: 20px;
     }
 
-  
+
     #desktop-buttons,
     #download-button-container {
-   
-      
-        align-items: center; /* Center items horizontally */
-        justify-content: center; /* Center items vertically */
-        text-align: center; /* Center text within the container */
-    
-        height: 100%; /* Ensure the container takes full height */
-        margin: 0 auto; /* Center the container itself */
+
+
+        align-items: center;
+        /* Center items horizontally */
+        justify-content: center;
+        /* Center items vertically */
+        text-align: center;
+        /* Center text within the container */
+
+        height: 100%;
+        /* Ensure the container takes full height */
+        margin: 0 auto;
+        /* Center the container itself */
     }
 
     #frame img {
-        width: 100%; /* Ensure the image also takes the full width */
-        max-width: 100%; /* Remove the width limit */
+        width: 100%;
+        /* Ensure the image also takes the full width */
+        max-width: 100%;
+        /* Remove the width limit */
     }
 
     .photo-container {
-        flex-direction: column; /* Ensure photo container stacks vertically on small screens */
-        gap: 20px; /* Keep the spacing between the items */
+        flex-direction: column;
+        /* Ensure photo container stacks vertically on small screens */
+        gap: 20px;
+        /* Keep the spacing between the items */
     }
 
 
@@ -502,11 +527,15 @@ main {
 
 .photo-container {
     display: flex;
-    justify-content: center; /* Center the items horizontally */
-    align-items: center; /* Center the items vertically */
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    gap: 20px; /* Optional: Add some space between the items */
-  
+    justify-content: center;
+    /* Center the items horizontally */
+    align-items: center;
+    /* Center the items vertically */
+    flex-wrap: wrap;
+    /* Allow items to wrap to the next line */
+    gap: 20px;
+    /* Optional: Add some space between the items */
+
 }
 
 .photo-container img {
@@ -514,23 +543,29 @@ main {
     max-width: 250px;
     /* height: auto; */
 }
+
 /* Add this to your CSS file */
 #desktop-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 50px; /* Adjust the gap as needed */
-    padding: 20px; /* Optional: Add padding around the container */
+    gap: 50px;
+    /* Adjust the gap as needed */
+    padding: 20px;
+    /* Optional: Add padding around the container */
 }
 
 
 /* Add this to your style.css */
 #download-button-container {
     display: flex;
-    justify-content: center; /* Centers the button horizontally */
-    align-items: center; /* Centers items vertically (in case of larger container) */
-    margin-top: 20px; /* Adds some space above the button */
+    justify-content: center;
+    /* Centers the button horizontally */
+    align-items: center;
+    /* Centers items vertically (in case of larger container) */
+    margin-top: 20px;
+    /* Adds some space above the button */
 }
 
 .download-button {
@@ -545,7 +580,8 @@ main {
     font-size: 30px;
     font-weight: 570;
     max-width: 200px;
-    width: 100%; /* Ensures the button spans up to its max width */
+    width: 100%;
+    /* Ensures the button spans up to its max width */
     border: none;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -553,8 +589,10 @@ main {
 
 .download-button .icon {
     margin-right: 8px;
-    display: inline-block; /* Ensure the icon is treated as an inline block */
-    vertical-align: middle; /* Vertically align the icon in the middle */
+    display: inline-block;
+    /* Ensure the icon is treated as an inline block */
+    vertical-align: middle;
+    /* Vertically align the icon in the middle */
     width: 30px;
     height: 30px;
 }
@@ -562,6 +600,7 @@ main {
 .download-button:hover {
     background-color: #442434;
 }
+
 .facebook-logo {
     height: 20px;
     width: auto;
@@ -578,21 +617,24 @@ main {
 }
 
 #content-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            gap: 20px; /* Adjust the gap as needed */
-            padding: 20px; /* Optional: Add padding around the container */
-  
-        }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    /* Adjust the gap as needed */
+    padding: 20px;
+    /* Optional: Add padding around the container */
+
+}
 
 #content-container img {
-        
-            height: auto;
-            flex: 1 1 300px; /* Allow the image to grow and shrink */
-       
+
+    height: auto;
+    flex: 1 1 300px;
+    /* Allow the image to grow and shrink */
+
 }
 
 #info-text {
@@ -607,7 +649,7 @@ main {
 
 .responsive-image {
     width: 100%;
-max-height: 80vh;
+    max-height: 80vh;
     height: auto;
     object-fit: contain;
 }
@@ -639,43 +681,53 @@ max-height: 80vh;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 50px; /* Adjust the gap as needed */
+    gap: 50px;
+    /* Adjust the gap as needed */
 
 }
 
 .icons-container a {
     gap: 50px;
     display: inline-block;
-    width: 200px; /* Adjust the width as needed */
-    text-align: center; /* Center the content inside the link */
+    width: 200px;
+    /* Adjust the width as needed */
+    text-align: center;
+    /* Center the content inside the link */
 }
 
 #curiosity-banner {
     position: fixed;
-    bottom: -100px; /* Start outside the viewport */
+    bottom: -100px;
+    /* Start outside the viewport */
     left: 50%;
     transform: translateX(-50%);
     background-color: #34495e;
     color: white;
     padding: 15px 30px;
-    border-radius: 10px 10px 0 0; /* Rounded corners on top */
+    border-radius: 10px 10px 0 0;
+    /* Rounded corners on top */
     box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
     font-size: 1.2rem;
     text-align: center;
     z-index: 1000;
-    opacity: 0.9; /* Slightly transparent to blend in nicely */
+    opacity: 0.9;
+    /* Slightly transparent to blend in nicely */
     cursor: pointer;
-    animation: slideUp 1.5s ease-out forwards; /* Smooth slide-in */
+    animation: slideUp 1.5s ease-out forwards;
+    /* Smooth slide-in */
 }
 
 #curiosity-banner:hover {
-    background-color: #2c3e50; /* Slight color change on hover */
+    background-color: #2c3e50;
+    /* Slight color change on hover */
 }
 
 @keyframes slideUp {
     to {
-        bottom: 0px; /* Final position at the bottom */
-        opacity: 1; /* Fully visible */
+        bottom: 0px;
+        /* Final position at the bottom */
+        opacity: 1;
+        /* Fully visible */
     }
 }
 
@@ -750,7 +802,8 @@ max-height: 80vh;
 }
 
 .primary-button:hover {
-    background-color: rgb(0, 100, 80); /* Slightly darker theme color */
+    background-color: rgb(0, 100, 80);
+    /* Slightly darker theme color */
 }
 
 .secondary-button {
@@ -761,4 +814,3 @@ max-height: 80vh;
 .secondary-button:hover {
     background-color: var(--sectionColor);
 }
-

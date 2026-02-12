@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="hamburger.js" defer></script>
+    <script src="navbar.js" defer></script>
     <link rel="stylesheet" href="style2.css" />
     <script src="script.js" defer></script>
     <title>Document</title>
@@ -12,34 +12,19 @@
 
 <body>
     <main>
-        <!--navbar-->
-        <nav class="navbar">
-            <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
-            <ul class="nav-menu">
-                <li nav-item><a href="index.html">Hem</a></li>
-                <li nav-item><a href="about-us.html">Om oss</a></li>
-                <li nav-item><a href="privacypolicy.html">Integritetspolicy</a></li>
-                <li nav-item><a href="https://hitch-e4a25.web.app/">Web-App</a></li>
-                <li nav-item><a href="contact-us.html">Kontakta oss</a></li>
-                <!-- <li nav-item><a href="trip-page.html">Resa</a></li> -->
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <!-- Navbar placeholder -->
+        <div id="navbar-placeholder"></div>
 
         <div class="containera">
-           <h3>Om du vill komma i kontakt med oss eller har några frågor. Tveka inte att höra av er!</h3> 
+            <h3>Om du vill komma i kontakt med oss eller har några frågor. Tveka inte att höra av er!</h3>
 
             <br>
-            <p > Till Jim:</p>
-            <b><a  href="mailto:jim@hitchapp.se">jim@hitchapp.se</a></b>
+            <p> Till Jim:</p>
+            <b><a href="mailto:jim@hitchapp.se">jim@hitchapp.se</a></b>
             <br>
             <br>
-            <p >Till teamet:</p>
-            <b><a  href="mailto:info@hitchapp.se">info@hitchapp.se</a></b>
+            <p>Till teamet:</p>
+            <b><a href="mailto:info@hitchapp.se">info@hitchapp.se</a></b>
         </div>
 
     </main>
@@ -68,7 +53,7 @@
         }
 
         // Load the footer and handle cookie banner when the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             loadFooter();
             handleCookieBanner();
         });

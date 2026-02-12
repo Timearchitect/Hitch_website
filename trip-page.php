@@ -84,7 +84,7 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="apple-itunes-app" content="app-id=6499305150, app-argument=hitchapp://trip/<?php echo $tripId; ?>">
-    <script src="hamburger.js" defer></script>
+    <script src="navbar.js" defer></script>
     <link rel="stylesheet" href="style2.css" />
     <link rel="icon" type="image/x-icon" href="res/favicon.png" />
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
@@ -92,23 +92,8 @@
 
 <body>
     <main>
-        <!--navbar-->
-        <nav class="navbar">
-            <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
-            <ul class="nav-menu">
-                <li nav-item><a href="index.html">Hem</a></li>
-                <li nav-item><a href="about-us.html">Om oss</a></li>
-                <li nav-item><a href="privacypolicy.html">Integritetspolicy</a></li>
-                <li nav-item><a href="https://hitch-e4a25.web.app/">Web-App</a></li>
-                <li nav-item><a href="contact-us.html">Kontakta oss</a></li>
-                <li nav-item><a href="<?php echo $ogUrl; ?>">Resa</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <!-- Navbar placeholder -->
+        <div id="navbar-placeholder"></div>
         <!-- <br />
         <br />
         <br /> -->

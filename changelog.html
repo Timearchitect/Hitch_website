@@ -4,73 +4,275 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="hamburger.js" defer></script>
+    <script src="navbar.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
-    <link rel="stylesheet" href="style2.css" />    
+    <link rel="stylesheet" href="style2.css" />
     <script>
-        window.onload = function () {
-            fetch('./public/changelog.md')
+        // Function to load the footer
+        function loadFooter() {
+            fetch('footer.html')
                 .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        }
+
+        // Function to handle cookie banner
+        function handleCookieBanner() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').classList.remove('hidden');
+            }
+        }
+
+        // Function to accept cookies
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            var cookieBanner = document.getElementById('cookie-banner');
+            cookieBanner.classList.add('hidden');
+        }
+
+        window.onload = function () {
+            loadFooter();
+            handleCookieBanner();
+
+            // Try to load markdown content
+            fetch('./public/changelog.md')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Markdown file not found');
+                    }
+                    return response.text();
+                })
                 .then(data => {
                     var md = window.markdownit();
                     var result = md.render(data);
                     document.getElementById('markdown-content').innerHTML = result;
+
+                    // Group h2 headers with their content
+                    groupChangelogSections();
+                })
+                .catch(error => {
+                    // Simple fallback if markdown file doesn't exist
+                    document.getElementById('markdown-content').innerHTML = `
+                        <div style="text-align: center; padding: 3rem; color: #666;">
+                            <h3>⚠️ Ändringsloggen kunde inte laddas</h3>
+                            <p>Vi har problem med att ladda ändringsloggen just nu. Försök igen senare.</p>
+                        </div>
+                    `;
                 });
-            };
+        };
+
+        function groupChangelogSections() {
+            const content = document.getElementById('markdown-content');
+            const h2Elements = content.querySelectorAll('h2');
+
+            h2Elements.forEach(h2 => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'changelog-section';
+
+                // Insert wrapper before h2
+                h2.parentNode.insertBefore(wrapper, h2);
+
+                // Move h2 into wrapper
+                wrapper.appendChild(h2);
+
+                // Move all following siblings until next h2
+                let nextElement = wrapper.nextElementSibling;
+                while (nextElement && nextElement.tagName !== 'H2') {
+                    const currentElement = nextElement;
+                    nextElement = nextElement.nextElementSibling;
+                    wrapper.appendChild(currentElement);
+                }
+            });
+        }
     </script>
 
+    <style>
+        .changelog-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
 
-    <title>Hitch App - Changelog</title>
+        .changelog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--black);
+            padding-bottom: 2rem;
+        }
+
+        .changelog-header h1 {
+            color: var(--sectionColor);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .changelog-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .changelog-item {
+            background: var(--sectionColor);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--sectionColor);
+        }
+
+        .changelog-item h3 {
+            color: var(--purple);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .changelog-item .date {
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: #666;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+        }
+
+        .changelog-item ul {
+            margin: 0;
+            padding-left: 1rem;
+        }
+
+        .changelog-item li {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        #markdown-content h1,
+        #markdown-content h3 {
+            color: var(--black);
+            /* margin-top: 2rem;
+            margin-left: 2rem;
+            margin-bottom: 1rem; */
+        }
+
+        #markdown-content h2 {
+            color: var(--purple);
+            /* margin-top: 2rem;
+            margin-left: 2rem;
+            margin-bottom: 1rem; */
+        }
+
+        /* Simple unified boxes for each changelog section */
+        .changelog-section {
+            background: var(--sectionColor);
+            border-radius: 0.8rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--purple);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .changelog-section h1,
+        .changelog-section h3 {
+            color: #000000;
+            background: var(--sectionColor);
+            padding: 1.5rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .changelog-section h2 {
+            color: #8B5CF6;
+            background: var(--sectionColor);
+            padding: 1.5rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .changelog-section p,
+        .changelog-section ul,
+        .changelog-section ol,
+        .changelog-section li {
+            padding: 0 1.5rem 1rem 1.5rem;
+            margin: 0;
+            color: var(--black);
+        }
+
+        .changelog-section *:last-child {
+            padding-bottom: 1.5rem;
+        }
+
+        #markdown-content ul,
+        #markdown-content ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        #markdown-content li {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .changelog-container {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            .changelog-header h1 {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .changelog-item h3 {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+
+
+    <title>Hitch App - Ändringslogg</title>
 </head>
 
 <body>
     <main>
-        <!--navbar-->
-        <nav class="navbar">
-            <a href="index.html"><img class="navbar-logo" src="res/Logo.png" alt="Hitch logo" /></a>
-            <ul class="nav-menu">
-                <li nav-item><a href="index.html">Hem</a></li>
-                <li nav-item><a href="about-us.html">Om oss</a></li>
-                <li nav-item><a href="privacypolicy.html">Integritetspolicy</a></li>
-                <li nav-item><a href="contact-us.html">Kontakta oss</a></li>
-                <li nav-item><a href="https://hitch-e4a25.web.app/">Web-App</a></li>
-                <li nav-item><a href="changelog.html">Ändringslogg</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <!-- Navbar placeholder -->
+        <div id="navbar-placeholder"></div>
 
-        <section id="changelog">
-            <h1>Welcome to Hitch App Changelog!</h1>
-            <p>Here you can find the latest updates and improvements we've made to Hitch App.</p>
-            <div id="markdown-content"></div> <!-- new div for markdown content -->
-        </section>
+        <div class="changelog-container">
+            <div class="changelog-header">
+                <h1>📝 Ändringslogg</h1>
+                <p>Här hittar du de senaste uppdateringarna och förbättringarna vi gjort i Hitch App. Vi arbetar
+                    ständigt för att göra din upplevelse bättre!</p>
+            </div>
+
+            <div id="markdown-content">
+                <!-- Markdown content will be loaded here, or fallback content if file not found -->
+            </div>
+        </div>
 
     </main>
-    <footer>
-        <br />
-        <ul>
-            <li>
-                <a href=""><img src="./img/intagramwhite.png" alt="IG" width="20" /></a>
-            </li>
 
-            <li id="facebook">
-                <a href="..."><img id="fblogo" src="./img/fbwhite.png" alt="FB" width="28" /></a>
-            </li>
-
-            <li id="Copyright">
-                <p>Copyright © 2024 | Jim Lewis Skoglund</p>
-            </li>
-
-            <li id="smallplaybtn">
-                <a href="https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share"><img
-                        src="./res/google-play-store-logo-png-25.png" alt="Playbutton" width="28" /></a>
-            </li>
-        </ul>
-    </footer>
+    <div id="footer-placeholder"></div>
+    <div id="cookie-banner" style="display: none;">
+        <div style="background-color: #416454; padding: 10px; text-align: center; border-top: 1px solid #000000;">
+            <p>
+                We do not use cookies to track users. For more details, please review our
+                <a href="/privacypolicy.html">Privacy Policy</a>.
+            </p>
+            <button onclick="acceptCookies()">OK</button>
+        </div>
+    </div>
 </body>
 
 </html>
