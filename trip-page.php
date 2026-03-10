@@ -30,52 +30,81 @@
 
     // If tripId is provided, fetch the trip data from the API
     if ($tripId) {
-        $apiUrl = "https://hitchapp.se:40890/trip-info/$tripId";
+        $apiUrl = "https://hitchapp.se:40890/trip-og-data/$tripId";
 
-        // Make a GET request to the API to fetch the trip data using curl
+        // Make a GET request to the unified endpoint using curl
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $apiUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Timeout after 10 seconds
-        $tripDataJson = curl_exec($ch);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $ogDataJson = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
         // Check if the request was successful
-        if ($httpCode == 200 && $tripDataJson !== false) {
-            $tripData = json_decode($tripDataJson, true);
+        if ($httpCode == 200 && $ogDataJson !== false) {
+            $ogData = json_decode($ogDataJson, true);
 
-            if (isset($tripData['origin_city']) && isset($tripData['destination_city']) && isset($tripData['date'])) {
-                // Format the date
-                $date = new DateTime($tripData['date']);
-                $formattedDate = $date->format('d M');
-
-                // Use the data to update the OG tags
-                $ogTitle = $formattedDate . " - Samåk mellan " . $tripData['origin_city'] . " och " . $tripData['destination_city'];
-                $ogDescription = $tripData['date_string'] . ", följ länken för att se detaljerna och boka resan!";
-
-                // Construct the OG image URL with the query parameters
-                $ogImage = "https://hitchapp.se:40890/generate-image?" . http_build_query([
-                    'origin_city' => $tripData['origin_city'],
-                    'origin_street' => $tripData['origin_street'],
-                    'destination_city' => $tripData['destination_city'],
-                    'destination_street' => $tripData['destination_street'],
-                    'date_string' => $tripData['date_string'],
-                ]);
-
-                $ogUrl = "https://hitchapp.se/trip/$tripId";  // The URL of the trip page
-                $androidUrl = "https://hitchapp.se:40888/dlhitch3";  // The URL to download the Android app
-                $iosUrl = "https://hitchapp.se:40888/dlhitch3";  // The URL to download the iOS app
-                // $tripMessage = "Denna resa finns i Hitch-app!<br><br>För att se alla detaljer och boka en plats, ladda ner Hitch nu.";
-            } else {
-                // Set default OG image if required data is not available
-                $ogImage = $defaultImage;
+            // Use the unified response directly (includes language detection)
+            if (isset($ogData['success']) && $ogData['success']) {
+                $ogTitle = $ogData['ogTitle'];
+                $ogDescription = $ogData['ogDescription'];
+                $ogImage = $ogData['ogImage'];
+                $ogUrl = $ogData['ogUrl'];
+                $androidUrl = $ogData['androidUrl'];
+                $iosUrl = $ogData['iosUrl'];
+                $tripMessage = $ogData['tripMessage'];
             }
-        } else {
-            // Set default OG image if API call fails
-            $ogImage = $defaultImage;
         }
     }
+
+    // if ($tripId) {
+    //     $apiUrl = "https://hitchapp.se:40890/trip-info/$tripId";
+
+    //     // Make a GET request to the API to fetch the trip data using curl
+    //     $ch = curl_init();
+    //     curl_setopt($ch, CURLOPT_URL, $apiUrl);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //     curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Timeout after 10 seconds
+    //     $tripDataJson = curl_exec($ch);
+    //     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    //     curl_close($ch);
+
+    //     // Check if the request was successful
+    //     if ($httpCode == 200 && $tripDataJson !== false) {
+    //         $tripData = json_decode($tripDataJson, true);
+
+    //         if (isset($tripData['origin_city']) && isset($tripData['destination_city']) && isset($tripData['date'])) {
+    //             // Format the date
+    //             $date = new DateTime($tripData['date']);
+    //             $formattedDate = $date->format('d M');
+
+    //             // Use the data to update the OG tags
+    //             $ogTitle = $formattedDate . " - Samåk mellan " . $tripData['origin_city'] . " och " . $tripData['destination_city'];
+    //             $ogDescription = $tripData['date_string'] . ", följ länken för att se detaljerna och boka resan!";
+
+    //             // Construct the OG image URL with the query parameters
+    //             $ogImage = "https://hitchapp.se:40890/generate-image?" . http_build_query([
+    //                 'origin_city' => $tripData['origin_city'],
+    //                 'origin_street' => $tripData['origin_street'],
+    //                 'destination_city' => $tripData['destination_city'],
+    //                 'destination_street' => $tripData['destination_street'],
+    //                 'date_string' => $tripData['date_string'],
+    //             ]);
+
+    //             $ogUrl = "https://hitchapp.se/trip/$tripId";  // The URL of the trip page
+    //             $androidUrl = "https://hitchapp.se:40888/dlhitch3";  // The URL to download the Android app
+    //             $iosUrl = "https://hitchapp.se:40888/dlhitch3";  // The URL to download the iOS app
+    //             // $tripMessage = "Denna resa finns i Hitch-app!<br><br>För att se alla detaljer och boka en plats, ladda ner Hitch nu.";
+    //         } else {
+    //             // Set default OG image if required data is not available
+    //             $ogImage = $defaultImage;
+    //         }
+    //     } else {
+    //         // Set default OG image if API call fails
+    //         $ogImage = $defaultImage;
+    //     }
+    // }
     ?>
     <meta property="og:title" content="<?php echo htmlspecialchars($ogTitle); ?>" />
     <meta property="og:description" content="<?php echo htmlspecialchars($ogDescription); ?>" />
