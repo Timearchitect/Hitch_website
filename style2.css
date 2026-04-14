@@ -1,13 +1,21 @@
+/* ============================================================
+   FONTS
+   ============================================================ */
+
 @font-face {
     font-family: "Urbanist";
     src: url("res/Urbanist-VariableFont_wght.ttf");
-
 }
 
 @font-face {
     font-family: "Jockey One";
     src: url("res/JockeyOne-Regular.ttf");
 }
+
+
+/* ============================================================
+   CSS VARIABLES & ROOT DEFAULTS
+   ============================================================ */
 
 :root {
     font-family: "Urbanist";
@@ -23,109 +31,105 @@
     --purple: #782f75;
 }
 
+
+/* ============================================================
+   TYPOGRAPHY
+   Note: font-family is inherited from :root — no need to repeat per element.
+   Note: font-size values without units (e.g. "50") are invalid CSS — likely a bug.
+   ============================================================ */
+
 p {
     letter-spacing: 0.02em;
 }
 
 h1 {
     letter-spacing: 0.05em;
-    font-size: 50;
-    font-family: "Urbanist";
+    font-size: 50; /* TODO: add a unit, e.g. 50px */
     font-weight: 500;
 }
 
 h2,
 h3 {
     letter-spacing: 0.05em;
-    font-size: 30;
+    font-size: 30; /* TODO: add a unit, e.g. 30px */
     font-weight: 300;
-
-    font-family: "Urbanist";
-
 }
 
 strong {
     letter-spacing: 0.07em;
     font-weight: 570;
-    /* Custom font weight */
-    font-family: "Urbanist";
-    /* Ensure it uses the Urbanist font */
 }
 
+/* Overlay text on images/video */
 h4 {
     font-weight: 500;
-    font-family: "Urbanist";
     font-size: 1.5em;
-    /* Increase the font size, adjust as needed */
     z-index: 1;
-    /* Ensure the h4 stays on top */
     color: white;
-    /* Make the text white, adjust based on your design */
-    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); */
-    /* Add shadow for readability */
 }
 
+/* Large display heading — uses Jockey One instead of Urbanist */
 h5 {
-    font-weight: 500;
     font-family: "Jockey One";
-    font-size: 100;
-    /* Increase the font size, adjust as needed */
-
-    /* Ensure the h4 stays on top */
+    font-weight: 500;
+    font-size: 100; /* TODO: add a unit, e.g. 100px */
     color: black;
-    /* Make the text white, adjust based on your design */
-    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); */
-    /* Add shadow for readability */
 }
 
 
+/* ============================================================
+   BODY & MAIN LAYOUT
+   ============================================================ */
 
 body {
     height: 100%;
     background: var(--themeColor);
-    /* color: var(--white); */
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Text on the curve */
-.wave-text {
-    position: absolute;
-    bottom: 0;
-    /* Adjust this to position the text higher or lower relative to the viewport height */
-    left: 30%;
-    /* Center horizontally */
-    transform: translateX(-50%);
-    text-align: center;
-    /* Center the text */
-    font-size: 2vw;
-    /* Adjust the font size relative to the viewport width */
-    padding: 0 2vw;
-    /* Add padding to ensure the text doesn't touch the edges */
-    width: 90vw;
-    /* Ensure the text container scales with the viewport width */
+/* Shared horizontal padding for top-level layout elements */
+.center,
+main,
+nav,
+footer,
+header {
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-.containera {
-    /*     width: 90rem;
-    height: 45rem; */
-    margin-top: 5rem;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    padding: 3rem;
-}
-
+/* Main content area — overrides shared padding above */
 main {
     flex: 1;
     background-color: var(--themeColor);
-    padding: 1rem;
+    padding: 1rem 15%;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-
 }
+
+section {
+    margin-top: 4rem;
+    border-radius: 1rem;
+    min-height: 200px;
+    padding: 1rem;
+    color: black;
+    background: var(--sectionColor);
+    box-shadow: inset 2px 2px 2px var(--themeColor);
+}
+
+hr {
+    color: var(--white);
+}
+
+li {
+    padding-left: 10px;
+}
+
+
+/* ============================================================
+   LINKS
+   ============================================================ */
 
 a {
     text-decoration: none;
@@ -137,85 +141,11 @@ a:hover {
     font-weight: 500;
 }
 
-#logo-parent {
-    z-index: -1;
-    position: fixed;
-    width: 70%;
-}
 
-.main-logo {
-    z-index: -1;
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
-    /* filter: brightness(0) invert(1) drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5)); */
-    width: 30vw;
-    padding: 1rem 0rem;
-}
+/* ============================================================
+   NAVBAR
+   ============================================================ */
 
-.main-logo img {
-    width: 100%;
-}
-
-
-/* Text on the Curve */
-.curve-text {
-    font-size: 1.5rem;
-    /* Adjust font size as needed */
-    fill: white;
-    /* Text color */
-    font-weight: bold;
-    /* Make text bold */
-    letter-spacing: 0.05em;
-    /* Adjust spacing */
-}
-
-
-#main-logo {
-    z-index: -5;
-    margin-top: 4rem auto;
-    filter: brightness(0) invert(1);
-    width: 20%;
-    min-width: 150px;
-    padding: 1rem 1rem;
-    position: absolute;
-}
-
-#changes {
-    padding: 0.8rem 2rem;
-    border: dotted var(--transparent_white) 5px;
-    border-spacing: 5px 12px;
-}
-
-hr {
-    color: var(--white);
-}
-
-form {
-    padding: 2rem;
-    margin: 2rem 0rem;
-    border-radius: 25px;
-    border: solid;
-}
-
-form input {
-    margin-top: 1rem;
-}
-
-input:disabled {
-    background-color: grey !important;
-    border-color: transparent !important;
-    color: darkgrey !important;
-}
-
-/* Add this to your CSS file */
-.hidden {
-    display: none !important;
-}
-
-/* Navbar Style*/
 nav {
     display: flex;
     width: 100%;
@@ -224,44 +154,15 @@ nav {
     top: 0;
     left: 0;
     background-color: var(--themeColor);
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
     padding: 0.5rem;
     border-bottom: 1px solid var(--transparent_white);
-    transition-duration: 1s;
-    transition-property: "background";
+    transition: background 1s;
 }
-
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    background-color: white;
-}
-
-footer {
-    border-top: 1px solid var(--transparent_white);
-    z-index: 2;
-    background-color: var(--themeColor);
-    margin-bottom: 0px;
-    padding-bottom: 1rem;
-}
-
-/* footer ul {
-    background-color: var(--themeColor);
-} */
 
 nav ul,
 footer ul {
     display: flex;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     padding-bottom: 1rem;
     list-style-type: none;
 }
@@ -270,9 +171,18 @@ nav li {
     margin-left: 1rem;
 }
 
+/* Navbar logo image */
+.navbar-logo {
+    max-width: 60px;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-top: 0.7rem;
+    margin-left: 2.7rem;
+    filter: brightness(0) invert(1);
+}
+
+/* "Frosted" navbar variant — used when scrolled over the hero video */
 .frosted {
-    /*     background-color: transparent;
- */
     transition-duration: 1s;
     border-color: var(--transparent_white);
     border-width: 0;
@@ -288,27 +198,44 @@ nav li {
     filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
 }
 
-section {
-    margin-top: 4rem;
-    border-radius: 1rem;
-    min-height: 200px;
-    padding: 1rem;
-    color: black;
-    /* background-color: var(--white); */
-    background: var(--sectionColor);
-    box-shadow: inset 2px 2px 2px var(--themeColor);
+/* Hamburger icon — hidden on desktop, shown on mobile via media query */
+.hamburger {
+    display: none;
+    cursor: pointer;
 }
 
-.navbar-logo {
-    max-width: 60px;
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-    margin-top: 0.7rem;
-    margin-left: 2.7rem;
-    filter: brightness(0) invert(1);
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease;
+    background-color: white;
 }
 
-/* Video bg*/
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+    border-top: 1px solid var(--transparent_white);
+    z-index: 2;
+    background-color: var(--themeColor);
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+}
+
+#Copyright {
+    margin-top: -15px;
+}
+
+
+/* ============================================================
+   HERO / VIDEO BACKGROUND
+   ============================================================ */
+
+/* Full-height hero section wrapper */
 .v-header {
     height: 100vh;
     display: flex;
@@ -316,14 +243,7 @@ section {
     color: #fff;
 }
 
-.container {
-    max-width: 960px;
-    /* padding-left: 1rem;
-    padding-right: 1rem; */
-    margin: auto;
-    text-align: center;
-}
-
+/* Fixed background video */
 video {
     position: fixed;
     top: 50%;
@@ -334,13 +254,77 @@ video {
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
-    background: url("") no-repeat;
     background-size: cover;
-    transition: 1s opacity;
+    transition: opacity 1s;
 }
 
-#Copyright {
-    margin-top: -15px;
+/* Centered logo floating over the hero */
+.main-logo {
+    z-index: -1;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
+    width: 30vw;
+    padding: 1rem 0;
+}
+
+.main-logo img {
+    width: 100%;
+}
+
+#logo-parent {
+    z-index: -1;
+    position: fixed;
+    width: 70%;
+}
+
+#main-logo {
+    z-index: -5;
+    margin-top: 4rem auto;
+    filter: brightness(0) invert(1);
+    width: 20%;
+    min-width: 150px;
+    padding: 1rem;
+    position: absolute;
+}
+
+/* SVG curved text (used with a <textPath> element) */
+.curve-text {
+    font-size: 1.5rem;
+    fill: white;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+/* Text overlay positioned on the wave shape */
+.wave-text {
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 2vw;
+    padding: 0 2vw;
+    width: 90vw;
+}
+
+/* App store / Play store hero buttons */
+#playBtn {
+    filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.529));
+    top: 60%;
+    position: absolute;
+    right: 53%;
+    z-index: 2;
+}
+
+#appStoreBtn {
+    filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.566));
+    top: 60%;
+    left: 53%;
+    position: absolute;
+    z-index: 1;
 }
 
 #facebook {
@@ -351,221 +335,68 @@ video {
     margin-top: -4px;
 }
 
-li {
-    padding-left: 10px;
+
+/* ============================================================
+   CONTENT CONTAINERS & CARDS
+   ============================================================ */
+
+/* Frosted-glass card */
+.containera {
+    margin-top: 5rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
 }
 
-#playBtn {
-    filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.529));
-    top: 60%;
-    /* margin-top: 280px; */
-    position: absolute;
-    right: 53%;
-    z-index: 2;
+/* Generic centered max-width container */
+.container {
+    max-width: 960px;
+    margin: auto;
+    text-align: center;
 }
 
-#appStoreBtn {
-    filter: brightness(0) invert(1) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.566));
-    top: 60%;
-    /* margin-top: 280px; */
-    left: 53%;
-    position: absolute;
-    z-index: 1;
-}
-
-.center,
-main,
-nav,
-footer,
-header {
-    padding-left: 10%;
-    padding-right: 10%;
-
-}
-
-main {
-    padding-left: 15%;
-    padding-right: 15%;
-}
-
-@media (min-width: 1500px) {}
-
-@media (max-width: 700px) {
-    .hamburger {
-        display: block;
-        align-self: center;
-        margin-right: 5rem;
-    }
-
-    .containera {
-        /* width: 100%; */
-        padding: 1rem;
-    }
-
-    .center,
-    main,
-    nav,
-    footer,
-    header {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-
-    .navbar {
-        justify-content: space-between;
-        transition-duration: 1s;
-    }
-
-    .navbar-logo {
-        margin-left: 0rem;
-    }
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 1;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    .nav-menu {
-        position: fixed;
-        left: -120%;
-        top: 65px;
-        margin: 0;
-        gap: 0;
-        flex-direction: column;
-        background-color: var(--themeColor);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        padding-inline-start: 0;
-
-    }
-
-    .navbar li {
-        margin-top: 1rem;
-    }
-
-    .nav-item {
-        margin: 16px 0;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .main-logo {
-        width: 65vw;
-        position: fixed;
-    }
-
-
-    /* #frame {
-        min-width: 100%;
-    } */
-
-
-    #content-container {
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        text-align: left;
-
-    }
-
-    #hitch-text {
-        flex: 1;
-        max-width: 80%;
-        margin-right: 20px;
-    }
-
-
-    #desktop-buttons,
-    #download-button-container {
-
-
-        align-items: center;
-        /* Center items horizontally */
-        justify-content: center;
-        /* Center items vertically */
-        text-align: center;
-        /* Center text within the container */
-
-        height: 100%;
-        /* Ensure the container takes full height */
-        margin: 0 auto;
-        /* Center the container itself */
-    }
-
-    #frame img {
-        width: 100%;
-        /* Ensure the image also takes the full width */
-        max-width: 100%;
-        /* Remove the width limit */
-    }
-
-    .photo-container {
-        flex-direction: column;
-        /* Ensure photo container stacks vertically on small screens */
-        gap: 20px;
-        /* Keep the spacing between the items */
-    }
-
-
-
+/* Changelog / info block with dotted border */
+#changes {
+    padding: 0.8rem 2rem;
+    border: dotted var(--transparent_white) 5px;
+    border-spacing: 5px 12px;
 }
 
 
+/* ============================================================
+   FORMS
+   ============================================================ */
 
-
-
-.photo-container {
-    display: flex;
-    justify-content: center;
-    /* Center the items horizontally */
-    align-items: center;
-    /* Center the items vertically */
-    flex-wrap: wrap;
-    /* Allow items to wrap to the next line */
-    gap: 20px;
-    /* Optional: Add some space between the items */
-
+form {
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 25px;
+    border: solid;
 }
 
-.photo-container img {
-    /* flex: 1 1 auto; */
-    max-width: 250px;
-    /* height: auto; */
+form input {
+    margin-top: 1rem;
 }
 
-/* Add this to your CSS file */
-#desktop-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 50px;
-    /* Adjust the gap as needed */
-    padding: 20px;
-    /* Optional: Add padding around the container */
+input:disabled {
+    background-color: grey !important;
+    border-color: transparent !important;
+    color: darkgrey !important;
 }
 
 
-/* Add this to your style.css */
+/* ============================================================
+   DOWNLOAD / CTA BUTTONS
+   ============================================================ */
+
+/* Centers the download button horizontally */
 #download-button-container {
     display: flex;
     justify-content: center;
-    /* Centers the button horizontally */
     align-items: center;
-    /* Centers items vertically (in case of larger container) */
     margin-top: 20px;
-    /* Adds some space above the button */
 }
 
 .download-button {
@@ -581,7 +412,6 @@ main {
     font-weight: 570;
     max-width: 200px;
     width: 100%;
-    /* Ensures the button spans up to its max width */
     border: none;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -590,15 +420,40 @@ main {
 .download-button .icon {
     margin-right: 8px;
     display: inline-block;
-    /* Ensure the icon is treated as an inline block */
     vertical-align: middle;
-    /* Vertically align the icon in the middle */
     width: 30px;
     height: 30px;
 }
 
 .download-button:hover {
     background-color: #442434;
+}
+
+/* Row of desktop store buttons */
+#desktop-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 20px;
+}
+
+
+/* ============================================================
+   IMAGES & PHOTO GRID
+   ============================================================ */
+
+.photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.photo-container img {
+    max-width: 250px;
 }
 
 .facebook-logo {
@@ -608,12 +463,27 @@ main {
     margin-right: 5px;
 }
 
+/* Responsive image that fits within viewport height */
+.responsive-image {
+    width: 100%;
+    max-height: 80vh;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ============================================================
+   APP PREVIEW / CONTENT FRAME
+   ============================================================ */
+
 #frame {
     position: relative;
-    /* This allows us to position children relative to this container */
-
     margin: 2vh;
-    /* Add some space around each frame */
+}
+
+#frame img {
+    width: 100%;
+    display: block;
 }
 
 #content-container {
@@ -623,23 +493,12 @@ main {
     align-items: center;
     text-align: center;
     gap: 20px;
-    /* Adjust the gap as needed */
     padding: 20px;
-    /* Optional: Add padding around the container */
-
 }
 
 #content-container img {
-
     height: auto;
     flex: 1 1 300px;
-    /* Allow the image to grow and shrink */
-
-}
-
-#info-text {
-    max-width: 600px;
-    margin: 20px;
 }
 
 #frame2 {
@@ -647,22 +506,36 @@ main {
     max-width: 600px;
 }
 
-.responsive-image {
-    width: 100%;
-    max-height: 80vh;
-    height: auto;
-    object-fit: contain;
+#info-text {
+    max-width: 600px;
+    margin: 20px;
+}
+
+#hitch-text {
+    flex: 1;
+    max-width: 80%;
+    margin-right: 20px;
+}
+
+/* Grid of feature/icon links */
+.icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.icons-container a {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
 }
 
 
-#frame img {
-    width: 100%;
-    /* Scale the image to fit the container */
-    display: block;
-    /* Removes any default spacing below the image */
-}
-
-
+/* ============================================================
+   COOKIE BANNER
+   ============================================================ */
 
 #cookie-banner {
     position: fixed;
@@ -676,60 +549,44 @@ main {
     z-index: 1000;
 }
 
-.icons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 50px;
-    /* Adjust the gap as needed */
 
-}
-
-.icons-container a {
-    gap: 50px;
-    display: inline-block;
-    width: 200px;
-    /* Adjust the width as needed */
-    text-align: center;
-    /* Center the content inside the link */
-}
+/* ============================================================
+   CURIOSITY BANNER (slides up from the bottom)
+   ============================================================ */
 
 #curiosity-banner {
     position: fixed;
-    bottom: -100px;
-    /* Start outside the viewport */
+    bottom: -100px; /* starts off-screen */
     left: 50%;
     transform: translateX(-50%);
     background-color: #34495e;
     color: white;
     padding: 15px 30px;
     border-radius: 10px 10px 0 0;
-    /* Rounded corners on top */
     box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
     font-size: 1.2rem;
     text-align: center;
     z-index: 1000;
     opacity: 0.9;
-    /* Slightly transparent to blend in nicely */
     cursor: pointer;
     animation: slideUp 1.5s ease-out forwards;
-    /* Smooth slide-in */
 }
 
 #curiosity-banner:hover {
     background-color: #2c3e50;
-    /* Slight color change on hover */
 }
 
 @keyframes slideUp {
     to {
-        bottom: 0px;
-        /* Final position at the bottom */
+        bottom: 0;
         opacity: 1;
-        /* Fully visible */
     }
 }
+
+
+/* ============================================================
+   MODAL
+   ============================================================ */
 
 .modal {
     display: none;
@@ -753,7 +610,6 @@ main {
 }
 
 .modal h3 {
-    font-family: "Urbanist", sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     margin-bottom: 1rem;
@@ -774,9 +630,9 @@ main {
     border-radius: 5px;
     margin-bottom: 1rem;
     box-sizing: border-box;
-    font-family: "Urbanist", sans-serif;
 }
 
+/* Two-button row inside the modal */
 .button-container {
     display: flex;
     justify-content: space-between;
@@ -803,7 +659,6 @@ main {
 
 .primary-button:hover {
     background-color: rgb(0, 100, 80);
-    /* Slightly darker theme color */
 }
 
 .secondary-button {
@@ -813,4 +668,130 @@ main {
 
 .secondary-button:hover {
     background-color: var(--sectionColor);
+}
+
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ============================================================
+   RESPONSIVE — MOBILE (max-width: 700px)
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    /* Show hamburger, reduce side padding */
+    .hamburger {
+        display: block;
+        align-self: center;
+        margin-right: 5rem;
+    }
+
+    .containera {
+        padding: 1rem;
+    }
+
+    .center,
+    main,
+    nav,
+    footer,
+    header {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .navbar {
+        justify-content: space-between;
+        transition-duration: 1s;
+    }
+
+    .navbar-logo {
+        margin-left: 0;
+    }
+
+    /* Hamburger open/active state animations */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 1;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Mobile slide-in nav menu */
+    .nav-menu {
+        position: fixed;
+        left: -120%; /* hidden off-screen by default */
+        top: 65px;
+        margin: 0;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--themeColor);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding-inline-start: 0;
+    }
+
+    .navbar li {
+        margin-top: 1rem;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .main-logo {
+        width: 65vw;
+        position: fixed;
+    }
+
+    /* Stack content vertically on small screens */
+    #content-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    #hitch-text {
+        flex: 1;
+        max-width: 80%;
+        margin-right: 20px;
+    }
+
+    /* Center download and store buttons */
+    #desktop-buttons,
+    #download-button-container {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    #frame img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .photo-container {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
