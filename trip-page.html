@@ -181,7 +181,7 @@
 
         function sendSms(phoneNumber) {
             var tripId = "<?php echo $tripId; ?>"; // Replace with actual trip ID from server-side
-            var smsApiUrl = "https://hitchapp.se:40890/send-sms";
+            var smsApiUrl = "https://hitchapp.se/api/sms/send-trip-sms";
 
             fetch(smsApiUrl, {
                 method: 'POST',
@@ -189,8 +189,8 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    phoneNumber: phoneNumber,
-                    tripId: tripId,
+                    phone_number: phoneNumber,
+                    trip_id: tripId,
                 }),
             })
                 .then(response => response.json()) // Ensure the server always returns JSON
