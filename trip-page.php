@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hitch App - Trip</title>
-    <?php
+<?php
     // Get the tripId from the URL
     $tripId = isset($_GET['tripId']) ? htmlspecialchars($_GET['tripId']) : null;
 
     // Set cache headers to tell the browser to cache the response for 10 minutes (600 seconds)
-    header("Cache-Control: public, max-age=600"); // 600 seconds (10 minutes)
+    // header("Cache-Control: public, max-age=600"); // 600 seconds (10 minutes)
+    header("Cache-Control: no-cache, no-store, must-revalidate");
+
     header("Expires: " . gmdate("D, d M Y H:i:s", time() + 600) . " GMT");
 
     // Fallback values
     $defaultTitle = "Samåkning med Hitch";
     $defaultDescription = "Följ länken för att komma till resan!";
-    $defaultImage = "https://hitchapp.se/res/default_image1.png";
+    $defaultImage = "https://hitchapp.se/trip-image/$tripId"; // Default image URL
     $defaultUrl = "https://hitchapp.se/trip/$tripId";
     $androidUrl = "https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share";
     $iosUrl = "https://apps.apple.com/app/hitch-transport-hitch-hike/id6499305150";
@@ -30,13 +25,15 @@
 
     // If tripId is provided, fetch the trip data from the API
     if ($tripId) {
-        $apiUrl = "https://hitchapp.se:40890/trip-og-data/$tripId";
+        $apiUrl = "https://localhost:40890/trip-og-data/$tripId";
 
         // Make a GET request to the unified endpoint using curl
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $apiUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         $ogDataJson = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
@@ -46,7 +43,7 @@
             $ogData = json_decode($ogDataJson, true);
 
             // Use the unified response directly (includes language detection)
-            if (isset($ogData['success']) && $ogData['success']) {
+            if (isset($ogData['success']) && $ogData['success']) { 
                 $ogTitle = $ogData['ogTitle'];
                 $ogDescription = $ogData['ogDescription'];
                 $ogImage = $ogData['ogImage'];
@@ -106,6 +103,14 @@
     //     }
     // }
     ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <title>Hitch App - Trip</title>
     <meta property="og:title" content="<?php echo htmlspecialchars($ogTitle); ?>" />
     <meta property="og:description" content="<?php echo htmlspecialchars($ogDescription); ?>" />
     <meta property="og:image" content="<?php echo $ogImage; ?>" />
@@ -191,8 +196,8 @@
 
             <p id="facebook-disclaimer" class="disclaimer" style="display: none; color: black;">
                 <img src="./img/Facebook_logo_PNG12.png" alt="Facebook Logo" class="facebook-logo">
-                <em>Observera: Länkar fungerar inte alltid som förväntat i Facebooks och Instagrams webbläsare... <span style="font-size: 0.8em;">&#128580;</span>
-                    Om du redan har installerat appen, försök att markera länken nedan genom att trycka och hålla nere, och öppna Hitch via markeringsmenyn. Om inget fungerar, öppna appen manuellt och sök efter resan. </em>
+                <em>Fungerar det inte att trycka på resan? Du använder Facebooks eller Instagrams inbyggda webbläsare, vilket kan blockera öppning av appar. <span style="font-size: 0.8em;">&#128580;</span><br><br>
+                    <strong>Öppna länken i din vanliga webbläsare:</strong> Tryck på de tre punkterna (&#8942;) eller dela-ikonen i hörnet och välj <strong>"Öppna i webbläsare"</strong> eller <strong>"Öppna i Chrome/Safari"</strong>. Sedan fungerar länken som vanligt.</em>
                 <p id="unilink" style="margin-top: 20px; word-wrap: break-word; white-space: normal; display: none;">
                     <!-- The unilink will be inserted here by JavaScript -->
                 </p>
@@ -220,32 +225,57 @@
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
             const tripId = "<?php echo $tripId; ?>";
 
-            if (/android/i.test(userAgent)) {
-                window.location.href = `intent://trip/${tripId}#Intent;scheme=hitchapp;package=hitch_app.se;S.browser_fallback_url=https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share;end`;
-            } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-                // iOS redirection using a hybrid approach
-                // iOS redirection using the custom URL scheme
+            const isAndroid = /android/i.test(userAgent);
+            const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+            // Facebook and Instagram in-app browsers block intent:// URIs on Android
+            const isInAppBrowser = /FBAN|FBAV|FB_IAB|FB4A|Instagram/i.test(userAgent);
+
+            if (isAndroid) {
+                if (isInAppBrowser) {
+                    // intent:// is silently blocked by Facebook/Instagram WebView.
+                    // Use the custom scheme directly and detect whether the app opened
+                    // via visibilitychange/blur; fall back to Play Store if not.
+                    const appUrl = `hitchapp://trip/${tripId}`;
+                    const playStoreUrl = `https://play.google.com/store/apps/details?id=hitch_app.se`;
+
+                    let appOpened = false;
+                    const onHide = () => { appOpened = true; };
+                    const onBlur = () => { appOpened = true; };
+
+                    document.addEventListener('visibilitychange', onHide);
+                    window.addEventListener('blur', onBlur);
+
+                    window.location.href = appUrl;
+
+                    setTimeout(() => {
+                        document.removeEventListener('visibilitychange', onHide);
+                        window.removeEventListener('blur', onBlur);
+                        if (!appOpened) {
+                            window.location.href = playStoreUrl;
+                        }
+                    }, 1500);
+                } else {
+                    // Chrome and standard Android browsers honour intent:// with fallback
+                    window.location.href = `intent://trip/${tripId}#Intent;scheme=hitchapp;package=hitch_app.se;S.browser_fallback_url=https://play.google.com/store/apps/details?id=hitch_app.se&pcampaignid=web_share;end`;
+                }
+            } else if (isIOS) {
                 const appUrl = `hitchapp://trip/${tripId}`;
                 const fallbackAppStore = "https://apps.apple.com/app/hitch-transport-hitch-hike/id6499305150";
 
-                // Open the app URL
+                // Elapsed-time trick: when iOS switches to the app the JS engine
+                // pauses, so the setTimeout fires much later than its 1500ms nominal
+                // delay. If elapsed ≈ 1500ms the app didn't open → go to App Store.
+                // Works in Safari, Chrome, and Facebook/Instagram WebView on iOS.
+                // Avoids confirm() dialogs which can be suppressed in in-app browsers.
+                const start = Date.now();
                 window.location.href = appUrl;
-
-                // Show an alert if the app is not opened
-                let timeout = setTimeout(() => {
-                    // Prompt the user to go to the App Store
-                    const userConfirmed = confirm("Senaste versionen av appen verkar inte vara installerad, vill du gå till App Store?");
-                    if (userConfirmed) {
-                        // If user confirms, redirect to App Store
+                setTimeout(() => {
+                    if (Date.now() - start < 3000) {
                         window.location.href = fallbackAppStore;
                     }
-                }, 1500); // Timeout after 1.5 seconds (adjust as needed)
-
-                window.addEventListener('focus', () => {
-                    clearTimeout(timeout);  // Cancel the App Store redirection if the app is opened
-                });
+                }, 1500);
             } else {
-                // Desktop fallback alertdialoge that descibbes tht hitch is in your appstore on your mobilephone
+                // Desktop fallback
                 openSmsModal();
                 // alert("Hitch finns i din app-butik på din mobiltelefon!");
               
@@ -282,7 +312,7 @@
 
 function sendSms(phoneNumber) {
     var tripId = "<?php echo $tripId; ?>";
-    var smsApiUrl = "https://hitchapp.se:40890/send-sms";
+    var smsApiUrl = "https://localhost:41620/send-trip-sms";
 
     fetch(smsApiUrl, {
         method: 'POST',
@@ -290,8 +320,8 @@ function sendSms(phoneNumber) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            phoneNumber: phoneNumber,
-            tripId: tripId,
+            phone_number: phoneNumber,
+            trip_id: tripId,
         }),
     })
     .then(response => response.json()) // Ensure the server always returns JSON
@@ -381,15 +411,16 @@ function sendSms(phoneNumber) {
 
         function handleFacebookDisclaimer() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            console.log("User Agent: " + userAgent);
+            var isInAppBrowser = /FBAN|FBAV|FB_IAB|FB4A|Instagram/i.test(userAgent);
 
-            var isFacebookBrowser = userAgent.includes("FBAN") || userAgent.includes("FBAV");
-            var isInstagramBrowser = userAgent.includes("Instagram");
-            console.log("Is Facebook Browser: " + isFacebookBrowser);
-            console.log("Is Instagram Browser: " + isInstagramBrowser);
-
-            if (isFacebookBrowser || isInstagramBrowser) {
-                document.getElementById("disclaimer-toggle").style.display = "block";
+            if (isInAppBrowser) {
+                // Show the disclaimer immediately — don't hide it behind the toggle button
+                var disclaimer = document.getElementById('facebook-disclaimer');
+                var unilink = document.getElementById('unilink');
+                disclaimer.style.display = 'block';
+                unilink.style.display = 'block';
+                // Keep the toggle hidden since the disclaimer is already visible
+                document.getElementById('disclaimer-toggle').style.display = 'none';
             }
         }
 
@@ -469,7 +500,7 @@ function sendSms(phoneNumber) {
             handleDownloadButton();
             loadFooter();
             handleCookieBanner();
-            // handleFacebookDisclaimer();
+            handleFacebookDisclaimer();
         });
     </script>
 </body>

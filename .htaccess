@@ -2,11 +2,18 @@ ModPagespeedEnableFilters inline_javascript
 
 RewriteEngine On
 
+# Route public API paths to the PHP gateway:
+# /api/{servername}/{endpoint...}
+RewriteRule ^api/([a-zA-Z0-9_-]+)/?(.*)$ /api-gateway.php?server=$1&endpoint=$2 [L,QSA]
+
 # 🔁 Redirect /app/... to Firebase Hosting
 RewriteRule ^app(/.*)?$ https://hitch-e4a25.web.app/app$1 [R=302,L,QSA]
 
 # 🔁 Redirect /webapp/... to Firebase Hosting
 RewriteRule ^webapp(/.*)?$ https://hitch-e4a25.web.app/webapp$1 [R=302,L,QSA]
 
-# Existing trip rewrite
-RewriteRule ^trip/(.*)$ /trip-page.php?tripId=$1 [L,R=301]
+# Trip image proxy (standard port for Facebook OG scraper)
+RewriteRule ^trip-image/(.*)$ /trip-image.php?tripId=$1 [L,QSA]
+
+# Internal rewrite - no R=301 so URL stays as /trip/ID (Facebook scraper friendly)
+RewriteRule ^trip/(.*)$ /trip-page.php?tripId=$1 [L,QSA]
