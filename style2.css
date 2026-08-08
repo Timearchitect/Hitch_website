@@ -364,6 +364,53 @@ video {
     border-spacing: 5px 12px;
 }
 
+/* Team section */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.team-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 280px;
+    text-align: center;
+}
+
+.team-photo {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    filter: blur(0.3px);
+}
+
+.team-card h3 {
+    margin: 0.75rem 0 0.25rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.03em;
+}
+
+.team-role {
+    margin: 0.35rem 0;
+    font-weight: 500;
+}
+
+.team-role a {
+    color: var(--themeColor);
+    font-weight: 600;
+}
+
+.team-description {
+    margin: 0.5rem 0;
+    font-size: 0.92rem;
+    opacity: 0.85;
+}
+
 
 /* ============================================================
    FORMS

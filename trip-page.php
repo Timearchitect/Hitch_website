@@ -312,7 +312,7 @@
 
 function sendSms(phoneNumber) {
     var tripId = "<?php echo $tripId; ?>";
-    var smsApiUrl = "https://localhost:41620/send-trip-sms";
+    var smsApiUrl = "https://hitchapp.se/api/sms/send-trip-sms";
 
     fetch(smsApiUrl, {
         method: 'POST',
