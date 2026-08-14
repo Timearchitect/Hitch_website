@@ -395,6 +395,11 @@ video {
     letter-spacing: 0.03em;
 }
 
+.team-card h3 a {
+    color: var(--themeColor);
+    text-decoration: none;
+}
+
 .team-role {
     margin: 0.35rem 0;
     font-weight: 500;
@@ -405,10 +410,33 @@ video {
     font-weight: 600;
 }
 
+.team-location {
+    margin: 0 0 0.35rem;
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
 .team-description {
     margin: 0.5rem 0;
     font-size: 0.92rem;
     opacity: 0.85;
+}
+
+.app-icon {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.team-contact {
+    margin: 0.75rem 0 0;
+    font-size: 0.85rem;
+}
+
+.team-contact a {
+    color: var(--themeColor);
+    font-weight: 600;
 }
 
 
